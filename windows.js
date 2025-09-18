@@ -16,9 +16,10 @@ class Window {
 		header.innerHTML = `<span>${el.dataset.title || "Sans titre"}</span>`;
 
 		//// Create/header/close
-		//const closeBtn = document.createElement("button");
-		//closeBtn.textContent = "X";
-		//header.appendChild(closeBtn);
+		const closeBtn = document.createElement("button");
+		closeBtn.className = "action-close";
+		closeBtn.textContent = "X";
+		header.appendChild(closeBtn);
 
 		// Create/content
 		const content = document.createElement("section");
@@ -40,6 +41,7 @@ class Window {
 		header.addEventListener("mousedown", (e) => {
 			e.stopPropagation(); // not propagging to parents
 			isDragging = true;
+			document.body.style.userSelect = "none";
 			offsetX = e.clientX - this.el.offsetLeft;
 			offsetY = e.clientY - this.el.offsetTop;
 			this.el.style.zIndex = Window.zCounter++;
@@ -52,6 +54,7 @@ class Window {
 		});
 		document.addEventListener("mouseup", () => {
 			isDragging = false;
+			document.body.style.userSelect = "";
 		});
 
 		// Focus
