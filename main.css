@@ -1,0 +1,24 @@
+body {
+	/* sizing */
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	margin: 0;
+	padding: 0;
+
+	/* rules */
+	overflow: hidden;
+	/*overflow: auto;*/
+	/*display: inline;*/
+	flex-direction: column;
+	/*width: 100%; optionnal
+	height: 100%;*/
+	
+	/* appearence */
+	background: black;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 5vmin;
+  scrollbar-width: thin;
+  scrollbar-color: #00000055 rgba(0,0,0,0);
+	mix-blend-mode: difference;
+}
