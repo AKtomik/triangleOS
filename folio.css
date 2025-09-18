@@ -1,0 +1,72 @@
+body {
+	/* sizing */
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	margin: 0;
+	padding: 0;
+
+	/* rules */
+	overflow: hidden;
+	/*overflow: auto;*/
+	/*display: inline;*/
+	flex-direction: column;
+	/*width: 100%; optionnal
+	height: 100%;*/
+	
+	/* appearence */
+	background: black;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 5vmin;
+  scrollbar-width: thin;
+  scrollbar-color: #00000055 rgba(0,0,0,0);
+	mix-blend-mode: difference;
+}
+
+.os-desk {
+	display: flex;
+	flex-direction: column;
+}
+.os-desk article {
+	background-color: red;
+	width: 100%;
+	flex: 1 1 auto;
+	overflow: hidden;
+}
+.os-desk footer {
+	background-color: blue;
+	width: 100%;
+	height: 50px;
+}
+
+.windows {
+	display: flex;
+	flex-direction: column;
+}
+.windows header {
+	background-color: purple;
+	width: 100%;
+	height: 25px;
+}
+.windows section {
+	background-color: cyan;
+	width: 100%;
+	flex: 1 1 auto;
+}
+
+.size-full {
+	width: 100%;
+	height: 100%;
+}
+.size-small {
+	width: 200px;
+	height: 200px;
+}
+.size-middle {
+	width: 500px;
+	height: 500px;
+}
+.size-big {
+	width: 900px;
+	height: 900px;
+}
