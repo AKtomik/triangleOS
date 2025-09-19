@@ -103,7 +103,7 @@ window.onload = () => {
 	// warn for not inited
 	document.querySelectorAll(".window").forEach(el => {
 		if (!el.__windowInstance) {
-			console.error("window not loaded because is not a child of .window-container nor .window: ", el);
+			console.error("a window not loaded because is not a child of .window-container nor .window:\n", el);
 		}
 	});
 	// global init

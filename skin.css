@@ -38,7 +38,12 @@ skin rules
 		background-color: transparent;
 	}
 }
-
+.skin-glass {
+	section {
+		background-color: transparent;
+		backdrop-filter: blur(10px);
+	}
+}
 .skin-blue {
 	section {
 		background-color: cyan;
@@ -47,5 +52,10 @@ skin rules
 .skin-orange {
 	section {
 		background-color: orange;
+	}
+}
+.skin-red {
+	section {
+		background-color: red;
 	}
 }
