@@ -15,7 +15,7 @@ class Window {
 		header.className = "window-header";
 		header.innerHTML = `<span>${el.dataset.title || "Sans titre"}</span>`;
 
-		//// Create/header/close
+		// Create/header/close
 		const closeBtn = document.createElement("button");
 		closeBtn.className = "action-close";
 		closeBtn.textContent = "X";
@@ -32,11 +32,11 @@ class Window {
 		el.appendChild(header);
 		el.appendChild(content);
 
-		//// Close
-		//closeBtn.addEventListener("click", (e) => {
-		//	e.stopPropagation();
-		//	this.close();
-		//});
+		// Close
+		closeBtn.addEventListener("click", (e) => {
+			e.stopPropagation();
+			this.close();
+		});
 
 		// Drag
 		let offsetX, offsetY, isDragging = false;
