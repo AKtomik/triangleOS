@@ -1,4 +1,20 @@
+/* -- os appearance -- */
+
+.os-desk {
+	background-image: url(/src/img/th.jpg);
+	background-size: 100% 100%;
+}
+.os-desk footer {
+	/*background-color: darkblue;*/
+	backdrop-filter: blur(10px) brightness(.5) sepia(.5);
+}
+
+
+/* -- windows appearance -- */
+
+/* default */
 .window {
+	outline:2px black solid;
 	header {
 		background-color: gray;
 		color: black;
@@ -9,9 +25,14 @@
 	}
 	section {
 		background-color: white;
+		outline:2px black solid;
 	}
 }
 
+/*
+skin rules
+- dont touch outline (only color
+*/
 .skin-transparent {
 	section {
 		background-color: transparent;
