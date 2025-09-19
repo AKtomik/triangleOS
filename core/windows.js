@@ -1,9 +1,16 @@
-console.log("hi");
+console.debug("hi");
 
 
 class Window {
-	constructor(el, constructChilds = false) {
-		console.log("windows create: ", el);
+	constructor(el, doInitChildWindows = true, doInitChildContainers = false) {
+		if (el.__windowInstance)
+		{
+			console.error("trying to construct already built window: ", el);
+			return;
+		}
+
+		el.__windowInstance = true;
+		console.debug("constructing window: ", el);
 		this.el = el;
 
 		// get content
@@ -76,24 +83,28 @@ class Window {
 			this.el.style.zIndex = Window.zCounter++;
 		});
 
-		//el.classList.add("window-init");
-		el.__windowInstance = true;
-
-		//// Init sub windows
-		if (constructChilds)
-			this.initChildren(content);
+		// Init sub windows
+		if (doInitChildWindows)
+			this.initChildrenWindows(content);
+		if (doInitChildContainers)
+			this.initChildrenContainers(content);
 	}
 
 	// inits
-	initChildren(container) {
-		container.querySelectorAll(":scope > .window").forEach(childEl => {
-			new Window(childEl, true);
+	initChildrenWindows(container) {
+		// init direct childrens of container
+		container.querySelectorAll(":scope > .window").forEach(childEl => {new Window(childEl);});
+	}
+	initChildrenContainers(container) {
+		// init any childrens in a .window-container that is inside container
+		container.querySelectorAll(":scope .window-container > .window").forEach(childEl => {
+			new Window(childEl);
 		});
 	}
 	static initRoot() {
 		console.log("loading cascade...")
 		// cascade init
-		document.querySelectorAll(".window-container > .window").forEach(el => new Window(el, true));
+		document.querySelectorAll(".window-container > .window").forEach(el => new Window(el));
 		// warn for not inited
 		document.querySelectorAll(".window").forEach(el => {
 			if (!el.__windowInstance) {
@@ -102,11 +113,13 @@ class Window {
 		});
 		// global init
 		Window.zCounter = 10;
+		console.log("cascade done!")
 	}
 
 
 	// closing
 	close() {
+		console.debug("destructing window: ", this.el);
 		this.el.remove();
 	}
 
@@ -125,7 +138,7 @@ class Window {
 	static createHtmlWindow(parentId, windowTitle, windowClass, htmlSrc) {
 		const element = Window.__makeBaseWindow(windowTitle, windowClass);
 		element.innerHTML = `<object type="text/html" data="${htmlSrc}"></object>`;
-		new Window(element);
+		new Window(element, true, true);
 		Window.__makeChild(parentId, element);
 	}
 	static createTemplateWindow(parentId, windowTitle, windowClass, templateId) {
@@ -133,13 +146,13 @@ class Window {
 		let template = document.getElementById(templateId);
 		let nodeTemplate = template.content.cloneNode(true);
 		element.appendChild(nodeTemplate);
-		new Window(element);
+		new Window(element, true, true);
 		Window.__makeChild(parentId, element);
 	}
 	static createIframeWindow(parentId, windowTitle, windowClass, iframeUrl) {
 		const element = Window.__makeBaseWindow(windowTitle, windowClass);
 		element.innerHTML = `<iframe src="${iframeUrl}"></iframe>`;
-		new Window(element);
+		new Window(element, true, true);
 		Window.__makeChild(parentId, element);
 	}
 }

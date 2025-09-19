@@ -1,7 +1,7 @@
 /* -- os appearance -- */
 
 .os-desk {
-	background-image: url(/assets/img/th.jpg);
+	background-image: url(/assets/background/outside-pixel.png);
 	background-size: 100% 100%;
 }
 .os-desk footer {
@@ -62,5 +62,10 @@ skin rules
 .skin-red {
 	section {
 		background-color: red;
+	}
+}
+.skin-black {
+	section {
+		background-color: black;
 	}
 }
