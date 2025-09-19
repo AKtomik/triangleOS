@@ -2,7 +2,7 @@ console.log("hi");
 
 
 class Window {
-	constructor(el) {
+	constructor(el, constructChilds = false) {
 		console.log("windows create: ", el);
 		this.el = el;
 
@@ -63,24 +63,36 @@ class Window {
 			this.el.style.zIndex = Window.zCounter++;
 		});
 
+		//el.classList.add("window-init");
+		el.__windowInstance = true;
+
 		//// Init sub windows
-		//this.initChildren(content);
+		if (constructChilds)
+			this.initChildren(content);
 	}
 
+	// construct methods
 	close() {
 		this.el.remove();
 	}
-	//initChildren(container) {
-	//	container.querySelectorAll(":scope > .window").forEach(childEl => {
-	//		new Window(childEl, this.el);
-	//	});
-	//}
+	initChildren(container) {
+		container.querySelectorAll(":scope > .window").forEach(childEl => {
+			new Window(childEl, true);
+		});
+	}
 }
 
 // Init root windows
 window.onload = () => {
-	//document.querySelectorAll("body > .window").forEach(el => new Window(el));
-	console.log("loading...")
-	document.querySelectorAll(".window").forEach(el => new Window(el));
+	console.log("loading cascade...")
+	// cascade
+	document.querySelectorAll(".window-container > .window").forEach(el => new Window(el, true));
+	// warn for not inited
+	document.querySelectorAll(".window").forEach(el => {
+		if (!el.__windowInstance) {
+			console.error("window not loaded because is not a child of .window-container nor .window: ", el);
+		}
+	});
+	// global init
 	Window.zCounter = 10;
 };
