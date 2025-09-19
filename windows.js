@@ -84,14 +84,16 @@ class Window {
 			this.initChildren(content);
 	}
 
-	// construct methods
-	close() {
-		this.el.remove();
-	}
+	// init child
 	initChildren(container) {
 		container.querySelectorAll(":scope > .window").forEach(childEl => {
 			new Window(childEl, true);
 		});
+	}
+
+	// closing
+	close() {
+		this.el.remove();
 	}
 }
 
