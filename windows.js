@@ -27,6 +27,8 @@ class Window {
 		content.innerHTML = contentHTML;
 
 		// Gather
+		this.header = header;
+		this.content = content;
 		el.appendChild(header);
 		el.appendChild(content);
 
@@ -48,8 +50,19 @@ class Window {
 		});
 		document.addEventListener("mousemove", (e) => {
 			if (isDragging) {
-				this.el.style.left = (e.clientX - offsetX) + "px";
-				this.el.style.top = (e.clientY - offsetY) + "px";
+				const parentRect = this.el.parentElement.getBoundingClientRect();
+				const elRect = this.header.getBoundingClientRect();
+				const clampPixelWidth = 50;
+				// slide
+				let newLeft = e.clientX - offsetX;
+				let newTop = e.clientY - offsetY;
+				// clamp
+				//newLeft = Math.max(0, Math.min(newLeft, parentRect.width - elRect.width));
+				newLeft = Math.max(clampPixelWidth - elRect.width, Math.min(newLeft, parentRect.width - clampPixelWidth));
+				newTop = Math.max(0, Math.min(newTop, parentRect.height - elRect.height));
+				// apply
+				this.el.style.left = (newLeft) + "px";
+				this.el.style.top = (newTop) + "px";
 			}
 		});
 		document.addEventListener("mouseup", () => {
@@ -82,10 +95,10 @@ class Window {
 	}
 }
 
-// Init root windows
+// Inits
 window.onload = () => {
 	console.log("loading cascade...")
-	// cascade
+	// cascade init
 	document.querySelectorAll(".window-container > .window").forEach(el => new Window(el, true));
 	// warn for not inited
 	document.querySelectorAll(".window").forEach(el => {
