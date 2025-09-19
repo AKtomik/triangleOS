@@ -13,6 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="skin.css">
 		
 		<script src="windows.js"></script>
+		<script src="loadTemplate.js"></script>
 	</head>
 
 	<body>
@@ -65,7 +66,13 @@
 				<nav class="os-launch">
 					<!--<img src="src/icons/gold_triangle.png">-->
 				</nav>
-				<article class="footicon">
+				<article class="footicon" onclick="Window.createHtmlWindow('create-windows-1', 'test html', 'size-middle skin-glass', 'windows-html/hi.html')">
+					<img src="src/icons/action/white-plus-icon.png">
+				</article>
+				<article class="footicon" onclick="Window.createTemplateWindow('create-windows-1', 'test template', 'size-middle skin-glass', 'template-me')">
+					<img src="src/icons/action/white-plus-icon.png">
+				</article>
+				<article class="footicon" onclick="Window.createIframeWindow('create-windows-1', 'test iframe', 'size-middle skin-glass', 'https://www.dogpile.com/')">
 					<img src="src/icons/action/white-plus-icon.png">
 				</article>
 				<article class="footicon">
@@ -74,6 +81,7 @@
 				<article class="footicon">
 					<img src="src/icons/action/black-option-icon.png">
 				</article>
+				<!-- https://www.youtube.com/embed/xvFZjo5PgG0?autoplay=1 -->
 			</footer>
 		</div>
 	</body>

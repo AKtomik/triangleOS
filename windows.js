@@ -84,30 +84,65 @@ class Window {
 			this.initChildren(content);
 	}
 
-	// init child
+	// inits
 	initChildren(container) {
 		container.querySelectorAll(":scope > .window").forEach(childEl => {
 			new Window(childEl, true);
 		});
 	}
+	static initRoot() {
+		console.log("loading cascade...")
+		// cascade init
+		document.querySelectorAll(".window-container > .window").forEach(el => new Window(el, true));
+		// warn for not inited
+		document.querySelectorAll(".window").forEach(el => {
+			if (!el.__windowInstance) {
+				console.error("a window not loaded because is not a child of .window-container nor .window:\n", el);
+			}
+		});
+		// global init
+		Window.zCounter = 10;
+	}
+
 
 	// closing
 	close() {
 		this.el.remove();
 	}
+
+	// static
+	static __makeBaseWindow(windowTitle, windowClass) {
+		const element = document.createElement("div");
+		element.dataset.title = windowTitle;
+		element.className = windowClass;
+		element.classList.add("window");
+		return element;
+	}
+	static __makeChild(parentId, element) {
+		parent = document.getElementById(parentId);
+		parent.appendChild(element);
+	}
+	static createHtmlWindow(parentId, windowTitle, windowClass, htmlSrc) {
+		const element = Window.__makeBaseWindow(windowTitle, windowClass);
+		element.innerHTML = `<object type="text/html" data="${htmlSrc}"></object>`;
+		new Window(element);
+		Window.__makeChild(parentId, element);
+	}
+	static createTemplateWindow(parentId, windowTitle, windowClass, templateId) {
+		const element = Window.__makeBaseWindow(windowTitle, windowClass);
+		let template = document.getElementById(templateId);
+		let nodeTemplate = template.content.cloneNode(true);
+		element.appendChild(nodeTemplate);
+		new Window(element);
+		Window.__makeChild(parentId, element);
+	}
+	static createIframeWindow(parentId, windowTitle, windowClass, iframeUrl) {
+		const element = Window.__makeBaseWindow(windowTitle, windowClass);
+		element.innerHTML = `<iframe src="${iframeUrl}"></iframe>`;
+		new Window(element);
+		Window.__makeChild(parentId, element);
+	}
 }
 
-// Inits
-window.onload = () => {
-	console.log("loading cascade...")
-	// cascade init
-	document.querySelectorAll(".window-container > .window").forEach(el => new Window(el, true));
-	// warn for not inited
-	document.querySelectorAll(".window").forEach(el => {
-		if (!el.__windowInstance) {
-			console.error("a window not loaded because is not a child of .window-container nor .window:\n", el);
-		}
-	});
-	// global init
-	Window.zCounter = 10;
-};
+// Lisener
+document.addEventListener("DOMContentLoaded", Window.initRoot);
