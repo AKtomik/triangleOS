@@ -1,7 +1,7 @@
 /* -- os appearance -- */
 
 .os-desk {
-	background-image: url(/src/img/th.jpg);
+	background-image: url(/assets/img/th.jpg);
 	background-size: 100% 100%;
 }
 .os-desk footer {
@@ -10,7 +10,7 @@
 }
 
 .os-launch {
-	background-image: url(/src/icons/gold_triangle.png);
+	background-image: url(/assets/icons/gold_triangle.png);
 	background-size: 100% 100%;
 }
 
