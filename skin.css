@@ -1,0 +1,30 @@
+.window {
+	header {
+		background-color: gray;
+		color: black;
+	}
+	.action-close {
+	  background: red;
+	  color: white;
+	}
+	section {
+		background-color: white;
+	}
+}
+
+.skin-transparent {
+	section {
+		background-color: transparent;
+	}
+}
+
+.skin-blue {
+	section {
+		background-color: cyan;
+	}
+}
+.skin-orange {
+	section {
+		background-color: orange;
+	}
+}
