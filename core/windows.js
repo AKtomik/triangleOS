@@ -82,6 +82,7 @@ class Window {
 			e.stopPropagation();
 			this.el.style.zIndex = Window.zCounter++;
 		});
+		this.el.style.zIndex = Window.zCounter++;
 
 		// Init sub windows
 		if (doInitChildWindows)
@@ -131,29 +132,31 @@ class Window {
 		element.classList.add("window");
 		return element;
 	}
-	static __makeChild(parentId, element) {
-		parent = document.getElementById(parentId);
+	static __makeChild(parent, element) {
+		if (typeof parent === 'string')
+			parent = document.getElementById(parent);
+		console.log("parent=",parent)
 		parent.appendChild(element);
 	}
-	static createHtmlWindow(parentId, windowTitle, windowClass, htmlSrc) {
+	static createHtmlWindow(parent, windowTitle, windowClass, htmlSrc) {
 		const element = Window.__makeBaseWindow(windowTitle, windowClass);
 		element.innerHTML = `<object type="text/html" data="${htmlSrc}"></object>`;
 		new Window(element, true, true);
-		Window.__makeChild(parentId, element);
+		Window.__makeChild(parent, element);
 	}
-	static createTemplateWindow(parentId, windowTitle, windowClass, templateId) {
+	static createTemplateWindow(parent, windowTitle, windowClass, templateId) {
 		const element = Window.__makeBaseWindow(windowTitle, windowClass);
 		let template = document.getElementById(templateId);
 		let nodeTemplate = template.content.cloneNode(true);
 		element.appendChild(nodeTemplate);
 		new Window(element, true, true);
-		Window.__makeChild(parentId, element);
+		Window.__makeChild(parent, element);
 	}
-	static createIframeWindow(parentId, windowTitle, windowClass, iframeUrl) {
+	static createIframeWindow(parent, windowTitle, windowClass, iframeUrl) {
 		const element = Window.__makeBaseWindow(windowTitle, windowClass);
 		element.innerHTML = `<iframe src="${iframeUrl}"></iframe>`;
 		new Window(element, true, true);
-		Window.__makeChild(parentId, element);
+		Window.__makeChild(parent, element);
 	}
 }
 
