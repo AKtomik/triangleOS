@@ -5,10 +5,15 @@ import { Desk } from "/core/desk.js";
 
 import { Template } from "/core/templateTools.js";
 
+import { Settings } from  "/core/settings.js";
+import * as Enum from  "/core/enum.js";
+
 const TriangleOS = {
   Window,
   Desk,
-  Template
+  Template,
+  Settings,
+  Enum
 };
 window.TriangleOS = TriangleOS;
 export { TriangleOS };

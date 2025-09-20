@@ -1,3 +1,7 @@
+import { WindowOpenWay } from "./enum";
+import { AbsPos } from "/core/basic.js";
+import { Settings } from "/core/settings.js";
+
 console.debug("hi");
 
 
@@ -58,7 +62,7 @@ class Window extends HTMLElement {
 		});
 		document.addEventListener("mousemove", (e) => {
 			if (isDragging) {
-				let pos = { left: e.clientX - offsetX, top: e.clientY - offsetY };
+				let pos = new AbsPos(e.clientX - offsetX, e.clientY - offsetY);
 				pos = this.clampPos(pos);
 				this.style.left = (pos.left) + "px";
 				this.style.top = (pos.top) + "px";
@@ -70,9 +74,11 @@ class Window extends HTMLElement {
 		});
 
 		// Open
-		this.style.left = 0 + "px";
-		this.style.top = 0 + "px";
-		this.clampSelf();
+		let openway = this.dataset.openway | Settings.windows.defaultOpenWay | 'top';
+		let openPos = new AbsPos(0, 0);
+		openPos = this.clampPos(openPos);
+		this.style.left = openPos + "px";
+		this.style.top = openPos + "px";
 
 		// Focus
 		this.addEventListener("mousedown", (e) => {
@@ -104,10 +110,10 @@ class Window extends HTMLElement {
 		const newTop = Math.max(0, Math.min(pos.top, parentRect.height - elRect.height));
 		//newLeft = Math.max(0, Math.min(pos.left, parentRect.width - elRect.width));
 		const newLeft = Math.max(clampPixelWidth - elRect.width, Math.min(pos.left, parentRect.width - clampPixelWidth));
-		return { top: newTop, left: newLeft };
+		return new AbsPos(newLeft, newTop);
 	}
 	clampSelf() {
-		let pos = { left: this.offsetLeft, top: this.offsetTop };
+		let pos = new AbsPos(this.offsetLeft, this.offsetTop);
 		pos = this.clampPos(pos);
 		this.style.left = (pos.left) + "px";
 		this.style.top = (pos.top) + "px";
