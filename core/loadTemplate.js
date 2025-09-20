@@ -1,4 +1,4 @@
-const templatesFile = "templates.html";
+const templatesFile = "edit/templates.html";
 
 
 async function loadTemplates() {
