@@ -37,12 +37,10 @@ class Window extends HTMLElement {
 
 		// Gather
 		this.header = header;
-		if (!Boolean(this.hasAttribute("data-hideheader")))
-		{
-			this.appendChild(header);
-		}
+		this.appendChild(header);
 		this.content = content;
 		this.appendChild(content);
+		this.hideHeader = Boolean(this.hasAttribute("data-hideheader"));
 
 		// Close
 		closeBtn.addEventListener("click", (e) => {
@@ -148,6 +146,22 @@ class Window extends HTMLElement {
 		pos = this.clampPos(pos);
 		this.style.left = (pos.left) + "px";
 		this.style.top = (pos.top) + "px";
+	}
+
+	// get/set
+	get hideHeader()
+	{
+		return this.__hideHeader;
+	}
+	set hideHeader(value)
+	{
+		if (value)
+		{
+			this.header.style.display = "none";
+		} else {
+			this.header.style.display = "";
+		}
+		this.__hideHeader = value;
 	}
 }
 
