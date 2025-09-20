@@ -6,7 +6,7 @@
 	display: flex;
 	flex-direction: column;
 	position: absolute;
-	overflow: auto;
+	overflow: hidden;
 	resize: both;
 }
 .tos-window > header {
@@ -19,14 +19,20 @@
 	cursor: default;
 }
 .tos-window > header > span {
+	flex: 1;
+	min-width: 0; 
 	font-size: 20px;
 	align-items: center;
 	margin-left: 5px;
 	margin-top: auto;
 	margin-bottom: auto;
 	margin-right: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .tos-window > header > button {
+	flex: 0 0 auto;
   border: none;
   cursor: pointer;
   padding: 0 8px;
