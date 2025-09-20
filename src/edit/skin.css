@@ -26,6 +26,10 @@
 		background-color: gray;
 		color: black;
 	}
+	> header > .action-full {
+	  background: transparent;
+	  color: black;
+	}
 	> header > .action-close {
 	  background: red;
 	  color: white;

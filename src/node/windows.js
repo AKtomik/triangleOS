@@ -35,7 +35,7 @@ class Window extends HTMLElement {
 		// Create/header/full
 		const fullBtn = document.createElement("button");
 		fullBtn.className = "action-full";
-		fullBtn.textContent = "O";
+		fullBtn.textContent = "□";
 		fullBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
 			this.isFullscreen = !this.isFullscreen;
