@@ -56,27 +56,42 @@ class Window extends HTMLElement {
 
 		// Drag
 		let offsetX, offsetY, isDragging = false;
-		header.addEventListener("mousedown", (e) => {
-			e.stopPropagation(); // not propagging to parents
-			if (this.isFullscreen) return;
-			isDragging = true;
-			document.body.style.userSelect = "none";
-			offsetX = e.clientX - this.offsetLeft;
-			offsetY = e.clientY - this.offsetTop;
-			this.style.zIndex = Window.zCounter++;
-		});
-		document.addEventListener("mousemove", (e) => {
+
+		let drag = (e) => {
 			if (isDragging) {
 				let pos = new AbsPos(e.clientX - offsetX, e.clientY - offsetY);
 				pos = this.clampPos(pos);
 				this.style.left = (pos.left) + "px";
 				this.style.top = (pos.top) + "px";
 			}
-		});
-		document.addEventListener("mouseup", () => {
+		}
+
+		let beginDrag = (e) => {
+			e.stopPropagation(); // not propagging to parents
+			if (this.isFullscreen) return;
+			
+			isDragging = true;
+			document.onpointermove = drag;
+			this.classList.add("dragging");
+			document.body.style.userSelect = "none";
+
+			
+			offsetX = e.clientX - this.offsetLeft;
+			offsetY = e.clientY - this.offsetTop;
+			this.style.zIndex = Window.zCounter++;
+		}
+
+		let stopDrag = (e) => {
+			e.stopPropagation(); // not propagging to parents
+
 			isDragging = false;
+			document.onpointermove = null;
+			this.classList.remove("dragging");
 			document.body.style.userSelect = "";
-		});
+		}
+		
+		header.onpointerdown = beginDrag;
+		header.onpointerup = stopDrag;
 
 		// Open
 		let openway = this.dataset.openway || Settings.windows.defaultOpenWay || 'top';
@@ -196,10 +211,13 @@ class Window extends HTMLElement {
 			this.style.top = "0";
 		} else {
 			this.classList.remove("fullscreen");
-			this.style.width = this.__cacheFullscreen.width;
-			this.style.height = this.__cacheFullscreen.height;
-			this.style.left = this.__cacheFullscreen.left;
-			this.style.top = this.__cacheFullscreen.top;
+			if (this.__cacheFullscreen)
+			{
+				this.style.width = this.__cacheFullscreen.width;
+				this.style.height = this.__cacheFullscreen.height;
+				this.style.left = this.__cacheFullscreen.left;
+				this.style.top = this.__cacheFullscreen.top;
+			}
 		}
 		this.__isFullscreen = value;
 	}

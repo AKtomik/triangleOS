@@ -21,7 +21,10 @@
 	flex-basis: 35px;
 	flex-grow: 0;
 	flex-shrink: 0;
-	cursor: default;
+  /*cursor: grab;*/
+}
+.tos-window.dragging {
+  cursor: grabbing !important;
 }
 .tos-window > header > span {
 	flex: 1;
