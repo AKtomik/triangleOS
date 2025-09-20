@@ -8,6 +8,8 @@
 	position: absolute;
 	overflow: hidden;
 	resize: both;
+	min-width: 70px;
+	min-height: 35px;
 }
 .tos-window > header {
 	display: flex;
