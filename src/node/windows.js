@@ -58,6 +58,7 @@ class Window extends HTMLElement {
 		let offsetX, offsetY, isDragging = false;
 		header.addEventListener("mousedown", (e) => {
 			e.stopPropagation(); // not propagging to parents
+			if (this.isFullscreen) return;
 			isDragging = true;
 			document.body.style.userSelect = "none";
 			offsetX = e.clientX - this.offsetLeft;
@@ -117,6 +118,7 @@ class Window extends HTMLElement {
 
 		// Settings
 		this.hideHeader = Boolean(this.hasAttribute("data-hideheader"));// this need to be done AFTER open calculations
+		this.isFullscreen = Boolean(this.hasAttribute("data-isfullscreen"));
 
 		// Focus
 		this.addEventListener("mousedown", (e) => {
@@ -181,6 +183,7 @@ class Window extends HTMLElement {
 		if (value === this.isFullscreen) return;
 		if (value)
 		{
+			this.classList.add("fullscreen");
 			this.__cacheFullscreen = {
 				width: this.style.width,
 				height: this.style.height,
@@ -192,6 +195,7 @@ class Window extends HTMLElement {
 			this.style.left = "0";
 			this.style.top = "0";
 		} else {
+			this.classList.remove("fullscreen");
 			this.style.width = this.__cacheFullscreen.width;
 			this.style.height = this.__cacheFullscreen.height;
 			this.style.left = this.__cacheFullscreen.left;

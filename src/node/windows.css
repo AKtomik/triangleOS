@@ -11,6 +11,9 @@
 	min-width: 70px;
 	min-height: 35px;
 }
+.tos-window.fullscreen {
+	resize: none;
+}
 .tos-window > header {
 	display: flex;
 	width: 100%;
