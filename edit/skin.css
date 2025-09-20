@@ -5,13 +5,13 @@
 	background-size: 100% 100%;
 	background-color: none;
 }
-.tos-desk > section > footer {
+.tos-desk-bar {
 	/*background-color: darkblue;*/
 	border-top: 1px white solid;
 	backdrop-filter: blur(10px) brightness(.5);
 }
 
-.tos-launch {
+.os-launch {
 	background-image: url(/assets/icons/gold_triangle.png);
 	background-size: 100% 100%;
 }
