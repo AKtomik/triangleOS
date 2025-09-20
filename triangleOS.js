@@ -1,16 +1,10 @@
-import "/core/windows.js";
+console.log("importing triangleOS...")
+import { Window } from "/core/windows.js";
 import "/core/loadTemplate.js";
+console.log("triangleOS imported!")
 
-async function injectCSSFile(url) {
-  const res = await fetch(url);
-  const css = await res.text();
-  const style = document.createElement("style");
-  style.textContent = css;
-  document.head.appendChild(style);
-}
-
-injectCSSFile("core/main.css")
-injectCSSFile("core/windows.css")
-injectCSSFile("core/deskdown.css")
-injectCSSFile("core/atr.css")
-injectCSSFile("edit/skin.css")
+const TriangleOS = {
+  Window
+};
+window.TriangleOS = TriangleOS;
+export { TriangleOS };

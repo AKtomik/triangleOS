@@ -162,3 +162,5 @@ class Window {
 
 // Lisener
 document.addEventListener("DOMContentLoaded", Window.initRoot);
+
+export { Window };
