@@ -28,7 +28,18 @@ class Window extends HTMLElement {
 		const closeBtn = document.createElement("button");
 		closeBtn.className = "action-close";
 		closeBtn.textContent = "X";
-		header.appendChild(closeBtn);
+		closeBtn.addEventListener("click", (e) => {
+			e.stopPropagation();
+			this.close();
+		});
+		// Create/header/full
+		const fullBtn = document.createElement("button");
+		fullBtn.className = "action-full";
+		fullBtn.textContent = "O";
+		fullBtn.addEventListener("click", (e) => {
+			e.stopPropagation();
+			this.isFullscreen = !this.isFullscreen;
+		});
 
 		// Create/content
 		const content = document.createElement("section");
@@ -36,16 +47,12 @@ class Window extends HTMLElement {
 		content.innerHTML = contentHTML;
 
 		// Gather
+		header.appendChild(fullBtn);
+		header.appendChild(closeBtn);
 		this.header = header;
 		this.appendChild(header);
 		this.content = content;
 		this.appendChild(content);
-
-		// Close
-		closeBtn.addEventListener("click", (e) => {
-			e.stopPropagation();
-			this.close();
-		});
 
 		// Drag
 		let offsetX, offsetY, isDragging = false;
@@ -164,6 +171,33 @@ class Window extends HTMLElement {
 			this.header.style.display = "";
 		}
 		this.__hideHeader = value;
+	}
+	get isFullscreen()
+	{
+		return this.__isFullscreen;
+	}
+	set isFullscreen(value)
+	{
+		if (value === this.isFullscreen) return;
+		if (value)
+		{
+			this.__cacheFullscreen = {
+				width: this.style.width,
+				height: this.style.height,
+				left: this.style.left,
+				top: this.style.top,
+			};
+			this.style.width = "100%";
+			this.style.height = "100%";
+			this.style.left = "0";
+			this.style.top = "0";
+		} else {
+			this.style.width = this.__cacheFullscreen.width;
+			this.style.height = this.__cacheFullscreen.height;
+			this.style.left = this.__cacheFullscreen.left;
+			this.style.top = this.__cacheFullscreen.top;
+		}
+		this.__isFullscreen = value;
 	}
 }
 

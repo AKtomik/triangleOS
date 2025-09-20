@@ -6,9 +6,10 @@
 	display: flex;
 	flex-direction: column;
 	position: absolute;
-	overflow: hidden;
+	overflow: auto;
+	resize: both;
 }
-.tos-window header {
+.tos-window > header {
 	display: flex;
 	width: 100%;
 	height: 35px;
@@ -17,7 +18,7 @@
 	flex-shrink: 0;
 	cursor: default;
 }
-.tos-window header span {
+.tos-window > header > span {
 	font-size: 20px;
 	align-items: center;
 	margin-left: 5px;
@@ -25,12 +26,13 @@
 	margin-bottom: auto;
 	margin-right: auto;
 }
-.tos-window header .action-close {
+.tos-window > header > button {
   border: none;
   cursor: pointer;
   padding: 0 8px;
+	aspect-ratio: 1;
 }
-.tos-window section {
+.tos-window > section {
 	width: 100%;
 	flex: 1 1 auto;
 	overflow: hidden;
