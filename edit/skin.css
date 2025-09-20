@@ -1,16 +1,17 @@
 /* -- os appearance -- */
 
-.os-desk {
+.tos-desk > section {
 	background-image: url(/assets/background/outside-pixel.png);
 	background-size: 100% 100%;
+	background-color: none;
 }
-.os-desk footer {
+.tos-desk > section > footer {
 	/*background-color: darkblue;*/
 	border-top: 1px white solid;
-	backdrop-filter: blur(10px) brightness(.5) sepia(.5);
+	backdrop-filter: blur(10px) brightness(.5);
 }
 
-.os-launch {
+.tos-launch {
 	background-image: url(/assets/icons/gold_triangle.png);
 	background-size: 100% 100%;
 }
@@ -19,7 +20,7 @@
 /* -- windows appearance -- */
 
 /* default */
-tos-window {
+.tos-window {
 	outline:2px black solid;
 	header {
 		background-color: gray;

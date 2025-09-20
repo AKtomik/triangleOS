@@ -5,17 +5,10 @@ class Window extends HTMLElement {
 
   constructor() {
     super();
-    this.__initialized = false; // avoid double init
+		this.classList.add("tos-window");
   }
 
 	connectedCallback() {
-		if (this.__initialized)
-		{
-			console.error("trying to connect already connected window: ", el);
-			return;
-		}
-
-		this.__initialized = true;
 		console.debug("connecting window: ", this);
 
 		// get content
@@ -40,8 +33,11 @@ class Window extends HTMLElement {
 
 		// Gather
 		this.header = header;
+		if (!Boolean(this.dataset.hideheader))
+		{
+			this.appendChild(header);
+		}
 		this.content = content;
-		this.appendChild(header);
 		this.appendChild(content);
 
 		// Close

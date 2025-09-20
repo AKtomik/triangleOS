@@ -8,11 +8,7 @@ body {
 
 	/* rules */
 	overflow: hidden;
-	/*overflow: auto;*/
-	/*display: inline;*/
 	flex-direction: column;
-	/*width: 100%; optionnal
-	height: 100%;*/
 	
 	/* appearence */
 	font-family: 'Courier New', Courier, monospace;
