@@ -116,36 +116,6 @@ class Window extends HTMLElement {
 		this.style.left = (pos.left) + "px";
 		this.style.top = (pos.top) + "px";
 	}
-
-	// static
-	static __makeBaseWindow(windowTitle, windowClass) {
-		const element = document.createElement("tos-window");
-		element.dataset.title = windowTitle;
-		element.className = windowClass;
-		return element;
-	}
-	static __makeChild(parent, element) {
-		if (typeof parent === 'string')
-			parent = document.getElementById(parent);
-		parent.appendChild(element);
-	}
-	static createHtmlWindow(parent, windowTitle, windowClass, htmlSrc) {
-		const element = Window.__makeBaseWindow(windowTitle, windowClass);
-		element.innerHTML = `<object type="text/html" data="${htmlSrc}"></object>`;
-		Window.__makeChild(parent, element);
-	}
-	static createTemplateWindow(parent, windowTitle, windowClass, templateId) {
-		const element = Window.__makeBaseWindow(windowTitle, windowClass);
-		let template = document.getElementById(templateId);
-		let nodeTemplate = template.content.cloneNode(true);
-		element.appendChild(nodeTemplate);
-		Window.__makeChild(parent, element);
-	}
-	static createIframeWindow(parent, windowTitle, windowClass, iframeUrl) {
-		const element = Window.__makeBaseWindow(windowTitle, windowClass);
-		element.innerHTML = `<iframe src="${iframeUrl}"></iframe>`;
-		Window.__makeChild(parent, element);
-	}
 }
 
 // Lisener

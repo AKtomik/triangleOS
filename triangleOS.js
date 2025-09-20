@@ -1,10 +1,11 @@
 console.log("importing triangleOS...")
 import { Window } from "/core/windows.js";
-import "/core/loadTemplate.js";
-console.log("triangleOS imported!")
+import { Template } from "/core/templateTools.js";
 
 const TriangleOS = {
-  Window
+  Window,
+  Template
 };
 window.TriangleOS = TriangleOS;
 export { TriangleOS };
+console.log("triangleOS imported!")

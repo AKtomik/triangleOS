@@ -1,22 +1,50 @@
 <template id="template-test-me">
-	<h1>
-		moi? MOI?
-	</h1>
-	<p>
-		MAIS QUI ELLE EST CELLE LÀ
-	</p>
+	<tos-window class="size-middle skin-glass" data-title="test template">
+		<h1>
+			moi? MOI?
+		</h1>
+		<p>
+			MAIS QUI ELLE EST CELLE LÀ
+		</p>
+	</tos-window>
 </template>
 
 
 <template id="template-test-3cats">
-	<tos-window class="size-small skin-blue" data-title="yo"></tos-window>
-	<tos-window class="size-small skin-red" data-title="no"></tos-window>
-	<tos-window class="size-small skin-orange" data-title="hi" style="top: 100px"></tos-window>
+	<tos-window class="size-middle skin-glass" data-title="3 little cats">
+		<tos-window class="size-small skin-blue" data-title="yo"></tos-window>
+		<tos-window class="size-small skin-red" data-title="no"></tos-window>
+		<tos-window class="size-small skin-orange" data-title="hi" style="top: 100px"></tos-window>
+	</tos-window>
 </template>
 
 
-<template id="template-test-winception" style="display: flex; align-items: center;">
-	<a onclick="TriangleOS.Window.createTemplateWindow(this.parentNode.parentNode, 'winception', 'size-middle skin-glass', 'template-test-winception')" style="cursor: pointer;">
-		<p>click here</p>
-	</a>
+<template id="template-test-winception">
+	<tos-window class="size-middle skin-glass" data-title="winception">
+		<a onclick="TriangleOS.Template.spawn('template-test-winception', this.parentNode.parentNode)" style="cursor: pointer;">
+			<p>click here</p>
+		</a>
+	</tos-window>
+</template>
+
+
+<template id="template-iframe-4D">
+	<tos-window class="size-big skin-black" data-title="mon jeu">
+		<iframe src="https://itch.io/embed-upload/14122527?color=000000"></iframe>
+	</tos-window>
+</template>
+<template id="template-iframe-dogo">
+	<tos-window class="size-big skin-black" data-title="mon jeu">
+		<iframe src="https://itch.io/embed-upload/12959650?color=000000"></iframe>
+	</tos-window>
+</template>
+<template id="template-iframe-web">
+	<tos-window class="size-middle skin-black" data-title="mavigateur web">
+		<iframe src="https://www.dogpile.com/"></iframe>
+	</tos-window>
+</template>
+<template id="template-iframe-rick">
+	<tos-window class="size-middle skin-black" data-title="youtube :)">
+		<iframe src="https://www.youtube.com/embed/xvFZjo5PgG0?autoplay=1"></iframe>
+	</tos-window>
 </template>
