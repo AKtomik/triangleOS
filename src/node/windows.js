@@ -1,6 +1,6 @@
-import { WindowOpenWay } from "/core/enum.js";
-import { AbsPos } from "/core/basic.js";
-import { Settings } from "/core/settings.js";
+import { WindowOpenWay } from "/src/misc/enum.js";
+import { AbsPos } from "/src/misc/basic.js";
+import { Settings } from "/src/edit/settings.js";
 
 console.debug("hi");
 

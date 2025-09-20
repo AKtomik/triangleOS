@@ -1,4 +1,4 @@
-import { WindowOpenWay, } from "/core/enum.js"
+import { WindowOpenWay, } from "/src/misc/enum.js"
 
 let Settings = {
   ui: { theme: 'dark' },//not used rn

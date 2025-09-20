@@ -1,5 +1,3 @@
-
-
 export const WindowOpenWay = Object.freeze({
   TOP: "top",
   CENTER: "center",

@@ -1,4 +1,4 @@
-import { Window } from "/core/windows.js";
+import { Window } from "/src/node/windows.js";
 
 class Desk extends Window {
 

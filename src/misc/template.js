@@ -1,4 +1,4 @@
-const templatesFile = "edit/templates.html";
+const templatesFile = "/src/edit/templates.html";
 
 async function loadTemplates() {
 	console.log(`loading templates at ${templatesFile}...`);
