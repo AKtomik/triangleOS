@@ -9,17 +9,14 @@
 
 
 <template id="template-test-3cats">
-	<div class="window size-small skin-blue" data-title="yo">
-	</div>
-	<div class="window size-small skin-red" data-title="no">
-	</div>
-	<div class="window size-small skin-orange" data-title="hi" style="top: 100px">
-	</div>
+	<tos-window class="size-small skin-blue" data-title="yo"></tos-window>
+	<tos-window class="size-small skin-red" data-title="no"></tos-window>
+	<tos-window class="size-small skin-orange" data-title="hi" style="top: 100px"></tos-window>
 </template>
 
 
 <template id="template-test-winception" style="display: flex; align-items: center;">
-	<a onclick="Window.createTemplateWindow(this.parentNode, 'winception', 'size-middle skin-glass', 'template-test-winception')">
+	<a onclick="TriangleOS.Window.createTemplateWindow(this.parentNode, 'winception', 'size-middle skin-glass', 'template-test-winception')" style="cursor: pointer;">
 		<p>click here</p>
 	</a>
 </template>

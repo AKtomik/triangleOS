@@ -19,7 +19,7 @@
 /* -- windows appearance -- */
 
 /* default */
-.window {
+tos-window {
 	outline:2px black solid;
 	header {
 		background-color: gray;
