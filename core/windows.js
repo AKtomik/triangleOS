@@ -1,4 +1,4 @@
-import { WindowOpenWay } from "./enum";
+import { WindowOpenWay } from "/core/enum.js";
 import { AbsPos } from "/core/basic.js";
 import { Settings } from "/core/settings.js";
 
@@ -37,7 +37,7 @@ class Window extends HTMLElement {
 
 		// Gather
 		this.header = header;
-		if (!Boolean(this.dataset.hideheader))
+		if (!Boolean(this.hasAttribute("data-hideheader")))
 		{
 			this.appendChild(header);
 		}
@@ -74,11 +74,42 @@ class Window extends HTMLElement {
 		});
 
 		// Open
-		let openway = this.dataset.openway | Settings.windows.defaultOpenWay | 'top';
+		let openway = this.dataset.openway || Settings.windows.defaultOpenWay || 'top';
 		let openPos = new AbsPos(0, 0);
+		const parentRect = this.parentElement.getBoundingClientRect();
+		const selfRect = this.getBoundingClientRect();
+		switch (openway)
+		{
+			case WindowOpenWay.TOP:
+			{
+				openPos.left = 0;
+				openPos.top = 0;
+			} break;
+			case WindowOpenWay.CENTER:
+			{
+				openPos.left = parentRect.width/2 - selfRect.width/2;
+				openPos.top = parentRect.height/2 - selfRect.height/2;
+				console.log("open center:",openPos);
+			} break;
+			case WindowOpenWay.RANDOM:
+			{
+				openPos.left = Math.random()*(parentRect.width - (selfRect.width*Settings.windows.openWayRandomFitRatio[0]));
+				openPos.top = Math.random()*(parentRect.height - (selfRect.height*Settings.windows.openWayRandomFitRatio[1]));
+				console.log("open center:",openPos);
+			} break;
+			case WindowOpenWay.DVD:
+			{
+				console.error("dvd openway not yet supported:",openway);
+				openPos.left = 0;
+				openPos.top = 0;
+			} break;
+			default: {
+				console.error("unknow openway:",openway);
+			}
+		}
 		openPos = this.clampPos(openPos);
-		this.style.left = openPos + "px";
-		this.style.top = openPos + "px";
+		this.style.left = openPos.left + "px";
+		this.style.top = openPos.top + "px";
 
 		// Focus
 		this.addEventListener("mousedown", (e) => {
