@@ -22,52 +22,56 @@
 /* default */
 .tos-window {
 	outline:2px black solid;
-	header {
+	> header {
 		background-color: gray;
 		color: black;
 	}
-	.action-close {
+	> header > .action-close {
 	  background: red;
 	  color: white;
 	}
-	section {
+	> section {
 		background-color: white;
 		outline:2px black solid;
 	}
 }
 
-/*
-skin rules
-- dont touch outline (only color
-*/
-.skin-transparent {
-	section {
+/* skins */
+.tos-window.skin-transparent {
+	/*> header {
+		background-color: transparent;
+	}*/
+	> section {
 		background-color: transparent;
 	}
 }
-.skin-glass {
-	section {
+.tos-window.skin-glass {
+	/*> header {
+		background-color: transparent;
+		backdrop-filter: blur(20px);
+	}*/
+	> section {
 		background-color: transparent;
 		backdrop-filter: blur(10px);
 	}
 }
-.skin-blue {
-	section {
+.tos-window.skin-blue {
+	> section {
 		background-color: cyan;
 	}
 }
-.skin-orange {
-	section {
+.tos-window.skin-orange {
+	> section {
 		background-color: orange;
 	}
 }
-.skin-red {
-	section {
+.tos-window.skin-red {
+	> section {
 		background-color: red;
 	}
 }
-.skin-black {
-	section {
+.tos-window.skin-black {
+	> section {
 		background-color: black;
 	}
 }

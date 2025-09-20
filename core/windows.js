@@ -40,7 +40,6 @@ class Window extends HTMLElement {
 		this.appendChild(header);
 		this.content = content;
 		this.appendChild(content);
-		this.hideHeader = Boolean(this.hasAttribute("data-hideheader"));
 
 		// Close
 		closeBtn.addEventListener("click", (e) => {
@@ -108,6 +107,9 @@ class Window extends HTMLElement {
 		openPos = this.clampPos(openPos);
 		this.style.left = openPos.left + "px";
 		this.style.top = openPos.top + "px";
+
+		// Settings
+		this.hideHeader = Boolean(this.hasAttribute("data-hideheader"));// this need to be done AFTER open calculations
 
 		// Focus
 		this.addEventListener("mousedown", (e) => {
