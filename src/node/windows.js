@@ -155,6 +155,7 @@ class Window extends HTMLElement {
 		this.dragContent = windowSettings.dragContent;
 		this.disableCloseButton = windowSettings.disableCloseButton;
 		this.closeAction = windowSettings.closeAction;//no set reaction
+		this.cornerResizable = windowSettings.cornerResizable;
 
 		// Open/focus
 		this.addEventListener("mousedown", (e) => {
@@ -382,6 +383,22 @@ class Window extends HTMLElement {
 			this.content.onpointerup = undefined;
 		}
 		this.__dragContent = value;
+	}
+
+	get cornerResizable()
+	{
+		return this.__cornerResizable;
+	}
+	set cornerResizable(value)
+	{
+		if (value)
+		{
+			this.style.resize = undefined;
+		} else {
+			this.style.resize = "none";
+		}
+		this.__cornerResizable = value;
+		
 	}
 
 	// actions
