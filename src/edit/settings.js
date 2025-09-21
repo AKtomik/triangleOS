@@ -1,4 +1,4 @@
-import { WindowOpenWay } from "/src/misc/enum.js";
+import { WindowOpenWay, WindowCloseAction } from "/src/misc/enum.js";
 
 let Settings = {
   ui: { theme: "dark" }, //not used rn
@@ -17,9 +17,12 @@ let Settings = {
         dragHeader: true,
         dragContent: false,
         
-        enableCloseButton: true,
-        enableFullButton: true,
-        enableMiniButton: true,
+        hideCloseButton: false,
+        hideFullButton: false,
+        hideMiniButton: false,
+        disableCloseButton: false,
+        reopenWillRepose: true,// to remove?
+        closeAction: WindowCloseAction.REOPEN,
       },
     },
     datacustom: {

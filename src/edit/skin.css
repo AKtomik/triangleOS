@@ -31,8 +31,12 @@
 	  color: black;
 	}
 	> header > .action-close {
-	  background: red;
-	  color: white;
+		background: red;
+		color: white;
+	}
+	> header > .action-close:disabled {
+		background: dimgray;
+		color: black;
 	}
 	> section {
 		background-color: white;

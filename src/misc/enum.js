@@ -4,3 +4,11 @@ export const WindowOpenWay = Object.freeze({
   RANDOM: "random",
   DVD: "dvd"
 });
+
+export const WindowCloseAction = Object.freeze({
+  REMOVE: "remove",
+  MINMIZE: "minimize",
+  REOPEN: "reopen",
+  REPOS: "repos",
+  DUMMY: "dummy"
+});

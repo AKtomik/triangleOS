@@ -1,4 +1,4 @@
-import { WindowOpenWay } from "/src/misc/enum.js";
+import { WindowOpenWay, WindowCloseAction } from "/src/misc/enum.js";
 import { AbsPos } from "/src/misc/basic.js";
 import { Settings } from "/src/edit/settings.js";
 
@@ -43,6 +43,13 @@ class Window extends HTMLElement {
 			}
 		}
 		console.log("windowSettings:",windowSettings);
+
+		// Settings/options
+		this.options = {
+			openWay: windowSettings.openWay,
+			closeAction: windowSettings.closeAction,
+			reopenWillRepose: windowSettings.reopenWillRepose
+		}
 
 		// Create/empty
 		const contentHTML = this.innerHTML;
@@ -133,12 +140,54 @@ class Window extends HTMLElement {
 		// Drag/references
 		this.beginDrag = beginDrag;
 		this.stopDrag = stopDrag;
-		// drag enabled after
+		// drag enabeled after
 
 		// Open/position
+		this.openPositioning();
+
+		// Settings
+		this.hideHeader = windowSettings.hideHeader;// this need to be done AFTER open calculations (idk why but it is)
+		this.hideCloseButton = windowSettings.hideCloseButton;
+		this.hideFullButton = windowSettings.hideFullButton;
+		this.hideMiniButton = windowSettings.hideMiniButton;
+		this.isFullscreen = windowSettings.isFullscreen;
+		this.dragHeader = windowSettings.dragHeader;
+		this.dragContent = windowSettings.dragContent;
+		this.disableCloseButton = windowSettings.disableCloseButton;
+		this.closeAction = windowSettings.closeAction;//no set reaction
+
+		// Open/focus
+		this.addEventListener("mousedown", (e) => {
+			e.stopPropagation();
+			this.focus();
+		});
+		this.style.zIndex = Window.zCounter++;
+	}
+
+	disconnectedCallback() {
+		console.debug("disconnect window: ", this);
+	}
+
+	// positioning
+	clampPos(pos) {
+		const parentRect = this.parentElement.getBoundingClientRect();
+		const elRect = this.header.getBoundingClientRect();
+		const clampPixelWidth = 50;
+		const newTop = Math.max(0, Math.min(pos.top, parentRect.height - elRect.height));
+		//newLeft = Math.max(0, Math.min(pos.left, parentRect.width - elRect.width));
+		const newLeft = Math.max(clampPixelWidth - elRect.width, Math.min(pos.left, parentRect.width - clampPixelWidth));
+		return new AbsPos(newLeft, newTop);
+	}
+	clampSelf() {
+		let pos = new AbsPos(this.offsetLeft, this.offsetTop);
+		pos = this.clampPos(pos);
+		this.style.left = (pos.left) + "px";
+		this.style.top = (pos.top) + "px";
+	}
+	openPositioning() {
 		const parentRect = this.parentElement.getBoundingClientRect();
 		const selfRect = this.getBoundingClientRect();
-		let openway = windowSettings.openWay;
+		let openway = this.options.openWay;
 		let openPos = new AbsPos(0, 0);
 		switch (openway)
 		{
@@ -172,39 +221,6 @@ class Window extends HTMLElement {
 		openPos = this.clampPos(openPos);
 		this.style.left = openPos.left + "px";
 		this.style.top = openPos.top + "px";
-
-		// Settings
-		this.hideHeader = windowSettings.hideHeader;// this need to be done AFTER open calculations (idk why but it is)
-		this.enableCloseButton = windowSettings.enableCloseButton;
-		this.enableFullButton = windowSettings.enableFullButton;
-		this.enableMiniButton = windowSettings.enableMiniButton;
-		this.isFullscreen = windowSettings.isFullscreen;
-		this.dragHeader = windowSettings.dragHeader;
-		this.dragContent = windowSettings.dragContent;
-
-		// Open/focus
-		this.addEventListener("mousedown", (e) => {
-			e.stopPropagation();
-			this.focus();
-		});
-		this.style.zIndex = Window.zCounter++;
-	}
-
-	// positioning
-	clampPos(pos) {
-		const parentRect = this.parentElement.getBoundingClientRect();
-		const elRect = this.header.getBoundingClientRect();
-		const clampPixelWidth = 50;
-		const newTop = Math.max(0, Math.min(pos.top, parentRect.height - elRect.height));
-		//newLeft = Math.max(0, Math.min(pos.left, parentRect.width - elRect.width));
-		const newLeft = Math.max(clampPixelWidth - elRect.width, Math.min(pos.left, parentRect.width - clampPixelWidth));
-		return new AbsPos(newLeft, newTop);
-	}
-	clampSelf() {
-		let pos = new AbsPos(this.offsetLeft, this.offsetTop);
-		pos = this.clampPos(pos);
-		this.style.left = (pos.left) + "px";
-		this.style.top = (pos.top) + "px";
 	}
 
 	// propeties
@@ -226,6 +242,7 @@ class Window extends HTMLElement {
 		}
 		span.textContent = value;
 	}
+
 	get isFullscreen()
 	{
 		return this.__isFullscreen;
@@ -258,6 +275,7 @@ class Window extends HTMLElement {
 		}
 		this.__isFullscreen = value;
 	}
+	
 	get hideHeader()
 	{
 		return this.__hideHeader;
@@ -272,48 +290,67 @@ class Window extends HTMLElement {
 		}
 		this.__hideHeader = value;
 	}
-	get enableCloseButton()
+	
+	get hideMiniButton()
 	{
-		return this.__enableCloseButton;
+		return this.__hideMiniButton;
 	}
-	set enableCloseButton(value)
+	set hideMiniButton(value)
 	{
 		if (value)
 		{
-			this.buttons.close.style.display = "";
-		} else {
-			this.buttons.close.style.display = "none";
-		}
-		this.__enableCloseButton = value;
-	}
-	get enableFullButton()
-	{
-		return this.__enableFullButton;
-	}
-	set enableFullButton(value)
-	{
-		if (value)
-		{
-			this.buttons.full.style.display = "";
-		} else {
-			this.buttons.full.style.display = "none";
-		}
-		this.__enableFullButton = value;
-	}
-	get enableMiniButton()
-	{
-		return this.__enableMiniButton;
-	}
-	set enableMiniButton(value)
-	{
-		if (value)
-		{
-			this.buttons.mini.style.display = "";
-		} else {
 			this.buttons.mini.style.display = "none";
+		} else {
+			this.buttons.mini.style.display = "";
 		}
-		this.__enableMiniButton = value;
+		this.__hideMiniButton = value;
 	}
+	
+	get hideFullButton()
+	{
+		return this.__hideFullButton;
+	}
+	set hideFullButton(value)
+	{
+		if (value)
+		{
+			this.buttons.full.style.display = "none";
+		} else {
+			this.buttons.full.style.display = "";
+		}
+		this.__hideFullButton = value;
+	}
+	
+	get hideCloseButton()
+	{
+		return this.__hideCloseButton;
+	}
+	set hideCloseButton(value)
+	{
+		if (value)
+		{
+			this.buttons.close.style.display = "none";
+		} else {
+			this.buttons.close.style.display = "";
+		}
+		this.__hideCloseButton = value;
+	}
+
+	get disableCloseButton()
+	{
+		return this.__disableCloseButton;
+	}
+	set disableCloseButton(value)
+	{
+		if (value)
+		{
+			this.buttons.close.setAttribute("disabled", "");
+		} else {
+			this.buttons.close.removeAttribute("disabled");
+		}
+		this.__disableCloseButton = value;
+	}
+	
 	get dragHeader()
 	{
 		return this.__dragHeader;
@@ -349,8 +386,27 @@ class Window extends HTMLElement {
 
 	// actions
 	close() {
-		console.debug("closing window: ", this);
-		this.remove();
+		console.debug("close window: ", this);
+		let closeAction = this.options.closeAction;
+		switch (closeAction)
+		{
+			case WindowCloseAction.REMOVE:
+				this.remove();
+				break;
+			case WindowCloseAction.MINIMIZE:
+				this.minimize();
+				break;
+			case WindowCloseAction.REPOS:
+				this.openPositioning();
+				break;
+			case WindowCloseAction.REOPEN:
+				this.reopen();
+				break;
+			case WindowCloseAction.DUMMY: break;
+			default: {
+				console.error("unknow closeAction:",closeAction);
+			}
+		}
 	}
 	
 	minimize() {
@@ -359,12 +415,16 @@ class Window extends HTMLElement {
 		this.__isMinimized = true;
 	}
 
-	open() {
+	reopen() {
 		if (this.__isMinimized)
 		{
 			this.style.display = "";
 			Window.minimizedList.remove(this);
 			this.__isMinimized = false;
+		}
+		if (this.options.reopenWillRepose)
+		{
+			this.openPositioning();
 		}
 		this.focus();
 	}
