@@ -1,6 +1,7 @@
-const templatesFile = "/src/edit/templates.html";
+import { Settings } from "/src/edit/settings.js";
 
 async function loadTemplates() {
+	let templatesFile = Settings.template.path;
 	console.log(`loading templates at ${templatesFile}...`);
 	const res = await fetch(templatesFile);
 	const text = await res.text();
@@ -30,7 +31,7 @@ class Template {
 		}
 		if (originalTemplate.tagName != "TEMPLATE")
 		{
-			console.error("spawning something that is not a template:", originalTemplate, "\nuse Template.spawnDataTemplate to fake a template.");
+			console.error("spawning something that is not a template:", originalTemplate, "\nuse Template.spawnPsedoTemplate to fake a template.");
 			return;
 		}
 		if (typeof parent === 'string')
@@ -51,7 +52,7 @@ class Template {
 	 * @param {string|Node} parent The parent where to spawn.
 	 * @returns Nothing.
 	 */
-	static spawnDataTemplate(dataTemplateId, parent)
+	static spawnPsedoTemplate(dataTemplateId, parent, cloneTemplateRoot = false)
 	{
 		let originalTemplate = document.getElementById(dataTemplateId);
 		if (originalTemplate == undefined)
@@ -61,7 +62,7 @@ class Template {
 		}
 		if (!originalTemplate.hasAttribute("data-template"))
 		{
-			console.error("add the atr [data-template] to allow cloning with Template.spawnDataTemplate():", originalTemplate);
+			console.error("add the atr [data-template] to allow cloning with Template.spawnPsedoTemplate():", originalTemplate);
 			return;
 		}
 		if (typeof parent === 'string')
@@ -71,14 +72,16 @@ class Template {
 			console.error("given parent is not a Node nor a valid node id:", parent);
 			return;
 		}
-		// cloning parent
-		let clone = originalTemplate.cloneNode(true);
-		clone.removeAttribute("id"); // avoid duplicate ID
-		clone.removeAttribute("data-template"); // avoid confusing clones
-		// or just its childs
-		//let html = originalTemplate.innerHTML;
-		//console.log("originalTemplate.innerHTML=",originalTemplate.innerHTML);
-		//parent.insertAdjacentHTML("beforeend", html);
+		if (cloneTemplateRoot)
+		{// cloning parent
+			let clone = originalTemplate.cloneNode(true);
+			clone.removeAttribute("id"); // avoid duplicate ID
+			clone.removeAttribute("data-template"); // avoid confusing clones
+		} else {// or just its childs
+			let html = originalTemplate.innerHTML;
+			console.log("originalTemplate.innerHTML=",originalTemplate.innerHTML);
+			parent.insertAdjacentHTML("beforeend", html);
+		}
 	}
 }
 

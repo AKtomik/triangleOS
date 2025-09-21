@@ -2,6 +2,9 @@ import { WindowOpenWay } from "/src/misc/enum.js";
 
 let Settings = {
   ui: { theme: "dark" }, //not used rn
+  template: {
+    path: "/src/edit/templates.html"
+  },
   windows: {
     dataset: {
       default: {
