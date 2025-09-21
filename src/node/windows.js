@@ -7,6 +7,13 @@ console.debug("hi");
 
 class Window extends HTMLElement {
 
+	// STATIC
+	
+	static zCounter = 10;
+	static minimizedList = [];
+
+	// OBJECT
+
   constructor() {
     super();
 		this.classList.add("tos-window");
@@ -340,12 +347,7 @@ class Window extends HTMLElement {
 		this.__dragContent = value;
 	}
 
-	// static
-	static initRoot() {
-		Window.zCounter = 10;
-	}
-
-	// action
+	// actions
 	close() {
 		console.debug("closing window: ", this);
 		this.remove();
@@ -353,15 +355,30 @@ class Window extends HTMLElement {
 	
 	minimize() {
 		this.style.display = "none";
+		Window.minimizedList.push(this);
+		this.__isMinimized = true;
 	}
 
 	open() {
+		if (this.__isMinimized)
+		{
+			this.style.display = "";
+			Window.minimizedList.remove(this);
+			this.__isMinimized = false;
+		}
 		this.focus();
 	}
 	
 	focus() {
+		if (this.__isMinimized)
+		{
+			if (Settings.windows.focussingMinimizedWillOpen)
+			{
+				this.open();
+			}
+			return;
+		}
 		super.focus?.();
-		this.style.display = "";
 		this.style.zIndex = Window.zCounter++;
 	}
 }

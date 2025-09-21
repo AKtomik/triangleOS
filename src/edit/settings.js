@@ -26,6 +26,7 @@ let Settings = {
 
     },
     openWayRandomFitRatio: [1, 1],
+    focussingMinimizedWillOpen: true,
   },
 };
 
