@@ -11,18 +11,19 @@ let Settings = {
         title: "Sans titre",
         isFullscreen: false,
         hideHeader: false,
-        cornerResizable: true,
         openWay: WindowOpenWay.RANDOM,
+        unicOpen: true,
 
         dragHeader: true,
         dragContent: false,
-        
+
         hideCloseButton: false,
         hideFullButton: false,
         hideMiniButton: false,
-        disableCloseButton: false,
-        reopenWillRepose: true,// to remove?
         closeAction: WindowCloseAction.CLOSE,
+        reopenWillRepose: false,
+        disableCloseButton: false,
+        cornerResizable: true,
       },
     },
     datacustom: {

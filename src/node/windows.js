@@ -1,6 +1,7 @@
 import { WindowOpenWay, WindowCloseAction } from "/src/misc/enum.js";
-import { AbsPos } from "/src/misc/basic.js";
+import { AbsPos, shallowSignature } from "/src/misc/basic.js";
 import { Settings } from "/src/edit/settings.js";
+import { Template } from "/src/misc/template.js";
 
 console.debug("hi");
 
@@ -13,69 +14,8 @@ class Window extends HTMLElement {
 	static minimizedList = [];
 
 	static open(templateId, parent) {
-		// paramters
-		let originalTemplate = document.getElementById(templateId);
-		if (originalTemplate == undefined)
-		{
-			console.error("couldnt find something with id:", templateId);
-			return;
-		}
-		if (originalTemplate.tagName != "TEMPLATE")
-		{
-			console.error("spawning something that is not a template:", originalTemplate, "\nuse Template.spawnPsedoTemplate to fake a template.");
-			return;
-		}
-		if (typeof parent === 'string')
-			parent = document.getElementById(parent);
-		if (!parent instanceof Node)
-		{
-			console.error("given parent is not a Node nor a valid node id:", parent);
-			return;
-		}
-		// check double
-		const tosWindowId = `template:${templateId}`;
-		if (Window.parentHasWindow(tosWindowId, parent))
-		{
-			parentGetWindow(tosWindowId, parent).reopen();
-			return;
-		}
-		// clone template
-		let clone = originalTemplate.content.cloneNode(true);
-		parent.appendChild(clone);
-		clone.tosWindowId = tosWindowId;
-	}
-
-	static parentHasWindow(tosWindowId, parent)
-	{
-		console.log("tos_windowContainerValut:",parent, tosWindowId, parent.tos_windowContainerValut);
-		return (parent.tos_windowContainerValut?.[tosWindowId]?.length > 0)
-	}
-
-	static parentGetWindow(tosWindowId, parent)
-	{
-		let list = parent.tos_windowContainerValut[tosWindowId];
-		return list[list.length - 1];
-	}
-
-	addToParent()
-	{
-		let parent = this.parentNode;
-		let key = this.tosWindowId;
-		if (parent.tos_windowContainerValut === undefined)
-			parent.tos_windowContainerValut = [];
-		if (parent.tos_windowContainerValut[key] === undefined)
-			parent.tos_windowContainerValut[key] = [];
-		parent.tos_windowContainerValut[key].push(this);
-		console.log("parentadd.tos_windowContainerValut:",parent, key, parent.tos_windowContainerValut);
-	}
-
-	removeToParent()
-	{
-		let parent = this.parentNode;
-		let key = this.tosWindowId;
-		parent.tos_windowContainerValut[key].remove(this);
-		if (parent.tos_windowContainerValut[key].length === 0)
-			parent.tos_windowContainerValut[key] = undefined;
+		// just a shortcut (one charcter shorter actually)
+		Template.spawn(templateId, parent);
 	}
 
 	// NODE
@@ -88,7 +28,22 @@ class Window extends HTMLElement {
 	connectedCallback() {
 		console.debug("connecting window: ", this);
 
+		// Unic/id
+		this.tosWindowId = `shallow:${shallowSignature(this)}`;
+		// Unic/check
+		if (this.parentHasSame())
+		{
+			let sameWindow = this.parentGetSame();
+			if (sameWindow.options.unicOpen)
+			{
+				sameWindow.reopen();
+				this.remove();
+				return;
+			}
+		}
+		// Unic/add
 		this.addToParent();
+		this._inited = true;
 
 		// Settings/load
 		let loadDataSetId = 'default';
@@ -114,6 +69,7 @@ class Window extends HTMLElement {
 
 		// Settings/options
 		this.options = {
+			unicOpen: windowSettings.unicOpen,
 			openWay: windowSettings.openWay,
 			closeAction: windowSettings.closeAction,
 			reopenWillRepose: windowSettings.reopenWillRepose
@@ -150,7 +106,7 @@ class Window extends HTMLElement {
 		// Create/header/min
 		const miniBtn = document.createElement("button");
 		miniBtn.className = "action-full";
-		miniBtn.textContent = "__";
+		miniBtn.textContent = "_";
 		miniBtn.onpointerdown = (e) => e.stopPropagation();
 		miniBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
@@ -294,6 +250,43 @@ class Window extends HTMLElement {
 		this.style.top = openPos.top + "px";
 	}
 
+	parentHasSame()
+	{
+		let parent = this.parentElement;
+		let key = this.tosWindowId;
+		return (parent.tos_windowContainerValut?.[key]?.length > 0)
+	}
+
+	parentGetSame()
+	{
+		let parent = this.parentElement;
+		let key = this.tosWindowId;
+		let list = parent.tos_windowContainerValut[key];
+		return list[list.length - 1];
+	}
+
+	addToParent()
+	{
+		this.attachedParent = this.parentElement;
+		let parent = this.attachedParent;
+		let key = this.tosWindowId;
+		if (parent.tos_windowContainerValut === undefined)
+			parent.tos_windowContainerValut = [];
+		if (parent.tos_windowContainerValut[key] === undefined)
+			parent.tos_windowContainerValut[key] = [];
+		parent.tos_windowContainerValut[key].push(this);
+	}
+
+	removeToParent()
+	{
+		if (!this._inited) return;
+		let parent = this.attachedParent;
+		let key = this.tosWindowId;
+		parent.tos_windowContainerValut[key].remove(this);
+		if (parent.tos_windowContainerValut[key].length === 0)
+			parent.tos_windowContainerValut[key] = undefined;
+	}
+
 	// PROPETIES
 	
 	get title()
@@ -317,7 +310,7 @@ class Window extends HTMLElement {
 
 	get isFullscreen()
 	{
-		return this.__isFullscreen;
+		return this._isFullscreen;
 	}
 	set isFullscreen(value)
 	{
@@ -325,7 +318,7 @@ class Window extends HTMLElement {
 		if (value)
 		{
 			this.classList.add("fullscreen");
-			this.__cacheFullscreen = {
+			this._cacheFullscreen = {
 				width: this.style.width,
 				height: this.style.height,
 				left: this.style.left,
@@ -337,20 +330,20 @@ class Window extends HTMLElement {
 			this.style.top = "0";
 		} else {
 			this.classList.remove("fullscreen");
-			if (this.__cacheFullscreen)
+			if (this._cacheFullscreen)
 			{
-				this.style.width = this.__cacheFullscreen.width;
-				this.style.height = this.__cacheFullscreen.height;
-				this.style.left = this.__cacheFullscreen.left;
-				this.style.top = this.__cacheFullscreen.top;
+				this.style.width = this._cacheFullscreen.width;
+				this.style.height = this._cacheFullscreen.height;
+				this.style.left = this._cacheFullscreen.left;
+				this.style.top = this._cacheFullscreen.top;
 			}
 		}
-		this.__isFullscreen = value;
+		this._isFullscreen = value;
 	}
 	
 	get hideHeader()
 	{
-		return this.__hideHeader;
+		return this._hideHeader;
 	}
 	set hideHeader(value)
 	{
@@ -360,12 +353,12 @@ class Window extends HTMLElement {
 		} else {
 			this.header.style.display = "";
 		}
-		this.__hideHeader = value;
+		this._hideHeader = value;
 	}
 	
 	get hideMiniButton()
 	{
-		return this.__hideMiniButton;
+		return this._hideMiniButton;
 	}
 	set hideMiniButton(value)
 	{
@@ -375,12 +368,12 @@ class Window extends HTMLElement {
 		} else {
 			this.buttons.mini.style.display = "";
 		}
-		this.__hideMiniButton = value;
+		this._hideMiniButton = value;
 	}
 	
 	get hideFullButton()
 	{
-		return this.__hideFullButton;
+		return this._hideFullButton;
 	}
 	set hideFullButton(value)
 	{
@@ -390,12 +383,12 @@ class Window extends HTMLElement {
 		} else {
 			this.buttons.full.style.display = "";
 		}
-		this.__hideFullButton = value;
+		this._hideFullButton = value;
 	}
 	
 	get hideCloseButton()
 	{
-		return this.__hideCloseButton;
+		return this._hideCloseButton;
 	}
 	set hideCloseButton(value)
 	{
@@ -405,12 +398,12 @@ class Window extends HTMLElement {
 		} else {
 			this.buttons.close.style.display = "";
 		}
-		this.__hideCloseButton = value;
+		this._hideCloseButton = value;
 	}
 
 	get disableCloseButton()
 	{
-		return this.__disableCloseButton;
+		return this._disableCloseButton;
 	}
 	set disableCloseButton(value)
 	{
@@ -420,12 +413,12 @@ class Window extends HTMLElement {
 		} else {
 			this.buttons.close.removeAttribute("disabled");
 		}
-		this.__disableCloseButton = value;
+		this._disableCloseButton = value;
 	}
 	
 	get dragHeader()
 	{
-		return this.__dragHeader;
+		return this._dragHeader;
 	}
 	set dragHeader(value)
 	{
@@ -437,11 +430,11 @@ class Window extends HTMLElement {
 			this.header.onpointerdown = undefined;
 			this.header.onpointerup = undefined;
 		}
-		this.__dragHeader = value;
+		this._dragHeader = value;
 	}
 	get dragContent()
 	{
-		return this.__dragContent;
+		return this._dragContent;
 	}
 	set dragContent(value)
 	{
@@ -453,12 +446,12 @@ class Window extends HTMLElement {
 			this.content.onpointerdown = undefined;
 			this.content.onpointerup = undefined;
 		}
-		this.__dragContent = value;
+		this._dragContent = value;
 	}
 
 	get cornerResizable()
 	{
-		return this.__cornerResizable;
+		return this._cornerResizable;
 	}
 	set cornerResizable(value)
 	{
@@ -468,7 +461,7 @@ class Window extends HTMLElement {
 		} else {
 			this.style.resize = "none";
 		}
-		this.__cornerResizable = value;
+		this._cornerResizable = value;
 		
 	}
 
@@ -501,15 +494,15 @@ class Window extends HTMLElement {
 	minimize() {
 		this.style.display = "none";
 		Window.minimizedList.push(this);
-		this.__isMinimized = true;
+		this._isMinimized = true;
 	}
 
 	reopen() {
-		if (this.__isMinimized)
+		if (this._isMinimized)
 		{
 			this.style.display = "";
-			Window.minimizedList.remove(this);
-			this.__isMinimized = false;
+			Window.minimizedList.filter((v) => (v != this));
+			this._isMinimized = false;
 		}
 		if (this.options.reopenWillRepose)
 		{
@@ -519,7 +512,7 @@ class Window extends HTMLElement {
 	}
 	
 	focus() {
-		if (this.__isMinimized)
+		if (this._isMinimized)
 		{
 			if (Settings.windows.focussingMinimizedWillOpen)
 			{
