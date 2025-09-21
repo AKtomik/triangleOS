@@ -15,11 +15,7 @@ class Window extends HTMLElement {
 	connectedCallback() {
 		console.debug("connecting window: ", this);
 
-		// get content
-		const contentHTML = this.innerHTML;
-		this.innerHTML = "";
-
-		// settings
+		// Settings/load
 		let loadDataSetId = 'default';
 		let loadDataCustomId;
 		let windowSettings = { ...Settings.windows.dataset[loadDataSetId], ...Settings.windows.datacustom[loadDataCustomId]  };
@@ -41,10 +37,16 @@ class Window extends HTMLElement {
 		}
 		console.log("windowSettings:",windowSettings);
 
+		// Create/empty
+		const contentHTML = this.innerHTML;
+		this.innerHTML = "";
+		// Create/content
+		const content = document.createElement("section");
+		content.className = "window-content";
+		content.innerHTML = contentHTML;
 		// Create/header
 		const header = document.createElement("header");
 		header.className = "window-header";
-
 		// Create/header/close
 		const closeBtn = document.createElement("button");
 		closeBtn.className = "action-close";
@@ -63,26 +65,35 @@ class Window extends HTMLElement {
 			e.stopPropagation();
 			this.isFullscreen = !this.isFullscreen;
 		});
+		// Create/header/min
+		const miniBtn = document.createElement("button");
+		miniBtn.className = "action-full";
+		miniBtn.textContent = "__";
+		miniBtn.onpointerdown = (e) => e.stopPropagation();
+		miniBtn.addEventListener("click", (e) => {
+			e.stopPropagation();
+			this.minimize();
+		});
 
-		// Create/content
-		const content = document.createElement("section");
-		content.className = "window-content";
-		content.innerHTML = contentHTML;
-
-		// Gather
+		// Gather/references
 		this.header = header;
+		this.content = content;
+		this.buttons = {
+			mini: miniBtn,
+			full: fullBtn,
+			close: closeBtn
+		}
+		// Gather/header
 		this.title = windowSettings.title;
+		header.appendChild(miniBtn);
 		header.appendChild(fullBtn);
 		header.appendChild(closeBtn);
-		
-		this.content = content;
-		
+		// Gather/it
 		this.appendChild(header);
 		this.appendChild(content);
 
-		// Drag
+		// Drag/functions
 		let offsetX, offsetY, isDragging = false;
-
 		let drag = (e) => {
 			if (isDragging) {
 				let pos = new AbsPos(e.clientX - offsetX, e.clientY - offsetY);
@@ -91,39 +102,37 @@ class Window extends HTMLElement {
 				this.style.top = (pos.top) + "px";
 			}
 		}
-
 		let beginDrag = (e) => {
-			e.stopPropagation(); // not propagging to parents
+			e.stopPropagation();
 			if (this.isFullscreen) return;
 			
 			isDragging = true;
 			document.onpointermove = drag;
 			this.classList.add("dragging");
 			document.body.style.userSelect = "none";
-
 			
 			offsetX = e.clientX - this.offsetLeft;
 			offsetY = e.clientY - this.offsetTop;
 			this.style.zIndex = Window.zCounter++;
 		}
-
 		let stopDrag = (e) => {
-			e.stopPropagation(); // not propagging to parents
+			e.stopPropagation();
 
 			isDragging = false;
 			document.onpointermove = null;
 			this.classList.remove("dragging");
 			document.body.style.userSelect = "";
 		}
-		
+		// Drag/references
 		this.beginDrag = beginDrag;
 		this.stopDrag = stopDrag;
+		// drag enabled after
 
-		// Open
-		let openway = windowSettings.openWay;
-		let openPos = new AbsPos(0, 0);
+		// Open/position
 		const parentRect = this.parentElement.getBoundingClientRect();
 		const selfRect = this.getBoundingClientRect();
+		let openway = windowSettings.openWay;
+		let openPos = new AbsPos(0, 0);
 		switch (openway)
 		{
 			case WindowOpenWay.TOP:
@@ -158,32 +167,21 @@ class Window extends HTMLElement {
 		this.style.top = openPos.top + "px";
 
 		// Settings
-		this.hideHeader = windowSettings.hideHeader;// this need to be done AFTER open calculations
+		this.hideHeader = windowSettings.hideHeader;// this need to be done AFTER open calculations (idk why but it is)
+		this.enableCloseButton = windowSettings.enableCloseButton;
+		this.enableFullButton = windowSettings.enableFullButton;
+		this.enableMiniButton = windowSettings.enableMiniButton;
 		this.isFullscreen = windowSettings.isFullscreen;
 		this.dragHeader = windowSettings.dragHeader;
 		this.dragContent = windowSettings.dragContent;
 
-		// Focus
+		// Open/focus
 		this.addEventListener("mousedown", (e) => {
 			e.stopPropagation();
-			this.style.zIndex = Window.zCounter++;
+			this.focus();
 		});
 		this.style.zIndex = Window.zCounter++;
 	}
-
-	// inits
-	static initRoot() {
-		Window.zCounter = 10;
-	}
-
-	// closing
-	close() {
-		console.debug("closing window: ", this);
-		this.remove();
-	}
-  //disconnectedCallback() {
-  //  console.debug("destructing window: ", this);
-  //}
 
 	// positioning
 	clampPos(pos) {
@@ -267,6 +265,48 @@ class Window extends HTMLElement {
 		}
 		this.__hideHeader = value;
 	}
+	get enableCloseButton()
+	{
+		return this.__enableCloseButton;
+	}
+	set enableCloseButton(value)
+	{
+		if (value)
+		{
+			this.buttons.close.style.display = "";
+		} else {
+			this.buttons.close.style.display = "none";
+		}
+		this.__enableCloseButton = value;
+	}
+	get enableFullButton()
+	{
+		return this.__enableFullButton;
+	}
+	set enableFullButton(value)
+	{
+		if (value)
+		{
+			this.buttons.full.style.display = "";
+		} else {
+			this.buttons.full.style.display = "none";
+		}
+		this.__enableFullButton = value;
+	}
+	get enableMiniButton()
+	{
+		return this.__enableMiniButton;
+	}
+	set enableMiniButton(value)
+	{
+		if (value)
+		{
+			this.buttons.mini.style.display = "";
+		} else {
+			this.buttons.mini.style.display = "none";
+		}
+		this.__enableMiniButton = value;
+	}
 	get dragHeader()
 	{
 		return this.__dragHeader;
@@ -298,6 +338,31 @@ class Window extends HTMLElement {
 			this.content.onpointerup = undefined;
 		}
 		this.__dragContent = value;
+	}
+
+	// static
+	static initRoot() {
+		Window.zCounter = 10;
+	}
+
+	// action
+	close() {
+		console.debug("closing window: ", this);
+		this.remove();
+	}
+	
+	minimize() {
+		this.style.display = "none";
+	}
+
+	open() {
+		this.focus();
+	}
+	
+	focus() {
+		super.focus?.();
+		this.style.display = "";
+		this.style.zIndex = Window.zCounter++;
 	}
 }
 

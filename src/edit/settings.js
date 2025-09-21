@@ -10,10 +10,16 @@ let Settings = {
       default: {
         title: "Sans titre",
         isFullscreen: false,
-        openWay: WindowOpenWay.RANDOM,
         hideHeader: false,
+        cornerResizable: true,
+        openWay: WindowOpenWay.RANDOM,
+
         dragHeader: true,
         dragContent: false,
+        
+        enableCloseButton: true,
+        enableFullButton: true,
+        enableMiniButton: true,
       },
     },
     datacustom: {
