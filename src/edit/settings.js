@@ -22,7 +22,7 @@ let Settings = {
         hideMiniButton: false,
         disableCloseButton: false,
         reopenWillRepose: true,// to remove?
-        closeAction: WindowCloseAction.REOPEN,
+        closeAction: WindowCloseAction.CLOSE,
       },
     },
     datacustom: {

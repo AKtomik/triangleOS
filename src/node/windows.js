@@ -12,7 +12,73 @@ class Window extends HTMLElement {
 	static zCounter = 10;
 	static minimizedList = [];
 
-	// OBJECT
+	static open(templateId, parent) {
+		// paramters
+		let originalTemplate = document.getElementById(templateId);
+		if (originalTemplate == undefined)
+		{
+			console.error("couldnt find something with id:", templateId);
+			return;
+		}
+		if (originalTemplate.tagName != "TEMPLATE")
+		{
+			console.error("spawning something that is not a template:", originalTemplate, "\nuse Template.spawnPsedoTemplate to fake a template.");
+			return;
+		}
+		if (typeof parent === 'string')
+			parent = document.getElementById(parent);
+		if (!parent instanceof Node)
+		{
+			console.error("given parent is not a Node nor a valid node id:", parent);
+			return;
+		}
+		// check double
+		const tosWindowId = `template:${templateId}`;
+		if (Window.parentHasWindow(tosWindowId, parent))
+		{
+			parentGetWindow(tosWindowId, parent).reopen();
+			return;
+		}
+		// clone template
+		let clone = originalTemplate.content.cloneNode(true);
+		parent.appendChild(clone);
+		clone.tosWindowId = tosWindowId;
+	}
+
+	static parentHasWindow(tosWindowId, parent)
+	{
+		console.log("tos_windowContainerValut:",parent, tosWindowId, parent.tos_windowContainerValut);
+		return (parent.tos_windowContainerValut?.[tosWindowId]?.length > 0)
+	}
+
+	static parentGetWindow(tosWindowId, parent)
+	{
+		let list = parent.tos_windowContainerValut[tosWindowId];
+		return list[list.length - 1];
+	}
+
+	addToParent()
+	{
+		let parent = this.parentNode;
+		let key = this.tosWindowId;
+		if (parent.tos_windowContainerValut === undefined)
+			parent.tos_windowContainerValut = [];
+		if (parent.tos_windowContainerValut[key] === undefined)
+			parent.tos_windowContainerValut[key] = [];
+		parent.tos_windowContainerValut[key].push(this);
+		console.log("parentadd.tos_windowContainerValut:",parent, key, parent.tos_windowContainerValut);
+	}
+
+	removeToParent()
+	{
+		let parent = this.parentNode;
+		let key = this.tosWindowId;
+		parent.tos_windowContainerValut[key].remove(this);
+		if (parent.tos_windowContainerValut[key].length === 0)
+			parent.tos_windowContainerValut[key] = undefined;
+	}
+
+	// NODE
 
   constructor() {
     super();
@@ -21,6 +87,8 @@ class Window extends HTMLElement {
 
 	connectedCallback() {
 		console.debug("connecting window: ", this);
+
+		this.addToParent();
 
 		// Settings/load
 		let loadDataSetId = 'default';
@@ -143,7 +211,7 @@ class Window extends HTMLElement {
 		// drag enabeled after
 
 		// Open/position
-		this.openPositioning();
+		this.positioning();
 
 		// Settings
 		this.hideHeader = windowSettings.hideHeader;// this need to be done AFTER open calculations (idk why but it is)
@@ -162,14 +230,16 @@ class Window extends HTMLElement {
 			e.stopPropagation();
 			this.focus();
 		});
-		this.style.zIndex = Window.zCounter++;
+		this.focus();// foccus on connect
 	}
 
 	disconnectedCallback() {
 		console.debug("disconnect window: ", this);
+		this.removeToParent();
 	}
 
-	// positioning
+	// PRIVATE
+
 	clampPos(pos) {
 		const parentRect = this.parentElement.getBoundingClientRect();
 		const elRect = this.header.getBoundingClientRect();
@@ -185,7 +255,7 @@ class Window extends HTMLElement {
 		this.style.left = (pos.left) + "px";
 		this.style.top = (pos.top) + "px";
 	}
-	openPositioning() {
+	positioning() {
 		const parentRect = this.parentElement.getBoundingClientRect();
 		const selfRect = this.getBoundingClientRect();
 		let openway = this.options.openWay;
@@ -224,7 +294,8 @@ class Window extends HTMLElement {
 		this.style.top = openPos.top + "px";
 	}
 
-	// propeties
+	// PROPETIES
+	
 	get title()
 	{
 		return this.header.querySelector("span").textContent;
@@ -401,7 +472,8 @@ class Window extends HTMLElement {
 		
 	}
 
-	// actions
+	// METHODS
+
 	close() {
 		console.debug("close window: ", this);
 		let closeAction = this.options.closeAction;
@@ -414,7 +486,7 @@ class Window extends HTMLElement {
 				this.minimize();
 				break;
 			case WindowCloseAction.REPOS:
-				this.openPositioning();
+				this.positioning();
 				break;
 			case WindowCloseAction.REOPEN:
 				this.reopen();
@@ -441,7 +513,7 @@ class Window extends HTMLElement {
 		}
 		if (this.options.reopenWillRepose)
 		{
-			this.openPositioning();
+			this.positioning();
 		}
 		this.focus();
 	}
