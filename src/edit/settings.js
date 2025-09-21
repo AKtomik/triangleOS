@@ -6,11 +6,11 @@ let Settings = {
     dataset: {
       default: {
         title: "Sans titre",
-        isfullscreen: false,
+        isFullscreen: false,
         openWay: WindowOpenWay.RANDOM,
+        hideHeader: false,
         dragHeader: true,
-        dragBody: false,
-        hideHeader: true,
+        dragContent: false,
       },
     },
     datacustom: {

@@ -31,7 +31,7 @@ class Window extends HTMLElement {
 				let value;
 				switch (typeof windowSettings[caseCache[k.toLowerCase()]])
 				{
-					case "boolean": value = Boolean(this.dataset[k]); break;
+					case "boolean": value = (this.dataset[k]==="" || Boolean(this.dataset[k])); break;
 					default: value = this.dataset[k];
 				}
 				windowSettings[caseCache[k.toLowerCase()]] = value;
@@ -44,12 +44,12 @@ class Window extends HTMLElement {
 		// Create/header
 		const header = document.createElement("header");
 		header.className = "window-header";
-		header.innerHTML = `<span>${windowSettings.title}</span>`;
 
 		// Create/header/close
 		const closeBtn = document.createElement("button");
 		closeBtn.className = "action-close";
 		closeBtn.textContent = "X";
+		closeBtn.onpointerdown = (e) => e.stopPropagation();
 		closeBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
 			this.close();
@@ -58,6 +58,7 @@ class Window extends HTMLElement {
 		const fullBtn = document.createElement("button");
 		fullBtn.className = "action-full";
 		fullBtn.textContent = "□";
+		fullBtn.onpointerdown = (e) => e.stopPropagation();
 		fullBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
 			this.isFullscreen = !this.isFullscreen;
@@ -69,11 +70,14 @@ class Window extends HTMLElement {
 		content.innerHTML = contentHTML;
 
 		// Gather
+		this.header = header;
+		this.title = windowSettings.title;
 		header.appendChild(fullBtn);
 		header.appendChild(closeBtn);
-		this.header = header;
-		this.appendChild(header);
+		
 		this.content = content;
+		
+		this.appendChild(header);
 		this.appendChild(content);
 
 		// Drag
@@ -112,8 +116,8 @@ class Window extends HTMLElement {
 			document.body.style.userSelect = "";
 		}
 		
-		header.onpointerdown = beginDrag;
-		header.onpointerup = stopDrag;
+		this.beginDrag = beginDrag;
+		this.stopDrag = stopDrag;
 
 		// Open
 		let openway = windowSettings.openWay;
@@ -154,8 +158,10 @@ class Window extends HTMLElement {
 		this.style.top = openPos.top + "px";
 
 		// Settings
-		this.hideHeader = Boolean(this.hasAttribute("data-hideheader"));// this need to be done AFTER open calculations
-		this.isFullscreen = Boolean(this.hasAttribute("data-isfullscreen"));
+		this.hideHeader = windowSettings.hideHeader;// this need to be done AFTER open calculations
+		this.isFullscreen = windowSettings.isFullscreen;
+		this.dragHeader = windowSettings.dragHeader;
+		this.dragContent = windowSettings.dragContent;
 
 		// Focus
 		this.addEventListener("mousedown", (e) => {
@@ -196,20 +202,24 @@ class Window extends HTMLElement {
 		this.style.top = (pos.top) + "px";
 	}
 
-	// get/set
-	get hideHeader()
+	// propeties
+	get title()
 	{
-		return this.__hideHeader;
+		return this.header.querySelector("span").textContent;
 	}
-	set hideHeader(value)
+	set title(value)
 	{
-		if (value)
+		let span = this.header.querySelector("span");
+		if (!span)
 		{
-			this.header.style.display = "none";
-		} else {
-			this.header.style.display = "";
+			span = document.createElement("span");
+			if (this.header.firstChild) {
+				this.header.insertBefore(span, this.header.firstChild);
+			} else {
+				this.header.appendChild(span);
+			}
 		}
-		this.__hideHeader = value;
+		span.textContent = value;
 	}
 	get isFullscreen()
 	{
@@ -242,6 +252,52 @@ class Window extends HTMLElement {
 			}
 		}
 		this.__isFullscreen = value;
+	}
+	get hideHeader()
+	{
+		return this.__hideHeader;
+	}
+	set hideHeader(value)
+	{
+		if (value)
+		{
+			this.header.style.display = "none";
+		} else {
+			this.header.style.display = "";
+		}
+		this.__hideHeader = value;
+	}
+	get dragHeader()
+	{
+		return this.__dragHeader;
+	}
+	set dragHeader(value)
+	{
+		if (value)
+		{
+			this.header.onpointerdown = this.beginDrag;
+			this.header.onpointerup = this.stopDrag;
+		} else {
+			this.header.onpointerdown = undefined;
+			this.header.onpointerup = undefined;
+		}
+		this.__dragHeader = value;
+	}
+	get dragContent()
+	{
+		return this.__dragContent;
+	}
+	set dragContent(value)
+	{
+		if (value)
+		{
+			this.content.onpointerdown = this.beginDrag;
+			this.content.onpointerup = this.stopDrag;
+		} else {
+			this.content.onpointerdown = undefined;
+			this.content.onpointerup = undefined;
+		}
+		this.__dragContent = value;
 	}
 }
 
