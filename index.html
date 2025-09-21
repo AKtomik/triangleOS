@@ -15,10 +15,13 @@
 		<div class="size-full tos-window-container">
 			<tos-desk class="size-big skin-transparent" data-title="triangle os" id="template-desk" data-openway="top" data-hideheader data-isfullscreen>
 
-				<tos-desk-top class="tos-window-container" id="desktop">
-				</tos-desk-top>
+				<tos-desktop class="tos-window-container" id="desktop">
+					<tos-desktop-icon>
+						<img src="assets/icons/gold_triangle.png">
+					</tos-desktop-icon>
+				</tos-desktop>
 				
-				<tos-desk-bar>
+				<tos-deskbar>
 					<nav class="os-launch"></nav>
 					<article class="footicon" onclick="document.getElementById('template-desk').hideHeader = !document.getElementById('template-desk').hideHeader">
 						<img src="assets/icons/gold_triangle.png">
@@ -44,7 +47,7 @@
 					<article class="footicon" onclick="TriangleOS.Template.spawn('template-iframe-rick', 'desktop')">
 						<img src="assets/icons/app/youtube.png">
 					</article>
-				</tos-desk-bar>
+				</tos-deskbar>
 			</tos-desk>
 		</div>
 	</body>
