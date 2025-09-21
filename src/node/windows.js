@@ -19,10 +19,32 @@ class Window extends HTMLElement {
 		const contentHTML = this.innerHTML;
 		this.innerHTML = "";
 
+		// settings
+		let loadDataSetId = 'default';
+		let loadDataCustomId;
+		let windowSettings = { ...Settings.windows.dataset[loadDataSetId], ...Settings.windows.datacustom[loadDataCustomId]  };
+		let caseCache = Object.fromEntries(Object.keys(windowSettings).map(k => [k.toLowerCase(), k]));
+		for (let k of Object.keys(this.dataset))
+		{
+			if (windowSettings[caseCache[k.toLowerCase()]] != undefined)
+			{
+				let value;
+				switch (typeof windowSettings[caseCache[k.toLowerCase()]])
+				{
+					case "boolean": value = Boolean(this.dataset[k]); break;
+					default: value = this.dataset[k];
+				}
+				windowSettings[caseCache[k.toLowerCase()]] = value;
+			} else {
+				console.warn(`unknow data settings [data-${k}] for window:`, this);
+			}
+		}
+		console.log("windowSettings:",windowSettings);
+
 		// Create/header
 		const header = document.createElement("header");
 		header.className = "window-header";
-		header.innerHTML = `<span>${this.dataset.title || "Sans titre"}</span>`;
+		header.innerHTML = `<span>${windowSettings.title}</span>`;
 
 		// Create/header/close
 		const closeBtn = document.createElement("button");
@@ -94,7 +116,7 @@ class Window extends HTMLElement {
 		header.onpointerup = stopDrag;
 
 		// Open
-		let openway = this.dataset.openway || Settings.windows.defaultOpenWay || 'top';
+		let openway = windowSettings.openWay;
 		let openPos = new AbsPos(0, 0);
 		const parentRect = this.parentElement.getBoundingClientRect();
 		const selfRect = this.getBoundingClientRect();
