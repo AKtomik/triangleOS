@@ -37,6 +37,24 @@ class DesktopIcon extends HTMLElement {
   }
 
   connectedCallback() {
+		
+		const contentHTML = this.innerHTML;
+		this.innerHTML = "";
+
+		const content = document.createElement("section");
+		const footer = document.createElement("footer");
+		this.content = content;
+		this.footer = footer;
+
+		let nameNode = document.createElement("p");
+		nameNode.classList.add("tos-desktop-icon-name");
+		footer.appendChild(nameNode);
+		
+		content.innerHTML = contentHTML;
+
+		this.appendChild(content);
+		this.appendChild(footer);
+
     this.name = this.dataset.name;
 
     let mouseSelect = (e) => {
@@ -48,17 +66,12 @@ class DesktopIcon extends HTMLElement {
 
 	get name()
 	{
-		return this.querySelector("span").textContent;
+		return this.footer.querySelector(".tos-desktop-icon-name").textContent;
 	}
 	set name(value)
 	{
-		let span = this.querySelector("span");
-		if (!span)
-		{
-			span = document.createElement("span");
-			this.appendChild(span);
-		}
-		span.textContent = value;
+		let nameNode = this.footer.querySelector(".tos-desktop-icon-name");
+		nameNode.textContent = value;
 	}
 }
 
