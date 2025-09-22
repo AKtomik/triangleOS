@@ -21,7 +21,6 @@
 }
 
 .tos-desktop-icon.selected {
-	/* debug */
   background: rgba(0, 150, 255, 0.3);
   outline: 1px solid blue;
 }
@@ -45,16 +44,14 @@
   height: 100%;
 }
 .tos-desktop-icon > footer {
-	flex: 0 0 auto;
-	
 	display: flex;
   align-items: center;
   justify-content: center;
-
-	font-size: 14px;
+  height: 40%;
 	width: 100%;
 }
 .tos-desktop-icon > footer > p {
+	font-size: 14px;
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
