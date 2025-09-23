@@ -17,11 +17,11 @@
 
 /* propeties */
 
-.tos-window.tos-is-fullscreen {
+.tos-window.fullscreen {
 	resize: none;
 }
 
-.tos-window.tos-is-dragging {
+.tos-window.dragging {
   cursor: grabbing !important;
 }
 
@@ -67,7 +67,12 @@
 	position: relative;
 }
 
-.tos-window > section > * {
+.tos-window > section > iframe {
+	width: 100%;
+	height: 100%;
+}
+
+.tos-window > section > object {
 	width: 100%;
 	height: 100%;
 }
