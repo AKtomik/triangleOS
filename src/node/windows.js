@@ -26,7 +26,7 @@ class Window extends HTMLElement {
   }
 
 	connectedCallback() {
-		console.debug("connecting window: ", this);
+		console.debug("connect window: ", this);
 
 		// Unic/id
 		this.tosWindowId = `shallow:${shallowSignature(this)}`;
@@ -36,11 +36,13 @@ class Window extends HTMLElement {
 			let sameWindow = this.parentGetSame();
 			if (sameWindow.options.unicOpen)
 			{
+				console.debug("reopen window: ", sameWindow);
 				sameWindow.reopen();
 				this.remove();
 				return;
 			}
 		}
+		console.debug("build window: ", this);
 		// Unic/add
 		this.addToParent();
 		this._inited = true;
@@ -271,10 +273,11 @@ class Window extends HTMLElement {
 		let parent = this.attachedParent;
 		let key = this.tosWindowId;
 		if (parent.tos_windowContainerValut === undefined)
-			parent.tos_windowContainerValut = [];
+			parent.tos_windowContainerValut = {};
 		if (parent.tos_windowContainerValut[key] === undefined)
 			parent.tos_windowContainerValut[key] = [];
 		parent.tos_windowContainerValut[key].push(this);
+		console.log("parent.tos_windowContainerValut.add:", parent.tos_windowContainerValut, parent.tos_windowContainerValut[key], parent, key);
 	}
 
 	removeToParent()
@@ -282,9 +285,14 @@ class Window extends HTMLElement {
 		if (!this._inited) return;
 		let parent = this.attachedParent;
 		let key = this.tosWindowId;
-		parent.tos_windowContainerValut[key].remove(this);
+		const removeIndex = parent.tos_windowContainerValut[key].indexOf(this);
+		if (removeIndex === -1) {
+			throw new Error("trying remove to parent but is not in Window.minimizedList");
+		}
+		parent.tos_windowContainerValut[key].splice(removeIndex, 1);
 		if (parent.tos_windowContainerValut[key].length === 0)
 			parent.tos_windowContainerValut[key] = undefined;
+		console.log("parent.tos_windowContainerValut.remove:", parent.tos_windowContainerValut, parent.tos_windowContainerValut[key], parent, key);
 	}
 
 	// PROPETIES
@@ -468,10 +476,12 @@ class Window extends HTMLElement {
 	// METHODS
 
 	close() {
-		console.debug("close window: ", this);
+		console.debug("close window: ", this, this.options.closeAction);
 		let closeAction = this.options.closeAction;
 		switch (closeAction)
 		{
+			case undefined:
+				console.error("undefined closeAction:",closeAction);
 			case WindowCloseAction.REMOVE:
 				this.remove();
 				break;
@@ -500,9 +510,13 @@ class Window extends HTMLElement {
 	reopen() {
 		if (this._isMinimized)
 		{
-			this.style.display = "";
-			Window.minimizedList.filter((v) => (v != this));
 			this._isMinimized = false;
+			this.style.display = "";
+			const removeIndex = Window.minimizedList.indexOf(this);
+			if (removeIndex === -1) {
+				throw new Error("trying reopen but is not in Window.minimizedList");
+			}
+	  	Window.minimizedList.splice(removeIndex, 1);
 		}
 		if (this.options.reopenWillRepose)
 		{

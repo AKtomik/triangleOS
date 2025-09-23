@@ -20,7 +20,7 @@ let Settings = {
         hideCloseButton: false,
         hideFullButton: false,
         hideMiniButton: false,
-        closeAction: WindowCloseAction.CLOSE,
+        closeAction: WindowCloseAction.REMOVE,
         reopenWillRepose: false,
         disableCloseButton: false,
         cornerResizable: true,
