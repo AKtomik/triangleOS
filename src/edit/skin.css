@@ -11,7 +11,7 @@
 	backdrop-filter: blur(10px) brightness(.5);
 }
 
-.os-launch {
+.tos-deskbar-launch {
 	background-image: url(/assets/icons/gold_triangle.png);
 	background-size: 100% 100%;
 }

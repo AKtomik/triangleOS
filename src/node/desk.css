@@ -89,23 +89,23 @@
 	margin: 0;
 }
 
-.tos-deskbar > nav {
+.tos-deskbar > .tos-deskbar-launch {
 	height: 100%;
 	aspect-ratio: 1;
 	display: inline-block;
 	margin-right: 3%;
 }
 
-.tos-deskbar > article {
+.tos-deskbar > .tos-deskbar-icon {
 	height: 100%;
-	aspect-ratio: 1 / 1;
+	aspect-ratio: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 0;
 	cursor: pointer;
 }
-.tos-deskbar > article img {
+.tos-deskbar > .tos-deskbar-icon img {
 	width: 80%;
 	height: 80%;
 }

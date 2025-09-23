@@ -3,25 +3,24 @@ import { Window } from "/src/node/windows.js";
 // STRUCTURE
 
 class Desk extends Window {
-  constructor() {
-    super();
+	constructor() {
+		super();
 		this.classList.add("tos-desk");
-		console.log("construct Desk");
-  }
+	}
 }
 
 class DeskTop extends HTMLElement {
-  constructor() {
-    super();
+	constructor() {
+		super();
 		this.classList.add("tos-desktop");
-  }
+	}
 
 	connectedCallback() {
 
-    let mouseSelect = (e) => {
+		let mouseSelect = (e) => {
 			e.stopPropagation();
-      this.unselectIcon();
-    };
+			this.unselectIcon();
+		};
 		this.onpointerdown = mouseSelect;
 	}
 
@@ -31,26 +30,22 @@ class DeskTop extends HTMLElement {
 }
 
 class DeskBar extends HTMLElement {
-  constructor() {
-    super();
+	constructor() {
+		super();
 		this.classList.add("tos-deskbar");
-  }
+	}
 }
-
-customElements.define("tos-desk", Desk);
-customElements.define("tos-desktop", DeskTop);
-customElements.define("tos-deskbar", DeskBar);
 
 // DESKTOP
 
 class DesktopIcon extends HTMLElement {
 
-  constructor() {
-    super();
+	constructor() {
+		super();
 		this.classList.add("tos-desktop-icon");
-  }
+	}
 
-  connectedCallback() {
+	connectedCallback() {
 		
 		const contentHTML = this.innerHTML;
 		this.innerHTML = "";
@@ -69,15 +64,15 @@ class DesktopIcon extends HTMLElement {
 		this.appendChild(content);
 		this.appendChild(footer);
 
-    this.name = this.dataset.name;
+		this.name = this.dataset.name;
 
-    let mouseSelect = (e) => {
+		let mouseSelect = (e) => {
 			e.stopPropagation();
-      this.parentElement.unselectIcon();
-      this.classList.add('selected');
-    };
+			this.parentElement.unselectIcon();
+			this.classList.add('selected');
+		};
 		this.onpointerdown = mouseSelect;
-  }
+	}
 
 
 	get name()
@@ -91,7 +86,34 @@ class DesktopIcon extends HTMLElement {
 	}
 }
 
+
+// DESKBAR
+
+class DeskbarLaunch extends HTMLElement {
+	constructor() {
+		super();
+		this.classList.add("tos-deskbar-launch");
+	}
+}
+
+class DeskbarIcon extends HTMLElement {
+	constructor() {
+		super();
+		this.classList.add("tos-deskbar-icon");
+	}
+}
+
+
+
+// EXPORT
+
+customElements.define("tos-desk", Desk);
+customElements.define("tos-desktop", DeskTop);
+customElements.define("tos-deskbar", DeskBar);
+
 customElements.define("tos-desktop-icon", DesktopIcon);
 
+customElements.define("tos-deskbar-icon", DeskbarIcon);
+customElements.define("tos-deskbar-launch", DeskbarLaunch);
 
 export { Desk };

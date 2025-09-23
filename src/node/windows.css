@@ -17,11 +17,11 @@
 
 /* propeties */
 
-.tos-window.fullscreen {
+.tos-window.tos-is-fullscreen {
 	resize: none;
 }
 
-.tos-window.dragging {
+.tos-window.tos-is-dragging {
   cursor: grabbing !important;
 }
 

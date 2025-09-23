@@ -148,7 +148,7 @@ class Window extends HTMLElement {
 			
 			isDragging = true;
 			document.onpointermove = drag;
-			this.classList.add("dragging");
+			this.classList.add("tos-is-dragging");
 			document.body.style.userSelect = "none";
 			
 			offsetX = e.clientX - this.offsetLeft;
@@ -160,7 +160,7 @@ class Window extends HTMLElement {
 
 			isDragging = false;
 			document.onpointermove = null;
-			this.classList.remove("dragging");
+			this.classList.remove("tos-is-dragging");
 			document.body.style.userSelect = "";
 		}
 		// Drag/references
@@ -325,7 +325,7 @@ class Window extends HTMLElement {
 		if (value === this.isFullscreen) return;
 		if (value)
 		{
-			this.classList.add("fullscreen");
+			this.classList.add("tos-is-fullscreen");
 			this._cacheFullscreen = {
 				width: this.style.width,
 				height: this.style.height,
@@ -337,7 +337,7 @@ class Window extends HTMLElement {
 			this.style.left = "0";
 			this.style.top = "0";
 		} else {
-			this.classList.remove("fullscreen");
+			this.classList.remove("tos-is-fullscreen");
 			if (this._cacheFullscreen)
 			{
 				this.style.width = this._cacheFullscreen.width;
