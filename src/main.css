@@ -3,5 +3,6 @@
 
 @import url(/src/node/windows.css);
 @import url(/src/node/desk.css);
+@import url(/src/node/structure.css);
 
 @import url(/src/edit/skin.css);

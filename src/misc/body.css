@@ -2,13 +2,6 @@ body {
 	/* sizing */
 	width: 100%;
 	height: 100%;
-	position: fixed;
-	margin: 0;
-	padding: 0;
-
-	/* rules */
-	overflow: hidden;
-	flex-direction: column;
 	
 	/* appearence */
 	font-family: 'Courier New', Courier, monospace;
@@ -17,8 +10,3 @@ body {
   scrollbar-color: #00000055 rgba(0,0,0,0);
 	mix-blend-mode: difference;
 }
-
-/*:scope {
-	background-color: black;
-	background-color: white;
-}*/

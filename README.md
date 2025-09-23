@@ -19,19 +19,19 @@ Some nodes are made to gather together in particular way.
 ### Desk
 
 ```tree
-─ tos-desk
-  ├─ tos-desktop
-  │  ├─ tos-desktop-icon
+─ <tos-desk>
+  ├─ <tos-desktop>
+  │  ├─ <tos-desktop-icon>
   │  │  ...
-  │  ├─ tos-desktop-icon
-  │  ├─ tos-window
+  │  ├─ <tos-desktop-icon>
+  │  ├─ <tos-window>
   │  │  ...
-  │  └─ tos-window
-  └─ tos-deskbar
-     ├─ tos-deskbar-launch
-     ├─ tos-deskbar-icon
+  │  └─ <tos-window>
+  └─ <tos-deskbar>
+     ├─ <tos-deskbar-launch>
+     ├─ <tos-deskbar-icon>
      │  ...
-     └─ tos-deskbar-icon
+     └─ <tos-deskbar-icon>
 ```
 
 Do not forget that `<tos-desk>` inherit from `<tos-window>` and so need to be propely contained. (see [just after](#window))
@@ -39,16 +39,18 @@ Do not forget that `<tos-desk>` inherit from `<tos-window>` and so need to be pr
 ### Window
 
 ```tree
-─ tos-window-container
-  └─ tos-window
+─ <tos-window-container>
+  └─ <tos-window>
 ```
 
-`<tos-window>` need `position: absolute` CSS rule to work. To be clear, use `tos-window-container`.
+`<tos-window>` need to be in a window container.
 
-`tos-window-container` does not exist as a node. Differents ways to have it:
+You have different options:
 
-- Use `tos-root` if you are at root.
+- Dirrectly use `<tos-window-container>`.
+- `<tos-root>` and `<tos-desktop>` inherit from `<tos-window-container>`. **If you are in the rigth context use them.**
 - Add the class `tos-window-container` to an HTML element.
+  *Note: this will add `position: absolute` to the element.*
 
 ### Model
 
@@ -62,4 +64,5 @@ Do not forget that `<tos-desk>` inherit from `<tos-window>` and so need to be pr
 ## Avoid
 
 - Touching `tos-is-*` classes.
-- Touching `tos-<TosNode>` classes.
+- Touching `tos-<TosNode>` classes while running.
+- Using multiples `<tos-root>` in the sale DOM.

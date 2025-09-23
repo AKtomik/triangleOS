@@ -1,4 +1,5 @@
 import { Window } from "/src/node/windows.js";
+import { WindowContainer } from "/src/node/structure.js";
 
 // STRUCTURE
 
@@ -9,7 +10,7 @@ class Desk extends Window {
 	}
 }
 
-class DeskTop extends HTMLElement {
+class DeskTop extends WindowContainer {
 	constructor() {
 		super();
 		this.classList.add("tos-desktop");
