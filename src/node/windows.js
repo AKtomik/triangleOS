@@ -145,7 +145,8 @@ class Window extends HTMLElement {
 		let beginDrag = (e) => {
 			e.stopPropagation();
 			if (this.isFullscreen) return;
-			
+			document.addEventListener("pointerup", this.stopDrag);
+
 			isDragging = true;
 			document.onpointermove = drag;
 			this.classList.add("tos-is-dragging");
@@ -157,6 +158,7 @@ class Window extends HTMLElement {
 		}
 		let stopDrag = (e) => {
 			e.stopPropagation();
+			document.removeEventListener("pointerup", this.stopDrag);
 
 			isDragging = false;
 			document.onpointermove = null;
@@ -166,7 +168,7 @@ class Window extends HTMLElement {
 		// Drag/references
 		this.beginDrag = beginDrag;
 		this.stopDrag = stopDrag;
-		// drag enabeled after
+		// begin drag enabeled after
 
 		// Open/position
 		this.positioning();
@@ -433,10 +435,8 @@ class Window extends HTMLElement {
 		if (value)
 		{
 			this.header.onpointerdown = this.beginDrag;
-			this.header.onpointerup = this.stopDrag;
 		} else {
 			this.header.onpointerdown = undefined;
-			this.header.onpointerup = undefined;
 		}
 		this._dragHeader = value;
 	}
@@ -449,10 +449,8 @@ class Window extends HTMLElement {
 		if (value)
 		{
 			this.content.onpointerdown = this.beginDrag;
-			this.content.onpointerup = this.stopDrag;
 		} else {
 			this.content.onpointerdown = undefined;
-			this.content.onpointerup = undefined;
 		}
 		this._dragContent = value;
 	}
