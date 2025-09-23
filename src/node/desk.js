@@ -15,6 +15,9 @@ class DeskTop extends HTMLElement {
     super();
 		this.classList.add("tos-desktop");
   }
+
+	connectedCallback() {
+	}
 }
 
 class DeskBar extends HTMLElement {
@@ -63,6 +66,7 @@ class DesktopIcon extends HTMLElement {
     };
 		this.onpointerdown = mouseSelect;
   }
+
 
 	get name()
 	{
