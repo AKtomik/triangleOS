@@ -12,3 +12,19 @@ body {
   scrollbar-color: #00000055 rgba(0,0,0,0);
 	mix-blend-mode: difference;
 }
+
+body > pre {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 1rem;
+  color: red;
+  font-family: monospace;
+  font-size: 1rem;
+  overflow: auto;
+  z-index: 9999;
+  box-sizing: border-box;
+}
