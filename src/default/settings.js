@@ -3,7 +3,7 @@ import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
 let Settings = {
   ui: { theme: "dark" }, //not used rn
   template: {
-    path: "/src/edit/templates.html"
+    path: "/tos-templates.html"
   },
   windows: {
     dataset: {

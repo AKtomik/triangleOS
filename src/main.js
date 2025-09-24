@@ -6,7 +6,7 @@ import "./node/structure.js";
 
 import { Template } from "./misc/template.js";
 
-import { Settings } from  "./edit/settings.js";
+import { Settings } from  "./default/settings.js";
 import * as Enum from  "./misc/enum.js";
 
 const TriangleOS = {
@@ -18,4 +18,4 @@ const TriangleOS = {
 };
 window.TriangleOS = TriangleOS;
 export { TriangleOS };
-console.log("triangleOS imported!")
+console.log("triangleOS imported!");
