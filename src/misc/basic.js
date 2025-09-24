@@ -19,10 +19,10 @@ class AbsPos {
 }
 
 function shallowSignature(node) {
-  let attrs = Array.from(node.attributes)
-    .map(a => `${a.name}=${a.value}`)
-    .join(";");
-  return `${node.tagName}:${attrs}`;
+	let attrs = Array.from(node.attributes)
+		.map(a => `${a.name}=${a.value}`)
+		.join(";");
+	return `${node.tagName}:${attrs}`;
 }
 
 export { AbsPos, shallowSignature };

@@ -1,10 +1,15 @@
 import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
+import { loadSettings } from "../misc/loader.js";
 
-let Settings = {
-  ui: { theme: "dark" }, //not used rn
+let defaultSettings = {
   template: {
     path: "/tos-templates.html"
   },
+  
+  usersettings: {
+    path: "/tos-settings.json"
+  },
+
   windows: {
     dataset: {
       default: {/* the defaults parameters */
@@ -52,4 +57,4 @@ let Settings = {
   },
 };
 
-export { Settings };
+export var Settings = await loadSettings(defaultSettings);
