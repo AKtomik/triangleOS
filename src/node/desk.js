@@ -1,5 +1,5 @@
-import { Window } from "/src/node/windows.js";
-import { WindowContainer } from "/src/node/structure.js";
+import { Window } from "../node/windows.js";
+import { WindowContainer } from "../node/structure.js";
 
 // STRUCTURE
 

@@ -1,7 +1,7 @@
-import { WindowOpenWay, WindowCloseAction } from "/src/misc/enum.js";
-import { AbsPos, shallowSignature } from "/src/misc/basic.js";
-import { Settings } from "/src/edit/settings.js";
-import { Template } from "/src/misc/template.js";
+import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
+import { AbsPos, shallowSignature } from "../misc/basic.js";
+import { Settings } from "../edit/settings.js";
+import { Template } from "../misc/template.js";
 
 console.debug("hi");
 

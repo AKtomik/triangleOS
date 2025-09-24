@@ -1,13 +1,13 @@
 console.log("importing triangleOS...")
 
-import { Window } from "/src/node/windows.js";
-import { Desk } from "/src/node/desk.js";
-import "/src/node/structure.js";
+import { Window } from "./node/windows.js";
+import { Desk } from "./node/desk.js";
+import "./node/structure.js";
 
-import { Template } from "/src/misc/template.js";
+import { Template } from "./misc/template.js";
 
-import { Settings } from  "/src/edit/settings.js";
-import * as Enum from  "/src/misc/enum.js";
+import { Settings } from  "./edit/settings.js";
+import * as Enum from  "./misc/enum.js";
 
 const TriangleOS = {
   Window,

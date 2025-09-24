@@ -1,8 +1,8 @@
-@import url(/src/misc/body.css);
-@import url(/src/misc/atr.css);
+@import url(./misc/body.css);
+@import url(./misc/atr.css);
 
-@import url(/src/node/windows.css);
-@import url(/src/node/desk.css);
-@import url(/src/node/structure.css);
+@import url(./node/windows.css);
+@import url(./node/desk.css);
+@import url(./node/structure.css);
 
-@import url(/src/edit/skin.css);
+@import url(./edit/skin.css);

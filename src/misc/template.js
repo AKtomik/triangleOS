@@ -1,4 +1,4 @@
-import { Settings } from "/src/edit/settings.js";
+import { Settings } from "../edit/settings.js";
 
 async function loadTemplates() {
 	let templatesFile = Settings.template.path;

@@ -1,4 +1,4 @@
-import { WindowOpenWay, WindowCloseAction } from "/src/misc/enum.js";
+import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
 
 let Settings = {
   ui: { theme: "dark" }, //not used rn
