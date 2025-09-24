@@ -1,13 +1,9 @@
+import { deepMerge } from "../misc/basic.js";
 import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
-import { loadSettings } from "../misc/loader.js";
 
 let defaultSettings = {
   template: {
     path: "/tos-templates.html"
-  },
-  
-  usersettings: {
-    path: "/tos-settings.json"
   },
 
   windows: {
@@ -57,4 +53,24 @@ let defaultSettings = {
   },
 };
 
-export var Settings = await loadSettings(defaultSettings);
+let userSettings;
+
+// user settings : node
+const el = document.getElementById("tos-settings");
+if (el) {
+  console.log("User settings from script#tos-settings found!");
+  userSettings = JSON.parse(el.textContent);
+}
+
+// user settings : global
+if (window.TOS_SETTINGS) {
+  console.log("User settings from window.TOS_SETTINGS found!");
+  if (userSettings) {
+    console.error("There is more than one ways of inputing settings used.\nChoose between using a json node OR a global variable.\nOnly the json node is read");
+  } else {
+    userSettings = window.TOS_SETTINGS;
+  }
+}
+
+
+export var Settings = deepMerge(defaultSettings, userSettings);
