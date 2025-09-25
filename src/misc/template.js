@@ -24,10 +24,18 @@ class Template {
 	static spawn(template, parent)
 	{
 		if (typeof template === 'string')
-			template = document.getElementById(template);
-		if (template == undefined)
 		{
-			console.error("couldnt find element with id:", template);
+			let templateId = template;
+			template = document.getElementById(templateId);
+			if (template == undefined)
+			{
+				console.error("couldnt find element with id:", templateId);
+				return;
+			}
+		}
+		if (!(template instanceof Node))
+		{
+			console.error("given element is not a Node nor a valid node id:", parent);
 			return;
 		}
 		if (template.tagName != "TEMPLATE")
@@ -35,9 +43,18 @@ class Template {
 			console.error("spawning element that is not a template:", template, "\nuse Template.spawnPsedoTemplate to fake a template.");
 			return;
 		}
+		
 		if (typeof parent === 'string')
-			parent = document.getElementById(parent);
-		if (!parent instanceof Node)
+		{
+			let parentId = parent;
+			parent = document.getElementById(parentId);
+			if (parent == undefined)
+			{
+				console.error("couldnt find element with id:", parentId);
+				return;
+			}
+		}
+		if (!(parent instanceof Node))
 		{
 			console.error("given parent is not a Node nor a valid node id:", parent);
 			return;
@@ -56,10 +73,18 @@ class Template {
 	static spawnPsedoTemplate(dataTemplate, parent, cloneTemplateRoot = false)
 	{
 		if (typeof dataTemplate === 'string')
-			dataTemplate = document.getElementById(dataTemplate);
-		if (dataTemplate == undefined)
 		{
-			console.error("couldnt find element with id:", dataTemplate);
+			let dataTemplateId = dataTemplate;
+			dataTemplate = document.getElementById(dataTemplateId);
+			if (dataTemplate == undefined)
+			{
+				console.error("couldnt find element with id:", dataTemplateId);
+				return;
+			}
+		}
+		if (!(dataTemplate instanceof Node))
+		{
+			console.error("given element is not a Node nor a valid node id:", parent);
 			return;
 		}
 		if (!dataTemplate.hasAttribute("data-template"))
@@ -67,9 +92,18 @@ class Template {
 			console.error("add the atr [data-template] to allow cloning with Template.spawnPsedoTemplate():", dataTemplate);
 			return;
 		}
+
 		if (typeof parent === 'string')
-			parent = document.getElementById(parent);
-		if (!parent instanceof Node)
+		{
+			let parentId = parent;
+			parent = document.getElementById(parentId);
+			if (parent == undefined)
+			{
+				console.error("couldnt find element with id:", parentId);
+				return;
+			}
+		}
+		if (!(parent instanceof Node))
 		{
 			console.error("given parent is not a Node nor a valid node id:", parent);
 			return;
