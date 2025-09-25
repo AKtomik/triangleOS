@@ -13,9 +13,16 @@ class Window extends HTMLElement {
 	static zCounter = 10;
 	static minimizedList = [];
 
-	static open(templateId, parent) {
-		// just a shortcut (one charcter shorter actually)
-		Template.spawn(templateId, parent);
+
+	/**
+	 * Duplicate <template> content and spawn it.
+	 * @param {string|Node} template The template Node or id.
+	 * @param {string|Node} parent The parent where to spawn.
+	 * @returns Nothing.
+	 */
+	static open(template, parent) {
+		// just a shortcut (3 character shorter actually :>)
+		Template.spawn(template, parent);
 	}
 
 	// NODE
