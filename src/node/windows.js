@@ -36,10 +36,10 @@ class Window extends WindowContainer {
 
 	// NODE
 
-  constructor() {
-    super();
+	constructor() {
+		super();
 		this.classList.add("tos-window");
-  }
+	}
 
 	connectedCallback() {
 		console.debug("connect window: ", this);
@@ -65,7 +65,7 @@ class Window extends WindowContainer {
 		// Settings/load
 		let loadDataSetId = 'default';
 		let loadDataCustomId;
-		let windowSettings = { ...Settings.windows.dataset[loadDataSetId], ...Settings.windows.datacustom[loadDataCustomId]  };
+		let windowSettings = { ...Settings.windows.dataset[loadDataSetId], ...Settings.windows.datacustom[loadDataCustomId]	};
 		let caseCache = Object.fromEntries(Object.keys(windowSettings).map(k => [k.toLowerCase(), k]));
 		for (let k of Object.keys(this.dataset))
 		{
@@ -480,7 +480,6 @@ class Window extends WindowContainer {
 			this.style.resize = "none";
 		}
 		this._cornerResizable = value;
-		
 	}
 
 	// METHODS
@@ -527,7 +526,7 @@ class Window extends WindowContainer {
 			if (removeIndex === -1) {
 				throw new Error("trying reopen but is not in Window.minimizedList");
 			}
-	  	Window.minimizedList.splice(removeIndex, 1);
+			Window.minimizedList.splice(removeIndex, 1);
 		}
 		if (this.options.reopenWillRepose)
 		{
@@ -547,6 +546,44 @@ class Window extends WindowContainer {
 		}
 		super.focus?.();
 		this.style.zIndex = Window.zCounter++;
+	}
+
+	applySkin(classSkinName, removeOthers = true)
+	{
+		if (!classSkinName.startsWith("skin-"))
+		{
+			console.error("the skin given to applySkin does not starts with 'skin-':",classSkinName);
+			return;
+		}
+		if (removeOthers)
+		{
+			this.classList.forEach(cls => {
+				if (cls.startsWith("skin-")) {
+						this.classList.remove(cls);
+					}
+				}
+			)
+		}
+		this.classList.add(classSkinName);
+	}
+
+	applySize(classSizeName, removeOthers = true)
+	{
+		if (!classSizeName.startsWith("size-"))
+		{
+			console.error("the skin given to applySkin does not starts with 'skin-':",classSizeName);
+			return;
+		}
+		if (removeOthers)
+		{
+			this.classList.forEach(cls => {
+				if (cls.startsWith("size-")) {
+						this.classList.remove(cls);
+					}
+				}
+			)
+		}
+		this.classList.add(classSizeName);
 	}
 }
 
