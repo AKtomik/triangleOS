@@ -312,10 +312,11 @@ class Window extends WindowContainer {
 	
 	get title()
 	{
-		return this.header.querySelector("span").textContent;
+		return this.header.title;
 	}
 	set title(value)
 	{
+		this.header.title = value;
 		let span = this.header.querySelector("span");
 		if (!span)
 		{
