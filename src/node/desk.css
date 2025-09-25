@@ -25,7 +25,7 @@
 	--desktop-rows: 5;
 }
 
-.tos-desktop-icon.selected {
+.tos-desktop-icon.tos-is-selected {
   background: rgba(0, 150, 255, 0.3);
   outline: 1px solid blue;
 }

@@ -26,7 +26,7 @@ class DeskTop extends WindowContainer {
 	}
 
 	unselectIcon() {
-		this.querySelectorAll('.tos-desktop-icon.selected').forEach(i => i.classList.remove('selected'));
+		this.querySelectorAll('.tos-desktop-icon.tos-is-selected').forEach(i => i.classList.remove('tos-is-selected'));
 	}
 }
 
@@ -70,7 +70,7 @@ class DesktopIcon extends HTMLElement {
 		let mouseSelect = (e) => {
 			e.stopPropagation();
 			this.parentElement.unselectIcon();
-			this.classList.add('selected');
+			this.classList.add('tos-is-selected');
 		};
 		this.onpointerdown = mouseSelect;
 	}
@@ -78,10 +78,11 @@ class DesktopIcon extends HTMLElement {
 
 	get name()
 	{
-		return this.footer.querySelector(".tos-desktop-icon-name").textContent;
+		return this.title;
 	}
 	set name(value)
 	{
+		this.title = value;
 		let nameNode = this.footer.querySelector(".tos-desktop-icon-name");
 		nameNode.textContent = value;
 	}
