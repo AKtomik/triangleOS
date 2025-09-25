@@ -1,61 +1,110 @@
-<template id="template-test-me">
-	<tos-window class="size-middle skin-raimbow" data-title="test template">
-		<!--data-title="string": window title-->
-		<!--data-hideheader: hide header-->
-		<!--data-openway="openway": way to open window-->
+<!--
+data-title="string": window title
+data-hideheader: hide header
+data-openway="openway": way to open window
+-->
+
+<template id="template-tuto-anything">
+	<tos-window class="size-middle" data-title="A window can contain ANYTHING">
+		<h1 style="text-align: center;">
+			ANYTHING
+		</h1>
+		<!-- just left ANYTHING for the joke -haha (you) -->
+		<!--<p>
+			A window can contain almost anything HTML content. It is a container like another, isn't it?
+		</p>
+		<p>
+			Except it can be open, dragged, resized...
+		</p>-->
+	</tos-window>
+</template>
+
+<template id="template-tuto-skin">
+	<tos-window class="size-middle skin-raimbow" data-title="custom skins">
 		<h1>
-			moi? MOI?
+			Using skins
 		</h1>
 		<p>
-			MAIS QUI ELLE EST CELLE LÀ
+			There is a lot of defaults skins already aviable.
+			But you can create your owns in tos-skin.css or even in another CSS file that you are importing yourself.
 		</p>
 	</tos-window>
 </template>
 
 
-<template id="template-test-big">
-	<tos-window class="size-big skin-glass" data-title="test template">
+<template id="template-tuto-style">
+	<tos-window class="size-middle" data-title="custom style and size">
 		<p>
-			CECI EST UNE GRANDE FENÊTRE ET PEUT DONC CONTENIR PLEINS DE TRUCS
+			You can change a element size and skin by adding class.
 		</p>
 		<p>
-			CECI EST UNE GRANDE FENÊTRE ET PEUT DONC CONTENIR PLEINS DE TRUCS
+			You can make it 
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red')" style="cursor: pointer; color: blue;">
+			red
+			</a>
+			, 
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple')" style="cursor: pointer; color: blue;">
+			purple
+			</a>
+			 or 
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent')" style="cursor: pointer; color: blue;">
+			transparent
+			</a>
+			or even 
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', false)" style="cursor: pointer; color: blue;">
+			scary
+			</a>
+			.
 		</p>
 		<p>
-			CECI EST UNE GRANDE FENÊTRE ET PEUT DONC CONTENIR PLEINS DE TRUCS
-		</p>
-		<p>
-			CECI EST UNE GRANDE FENÊTRE ET PEUT DONC CONTENIR PLEINS DE TRUCS
-		</p>
-		<p>
-			CECI EST UNE GRANDE FENÊTRE ET PEUT DONC CONTENIR PLEINS DE TRUCS
-		</p>
-		<p>
-			CECI EST UNE GRANDE FENÊTRE ET PEUT DONC CONTENIR PLEINS DE TRUCS
+			You can make it 
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-small')" style="cursor: pointer; color: blue;">
+			small
+			</a>
+			, 
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-middle')" style="cursor: pointer; color: blue;">
+			middle
+			</a>
+			 or 
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-big')" style="cursor: pointer; color: blue;">
+			big 
+			</a>
+			or even 
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-full')" style="cursor: pointer; color: blue;">
+			full
+			</a>
+			.
 		</p>
 	</tos-window>
 </template>
 
-
-<template id="template-test-3cats">
-	<tos-window class="size-middle skin-glass" data-title="3 little cats">
-		<tos-window class="size-small skin-blue" data-title="yo"></tos-window>
-		<tos-window class="size-small skin-red" data-title="no"></tos-window>
-		<tos-window class="size-small skin-orange" data-title="hi" style="top: 100px"></tos-window>
+<template id="template-tuto-neast">
+	<tos-window class="size-big skin-glass" data-title="Window is window container">
+		<tos-window class="size-middle skin-red" data-title="Did you know"></tos-window>
+		<tos-window class="size-middle skin-green" data-title="you can create windows"></tos-window>
+		<tos-window class="size-middle skin-blue" data-title="inside of others windows?"></tos-window>
 	</tos-window>
 </template>
 
 
-<template id="template-test-winception">
+<template id="template-fun-winception">
 	<tos-window class="size-middle skin-glass" data-title="winception">
-		<a onclick="TriangleOS.Template.spawn('template-test-winception', this.parentNode.parentNode)" style="cursor: pointer; color: blue;">
-			<p>click here</p>
-		</a>
+		<p>
+			how deep is it?</br>
+			<a onclick="TriangleOS.Template.spawn('template-fun-winception', TriangleOS.Window.parent(this))" style="cursor: pointer; color: blue;">
+				click here to know
+			</a>
+		</p>
 	</tos-window>
 </template>
 
+<template id="template-fun-3cats">
+	<tos-window class="size-small skin-blue" data-title="blue cat"></tos-window>
+	<tos-window class="size-small skin-red" data-title="red cat"></tos-window>
+	<tos-window class="size-small skin-orange" data-title="orange cat"></tos-window>
+</template>
 
-<template id="template-test-invicible">
+<template id="template-fun-invicible">
 	<tos-window class="size-little skin-glass" data-title="TRY TO CLOSE ME" data-closeaction="repos" data-hideminibutton>
 		<h3>
 			This window</br> is invicible
@@ -70,6 +119,23 @@
 	</tos-window>
 </template>
 
+<template id="template-fun-size">
+	<tos-window class="size-big skin-glass" data-title="a lot of text">
+		<p>
+			This window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
+		</p>
+	</tos-window>
+</template>
+
 
 <template id="template-filter-grayscale">
 	<tos-window class="size-middle skin-filter-grayscale" data-title="grayscale filter">
@@ -79,6 +145,11 @@
 
 <template id="template-filter-negative">
 	<tos-window class="size-middle skin-filter-negative" data-title="negative filter">
+	</tos-window>
+</template>
+
+<template id="template-filter-saturate">
+	<tos-window class="size-middle skin-filter-saturate" data-title="saturate filter">
 	</tos-window>
 </template>
 

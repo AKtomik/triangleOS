@@ -39,7 +39,7 @@
 		color: black;
 	}
 	> section {
-		background-color: white;
+		background-color: #aaaaaa;
 		outline: 2px black solid;
 	}
 }
@@ -159,6 +159,9 @@
 		backdrop-filter: blur(10px);
 	}
 }
+
+/* filters */
+
 .tos-window.skin-filter-negative {
 	> section {
 		background-color: transparent;
@@ -171,6 +174,14 @@
 		backdrop-filter: grayscale(1);
 	}
 }
+.tos-window.skin-filter-saturate {
+	> section {
+		background-color: transparent;
+		backdrop-filter: saturate(5);
+	}
+}
+
+/* shadow */
 
 .tos-window.skin-deep {
 	> section {
