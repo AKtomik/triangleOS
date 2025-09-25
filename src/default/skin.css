@@ -47,29 +47,84 @@
 /* skins */
 
 /* colors */
-.tos-window.skin-blue {
+.tos-window.skin-white {
 	> section {
-		background-color: cyan;
+		background-color: rgb(#F9FFFE);
 	}
 }
-.tos-window.skin-orange {
+.tos-window.skin-lightgray {
 	> section {
-		background-color: orange;
+		background-color: rgb(#9D9D97);
 	}
 }
-.tos-window.skin-red {
+.tos-window.skin-gray {
 	> section {
-		background-color: red;
-	}
-}
-.tos-window.skin-purple {
-	> section {
-		background-color: purple;
+		background-color: rgb(#474F52);
 	}
 }
 .tos-window.skin-black {
 	> section {
-		background-color: black;
+		background-color: rgb(#1D1D21);
+	}
+}
+.tos-window.skin-brown {
+	> section {
+		background-color: rgb(#835432);
+	}
+}
+.tos-window.skin-red {
+	> section {
+		background-color: rgb(#B02E26);
+	}
+}
+.tos-window.skin-orange {
+	> section {
+		background-color: rgb(#F9801D);
+	}
+}
+.tos-window.skin-yellow {
+	> section {
+		background-color: rgb(#FED83D);
+	}
+}
+.tos-window.skin-lime {
+	> section {
+		background-color: rgb(#80C71F);
+	}
+}
+.tos-window.skin-green {
+	> section {
+		background-color: rgb(#5E7C16);
+	}
+}
+.tos-window.skin-cyan {
+	> section {
+		background-color: rgb(#169C9C);
+	}
+}
+.tos-window.skin-lightblue {
+	> section {
+		background-color: rgb(#3AB3DA);
+	}
+}
+.tos-window.skin-blue {
+	> section {
+		background-color: rgb(#3C44AA);
+	}
+}
+.tos-window.skin-purple {
+	> section {
+		background-color: rgb(#8932B8);
+	}
+}
+.tos-window.skin-magenta {
+	> section {
+		background-color: rgb(#C74EBD);
+	}
+}
+.tos-window.skin-pink {
+	> section {
+		background-color: rgb(#F38BAA);
 	}
 }
 
