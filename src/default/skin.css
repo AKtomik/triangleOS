@@ -49,82 +49,82 @@
 /* colors */
 .tos-window.skin-white {
 	> section {
-		background-color: rgb(#F9FFFE);
+		background-color: #F9FFFE;
 	}
 }
 .tos-window.skin-lightgray {
 	> section {
-		background-color: rgb(#9D9D97);
+		background-color: #9D9D97;
 	}
 }
 .tos-window.skin-gray {
 	> section {
-		background-color: rgb(#474F52);
+		background-color: #474F52;
 	}
 }
 .tos-window.skin-black {
 	> section {
-		background-color: rgb(#1D1D21);
+		background-color: #1D1D21;
 	}
 }
 .tos-window.skin-brown {
 	> section {
-		background-color: rgb(#835432);
+		background-color: #835432;
 	}
 }
 .tos-window.skin-red {
 	> section {
-		background-color: rgb(#B02E26);
+		background-color: #B02E26;
 	}
 }
 .tos-window.skin-orange {
 	> section {
-		background-color: rgb(#F9801D);
+		background-color: #F9801D;
 	}
 }
 .tos-window.skin-yellow {
 	> section {
-		background-color: rgb(#FED83D);
+		background-color: #FED83D;
 	}
 }
 .tos-window.skin-lime {
 	> section {
-		background-color: rgb(#80C71F);
+		background-color: #80C71F;
 	}
 }
 .tos-window.skin-green {
 	> section {
-		background-color: rgb(#5E7C16);
+		background-color: #5E7C16;
 	}
 }
 .tos-window.skin-cyan {
 	> section {
-		background-color: rgb(#169C9C);
+		background-color: #169C9C;
 	}
 }
 .tos-window.skin-lightblue {
 	> section {
-		background-color: rgb(#3AB3DA);
+		background-color: #3AB3DA;
 	}
 }
 .tos-window.skin-blue {
 	> section {
-		background-color: rgb(#3C44AA);
+		background-color: #3C44AA;
 	}
 }
 .tos-window.skin-purple {
 	> section {
-		background-color: rgb(#8932B8);
+		background-color: #8932B8;
 	}
 }
 .tos-window.skin-magenta {
 	> section {
-		background-color: rgb(#C74EBD);
+		background-color: #C74EBD;
 	}
 }
 .tos-window.skin-pink {
 	> section {
-		background-color: rgb(#F38BAA);
+		background-color: #F38BAA;
 	}
 }
 
