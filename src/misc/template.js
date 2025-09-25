@@ -2,7 +2,7 @@ import { Settings } from "../default/settings.js";
 
 async function loadTemplates() {
 	let templatesFile = Settings.template.path;
-	console.log(`loading templates at ${templatesFile}...`);
+	console.log(`loading templates at [${templatesFile}]...`);
 	const res = await fetch(templatesFile);
 	const text = await res.text();
 	const frag = document.createRange().createContextualFragment(text);
@@ -27,12 +27,12 @@ class Template {
 			template = document.getElementById(template);
 		if (template == undefined)
 		{
-			console.error("couldnt find something with id:", template);
+			console.error("couldnt find element with id:", template);
 			return;
 		}
 		if (template.tagName != "TEMPLATE")
 		{
-			console.error("spawning something that is not a template:", template, "\nuse Template.spawnPsedoTemplate to fake a template.");
+			console.error("spawning element that is not a template:", template, "\nuse Template.spawnPsedoTemplate to fake a template.");
 			return;
 		}
 		if (typeof parent === 'string')
@@ -59,7 +59,7 @@ class Template {
 			dataTemplate = document.getElementById(dataTemplate);
 		if (dataTemplate == undefined)
 		{
-			console.error("couldnt find something with id:", dataTemplate);
+			console.error("couldnt find element with id:", dataTemplate);
 			return;
 		}
 		if (!dataTemplate.hasAttribute("data-template"))
@@ -81,7 +81,6 @@ class Template {
 			clone.removeAttribute("data-template"); // avoid confusing clones
 		} else {// or just its childs
 			let html = dataTemplate.innerHTML;
-			console.log("dataTemplate.innerHTML=",dataTemplate.innerHTML);
 			parent.insertAdjacentHTML("beforeend", html);
 		}
 	}

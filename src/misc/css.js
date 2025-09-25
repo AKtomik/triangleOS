@@ -7,17 +7,17 @@ async function loadCss(href, optional = false) {
 	try {
 		const res = await fetch(href, { method: "HEAD" });
 		if (!res.ok) {
-			if (!optional) console.warn(`[TOS] CSS not found: ${href}`);
+			if (!optional) console.warn(`CSS not found: ${href}`);
 			return;
 		}
 		const link = document.createElement("link");
 		link.rel = "stylesheet";
 		link.href = href;
 		document.head.appendChild(link);
-		console.log(`[TOS] CSS loaded: ${href}`);
+		console.log(`CSS loaded: ${href}`);
 	} catch (err) {
 		if (!optional) {
-			console.error(`[TOS] Failed to load CSS: ${href}`, err);
+			console.error(`Failed to load CSS: ${href}`, err);
 		}
 	}
 }

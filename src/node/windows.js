@@ -4,8 +4,6 @@ import { Settings } from "../default/settings.js";
 import { Template } from "../misc/template.js";
 import { WindowContainer } from "./structure.js";
 
-console.debug("hi");
-
 
 class Window extends WindowContainer {
 
@@ -54,13 +52,12 @@ class Window extends WindowContainer {
 			let sameWindow = this.parentGetSame();
 			if (sameWindow.options.unicOpen)
 			{
-				console.debug("reopen window: ", sameWindow);
+				console.debug("reopen identical window");
 				sameWindow.reopen();
 				this.remove();
 				return;
 			}
 		}
-		console.debug("build window: ", this);
 		// Unic/add
 		this.addToParent();
 		this._inited = true;
@@ -85,7 +82,7 @@ class Window extends WindowContainer {
 				console.warn(`unknow data settings [data-${k}] for window:`, this);
 			}
 		}
-		console.log("windowSettings:",windowSettings);
+		console.debug("windowSettings:",windowSettings);
 
 		// Settings/options
 		this.options = {
@@ -249,22 +246,20 @@ class Window extends WindowContainer {
 			{
 				openPos.left = parentRect.width/2 - selfRect.width/2;
 				openPos.top = parentRect.height/2 - selfRect.height/2;
-				console.log("open center:",openPos);
 			} break;
 			case WindowOpenWay.RANDOM:
 			{
 				openPos.left = Math.random()*(parentRect.width - (selfRect.width*Settings.windows.openWayRandomFitRatio[0]));
 				openPos.top = Math.random()*(parentRect.height - (selfRect.height*Settings.windows.openWayRandomFitRatio[1]));
-				console.log("open center:",openPos);
 			} break;
 			case WindowOpenWay.DVD:
 			{
-				console.error("dvd openway not yet supported:",openway);
+				console.error("WindowOpenWay.DVD not yet supported");
 				openPos.left = 0;
 				openPos.top = 0;
 			} break;
 			default: {
-				console.error("unknow openway:",openway);
+				console.error("unknow openWay:",openway);
 			}
 		}
 		openPos = this.clampPos(openPos);
@@ -297,7 +292,6 @@ class Window extends WindowContainer {
 		if (parent.tos_windowContainerValut[key] === undefined)
 			parent.tos_windowContainerValut[key] = [];
 		parent.tos_windowContainerValut[key].push(this);
-		console.log("parent.tos_windowContainerValut.add:", parent.tos_windowContainerValut, parent.tos_windowContainerValut[key], parent, key);
 	}
 
 	removeToParent()
@@ -312,7 +306,6 @@ class Window extends WindowContainer {
 		parent.tos_windowContainerValut[key].splice(removeIndex, 1);
 		if (parent.tos_windowContainerValut[key].length === 0)
 			parent.tos_windowContainerValut[key] = undefined;
-		console.log("parent.tos_windowContainerValut.remove:", parent.tos_windowContainerValut, parent.tos_windowContainerValut[key], parent, key);
 	}
 
 	// PROPETIES
@@ -492,12 +485,13 @@ class Window extends WindowContainer {
 	// METHODS
 
 	close() {
-		console.debug("close window: ", this, this.options.closeAction);
+		console.debug(`close window with action [${this.options.closeAction}]:`, this);
 		let closeAction = this.options.closeAction;
 		switch (closeAction)
 		{
 			case undefined:
 				console.error("undefined closeAction:",closeAction);
+				// not breaking
 			case WindowCloseAction.REMOVE:
 				this.remove();
 				break;
