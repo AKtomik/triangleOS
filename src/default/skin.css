@@ -40,29 +40,13 @@
 	}
 	> section {
 		background-color: white;
-		outline:2px black solid;
+		outline: 2px black solid;
 	}
 }
 
 /* skins */
-.tos-window.skin-transparent {
-	/*> header {
-		background-color: transparent;
-	}*/
-	> section {
-		background-color: transparent;
-	}
-}
-.tos-window.skin-glass {
-	/*> header {
-		background-color: transparent;
-		backdrop-filter: blur(20px);
-	}*/
-	> section {
-		background-color: transparent;
-		backdrop-filter: blur(10px);
-	}
-}
+
+/* colors */
 .tos-window.skin-blue {
 	> section {
 		background-color: cyan;
@@ -81,5 +65,55 @@
 .tos-window.skin-black {
 	> section {
 		background-color: black;
+	}
+}
+
+/* transparent */
+
+.tos-window.skin-transparent {
+	> section {
+		background-color: transparent;
+	}
+}
+.tos-window.skin-transparentfull {
+	> header {
+		background-color: transparent;
+	}
+	> section {
+		background-color: transparent;
+	}
+}
+.tos-window.skin-glass {
+	> section {
+		background-color: transparent;
+		backdrop-filter: blur(10px);
+	}
+}
+.tos-window.skin-glassfull {
+	> header {
+		background-color: transparent;
+		backdrop-filter: blur(20px);
+	}
+	> section {
+		background-color: transparent;
+		backdrop-filter: blur(10px);
+	}
+}
+.tos-window.skin-filter-negative {
+	> section {
+		background-color: transparent;
+		backdrop-filter: invert(1);
+	}
+}
+.tos-window.skin-filter-grayscale {
+	> section {
+		background-color: transparent;
+		backdrop-filter: grayscale(1);
+	}
+}
+
+.tos-window.skin-show-inside {
+	> section {
+		box-shadow: inset 0 0 2em #000;
 	}
 }
