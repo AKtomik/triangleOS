@@ -120,13 +120,16 @@ For example:
 let windowObject = document.getElementById("myWindowId");
 windowObject.isFullscreen = false;
 windowObject.hideHeader = true;
-windowObject.hideMiniButton = true;
 windowObject.dragContent = true;
-windowObject.title = "cat supremacy";
-//...
 ```
 
-And so you edited a window while running!
+```js
+let windowObject = TriangleOS.Window.parent(aNodeInsideAWindow);
+windowObject.hideMiniButton = true;
+windowObject.title = "cat supremacy";
+```
+
+And so you've edited a window while running!
 
 Note: The settings does not having immediate effects are in `windowObject.options`, they can also be changed.
 
@@ -240,7 +243,7 @@ You have different options:
 - `<tos-root>` and `<tos-desktop>` inherit from `<tos-window-container>`. **Use them if you are in the rigth context.**
 - You may add the class `tos-window-container` to an HTML element.
 
-    *Note: Fon: absolute to do the element.*
+    *Note: this will add `position: absolute` to the element.*
 
 ### Model
 

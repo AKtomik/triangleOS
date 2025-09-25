@@ -26,6 +26,16 @@ class Window extends WindowContainer {
 		Template.spawn(template, parent);
 	}
 
+	/**
+	 * Get the window containing the element. 
+	 * @param {Element} element The element targeted.
+	 * @returns {Window}
+	 */
+	static parent(element)
+	{
+		return element.closest(".tos-window");
+	}
+
 	// NODE
 
   constructor() {
@@ -116,7 +126,7 @@ class Window extends WindowContainer {
 		// Create/header/min
 		const miniBtn = document.createElement("button");
 		miniBtn.className = "action-full";
-		miniBtn.textContent = "_";
+		miniBtn.textContent = "__";
 		miniBtn.onpointerdown = (e) => e.stopPropagation();
 		miniBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
