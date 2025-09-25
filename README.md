@@ -38,7 +38,7 @@ In any npm project:
 npm install triangleos
 ```
 
-Then import in your HTML header:
+Then import in your HTML head:
 
 ```sh
 <script type="module" src="node_modules/triangleos/main.js"></script>
@@ -47,7 +47,7 @@ Then import in your HTML header:
 
 ### Option 3: From URL
 
-Dirrectly import in your HTML header:
+Dirrectly import in your HTML head:
 
 ```sh
 <script type="module" src="https://unpkg.com/triangleos/main.js"></script>
@@ -55,6 +55,80 @@ Dirrectly import in your HTML header:
 ```
 
 This is the simpler way, but is sligthly slower on loading and require internet connexion.
+
+## How tos
+
+### How to Install
+
+<details>
+<summary><i>More install instructions</i></summary>
+There is 3 differents ways of installing TriangleOS. Did not you just read install section above?
+<details>
+<summary><i>Read anyway</i></summary>
+You just skiped all install instructions dont you?
+<details>
+<summary><i>Yes so let me read <b>how to install</b></i></summary>
+Go back read <a href="#install">install</a> little rascal.
+</details>
+</details>
+</details>
+
+### How to Spawn a window
+
+1) **First, you will have to build your window in a template.**
+
+    TriangleOS automaticly import templates from `/tos-templates.html` (customizable),
+    So you can insert your template here!
+
+    Your template shoud look something like that:
+  
+    ```html
+    <template id="template-example">
+      <tos-window class="size-middle skin-glass" data-title="Example window">
+          Your content here!
+      </tos-window>
+    </template>
+    ```
+
+2) **Then, you can spawn it with `TriangleOS.Window.open([template], [parent])`**
+
+    - `[template]` is the template id or Node (if you need to select in other ways).
+    - `[parent]` is the parent where the template will be spawned (if you need to select in other ways).
+
+    In our example:
+
+    ```html
+    <tos-desktop id="desktop-spawner">
+      <tos-desktop-icon ondblclick="TriangleOS.Window.open('template-example', 'desktop-spawner')" data-name="open example!">
+          <img src="assets/potato.png">
+      </tos-desktop-icon>
+    </tos-desktop>
+    ```
+
+    Notes: `TriangleOS.Window.open` is a shortcut for `TriangleOS.Template.spawn`. You can use `spawn` for others purposes than spawning a window.
+
+3) **Your window is here!**
+
+### How to Edit a window
+
+You can edit window while running using javascript.
+For that, just select the window node and change one of his propety.
+
+For example:
+
+```js
+let windowObject = document.getElementById("myWindowId");
+windowObject.isFullscreen = false;
+windowObject.hideHeader = true;
+windowObject.hideMiniButton = true;
+windowObject.dragContent = true;
+windowObject.title = "cat supremacy";
+//...
+```
+
+And so you edited a window while running!
+
+Note: The settings does not having immediate effects are in `windowObject.options`, they can also be changed.
 
 ## Nodes
 
@@ -165,7 +239,8 @@ You have different options:
 - Use `<tos-window-container>`.
 - `<tos-root>` and `<tos-desktop>` inherit from `<tos-window-container>`. **Use them if you are in the rigth context.**
 - You may add the class `tos-window-container` to an HTML element.
-  *Note: this will add `position: absolute` to the element.*
+
+    *Note: Fon: absolute to do the element.*
 
 ### Model
 
@@ -181,11 +256,69 @@ You have different options:
   <b>There is a cat inside the box.</b>
 </details>
 
-## Settings
+## Global Settings
 
-### Global
+You can insert custom global settings by using a file OR node.
 
-### Window
+### Load from file
+
+This is the first way for inserting user settings.
+
+1) Create `tos-settings.js`
+2) Inside you set the global value to your settings `window.TOS_SETTINGS = [your custom settings]`
+3) Import `tos-settings.js` in your head **BEFORE importing TriangleOS**.
+
+    ```html
+    <script type="module" src="/tos-settings.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    ```
+
+4) Refresh. Your custom settings should be loaded!
+
+### Load from node
+
+This is the second way for inserting user settings.
+
+Insert inside your HTML:
+
+```html
+<script id="tos-settings" type="application/json">
+  [your custom settings]
+</script>
+```
+
+### Edit settings
+
+You can edit settings at any time while running using javascript `TriangleOS.Settings.[global setting] = [value];`
+
+⚠️ Some settings support this only partialy.
+
+## Window Settings
+
+You can change window setting by adding `data-[window settings]="[value]"` to the HTML node.
+
+Note: For boolean "true" just do `data-[window settings]`.
+
+To change default value used for windows, change in global settings. Setting: `windows.dataset.default.[window settings]`
+
+A list of all window value and their default value.
+
+```list
+- title: "Sans titre"
+- isFullscreen: false
+- hideHeader: false
+- openWay: "random" (see enum WindowOpenWay for possibilities)
+- unicOpen: true
+- dragHeader: true
+- dragContent: false
+- hideCloseButton: false
+- hideFullButton: false
+- hideMiniButton: false
+- closeAction: "remove" (see enum WindowCloseAction for possibilities)
+- reopenWillRepose: false
+- disableCloseButton: false
+- cornerResizable: true
+```
 
 ## Avoid
 
