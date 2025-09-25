@@ -2,11 +2,12 @@ import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
 import { AbsPos, shallowSignature } from "../misc/basic.js";
 import { Settings } from "../default/settings.js";
 import { Template } from "../misc/template.js";
+import { WindowContainer } from "./structure.js";
 
 console.debug("hi");
 
 
-class Window extends HTMLElement {
+class Window extends WindowContainer {
 
 	// STATIC
 	

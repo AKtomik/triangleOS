@@ -62,19 +62,20 @@ TriangleOS introduces a set of custom HTML elements, each designed with its own 
 
 Let's break it down!
 
-### `<tos-window>`
-
-- Inherit: [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement) > `tos-window`
-- Parent: `tos-window-container`
-
-A draggable, customizable, resizable **window** element.
-It will insert his content inside a movable window.
-
 ### `<tos-window-container>`
 
 - Inherit: [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement) > `tos-window-container`
 
 This elemement is made to contain one or multiples `tos-window`. It can also contain other elements in the same time.
+
+### `<tos-window>`
+
+- Inherit: [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement) > `tos-window-container` > `tos-window`
+- Parent: `tos-window-container`
+
+A draggable, customizable, resizable **window** element.
+It will insert his content inside a movable window.
+Because it inherits from `tos-window-container`, you can dirreclty insert windows inside a window.
 
 ### `<tos-root>`
 
@@ -85,10 +86,12 @@ Use only one in DOM.
 
 ### `<tos-desk>`
 
-- Inherit: [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement) > `tos-window` > `tos-desk`
+- Inherit: [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement) > `tos-window-container` > `tos-window` > `tos-desk`
 
 A desk window able to hold desktop and deskbar.
 It inherits from window and so need to be contains as so.
+
+⚠️ By adding window dirreclty inisde `tos-desk`, thoes will be **above the deskbar**! To avoid that, add windows inside `tos-desktop`.
 
 ### `<tos-desktop>`
 
