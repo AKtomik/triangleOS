@@ -60,7 +60,7 @@
 
 /* content */
 
-.tos-window > section ::slotted(*) {
+.tos-window > section {
   flex: 1 1 auto;
   width: 100%;
 	line-break: auto;
@@ -68,12 +68,12 @@
 	position: relative;
 }
 
-.tos-window > section ::slotted(*) > iframe {
+.tos-window > section > iframe {
 	width: 100%;
 	height: 100%;
 }
 
-.tos-window > section ::slotted(*) > object {
+.tos-window > section > object {
 	width: 100%;
 	height: 100%;
 }

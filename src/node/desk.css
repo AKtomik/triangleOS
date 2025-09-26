@@ -1,4 +1,4 @@
-.tos-desk > section ::slotted(*) {
+.tos-desk > section {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
