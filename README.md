@@ -41,8 +41,8 @@ npm install triangleos
 Then import in your HTML head:
 
 ```sh
-<script type="module" src="node_modules/triangleos/index.js"></script>
-<link rel="stylesheet" href="node_modules/triangleos/index.css">
+<script type="module" src="./node_modules/triangleos/index.js"></script>
+<link rel="stylesheet" href="./node_modules/triangleos/index.css">
 ```
 
 ### Option 3: From URL
