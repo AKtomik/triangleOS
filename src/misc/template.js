@@ -1,23 +1,34 @@
 import { Settings } from "../default/settings.js";
 
-async function loadTemplates() {
-	let templatesFile = Settings.template.path;
-	console.log(`loading templates at [${templatesFile}]...`);
-	const res = await fetch(templatesFile);
-  if (!res.ok) {
-    return console.error(`no template file found at [${templatesFile}]! [${res.status}]`);
-  }
-	const text = await res.text();
-	const frag = document.createRange().createContextualFragment(text);
-	document.body.appendChild(frag); // injects templates into DOM (but hidden)
-	console.log(`templates loaded!`);
-}
-
-document.addEventListener("DOMContentLoaded", loadTemplates);
 
 
 class Template {
 
+	static loaded = false;
+
+	static async loadTemplates() {
+		let templatesFile = Settings.template.path;
+		console.log(`loading templates at [${templatesFile}]...`);
+		const res = await fetch(templatesFile);
+	  if (!res.ok) {
+	    return console.error(`no template file found at [${templatesFile}]! [${res.status}]`);
+	  }
+		const text = await res.text();
+		const frag = document.createRange().createContextualFragment(text);
+		document.body.appendChild(frag); // injects templates into DOM (but hidden)
+		console.log(`templates loaded!`);
+		const event = new Event("tos-templates-loaded");
+		document.dispatchEvent(event);
+	}
+
+	static waitLoaded(handler) {
+    if (Template.loaded) {
+      handler();
+    } else {
+      document.addEventListener("tos-templates-loaded", handler, { once: true });
+    }
+	}
+	
 	/**
 	 * Duplicate <template> content and spawn it.
 	 * @param {string|Node} template The template Node or id.
@@ -123,5 +134,6 @@ class Template {
 	}
 }
 
+document.addEventListener("DOMContentLoaded", Template.loadTemplates);
 
 export { Template };

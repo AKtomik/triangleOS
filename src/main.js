@@ -3,6 +3,7 @@ console.log("importing triangleOS...")
 import { Window } from "./node/windows.js";
 import { Desk } from "./node/desk.js";
 import "./node/structure.js";
+import "./node/spawn.js";
 
 import { Template } from "./misc/template.js";
 
