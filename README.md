@@ -200,6 +200,13 @@ A desktop icon. Use `ondblclick` event to do something when clicked (open a wind
 
 A deskbar icon. Use `onclick` event to do something when clicked (open a window, a link, edit something...)
 
+### `<tos-spawn>`
+
+- Inherit: [`HTMLElement`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement) > `tos-spawn`
+- Child: none
+
+Will spawn a template when entering DOM (wait that themplates are loaded). Use `template=[your template id]`.
+
 ## Strucutres
 
 Some nodes are made to gather together in particular way.
