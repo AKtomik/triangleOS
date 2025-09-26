@@ -61,8 +61,9 @@ class Window extends WindowContainer {
 		// Unic/add
 		this.addToParent();
 		if (this._inited) {
+			//this.positioning();
 			console.debug("but is just reparenting");
-			return
+			return;
 		};// ! need of that in case of reparenting (like when neast windows inited)
 		this._inited = true;
 
@@ -192,7 +193,10 @@ class Window extends WindowContainer {
 		// begin drag enabeled after
 
 		// Open/position
-		this.positioning();
+		requestAnimationFrame(() => {
+			// ! need to use requestAnimationFrame else it can be posed before parent ready
+			this.positioning();
+		})
 
 		// Settings
 		this.hideHeader = windowSettings.hideHeader;// this need to be done AFTER open calculations (idk why but it is)
@@ -224,10 +228,11 @@ class Window extends WindowContainer {
 	clampPos(pos) {
 		const parentRect = this.parentElement.getBoundingClientRect();
 		const elRect = this.header.getBoundingClientRect();
-		const clampPixelWidth = 50;
+		const clampMinWidth = 50;
 		const newTop = Math.max(0, Math.min(pos.top, parentRect.height - elRect.height));
-		//newLeft = Math.max(0, Math.min(pos.left, parentRect.width - elRect.width));
-		const newLeft = Math.max(clampPixelWidth - elRect.width, Math.min(pos.left, parentRect.width - clampPixelWidth));
+		//const newLeft = Math.max(0, Math.min(pos.left, parentRect.width - elRect.width));
+		// ! when using clampPos when inited, elRect.width can be 0
+		const newLeft = Math.max(Math.min(0, clampMinWidth - elRect.width), Math.min(pos.left, parentRect.width - clampMinWidth));
 		return new AbsPos(newLeft, newTop);
 	}
 	clampSelf() {
@@ -237,6 +242,7 @@ class Window extends WindowContainer {
 		this.style.top = (pos.top) + "px";
 	}
 	positioning() {
+		console.debug('positionning window:',this, this.parentElement);
 		const parentRect = this.parentElement.getBoundingClientRect();
 		const selfRect = this.getBoundingClientRect();
 		let openway = this.options.openWay;
@@ -268,7 +274,9 @@ class Window extends WindowContainer {
 				console.error("unknow openWay:",openway);
 			}
 		}
+		console.log("openPos and rects:",openPos, parentRect, selfRect)
 		openPos = this.clampPos(openPos);
+		console.log("nd clamp:",openPos)
 		this.style.left = openPos.left + "px";
 		this.style.top = openPos.top + "px";
 	}
