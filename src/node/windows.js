@@ -61,10 +61,11 @@ class Window extends WindowContainer {
 		// Unic/add
 		this.addToParent();
 		if (this._inited) {
+			// ! reparenting is triggered when there is neast windows in DOM, but does not have this problem with templates
 			//this.positioning();
 			console.debug("but is just reparenting");
 			return;
-		};// ! need of that in case of reparenting (like when neast windows inited)
+		};
 		this._inited = true;
 
 		// Settings/load
@@ -242,7 +243,7 @@ class Window extends WindowContainer {
 		this.style.top = (pos.top) + "px";
 	}
 	positioning() {
-		console.debug('positionning window:',this, this.parentElement);
+		//console.debug('positionning window:',this, this.parentElement);
 		const parentRect = this.parentElement.getBoundingClientRect();
 		const selfRect = this.getBoundingClientRect();
 		let openway = this.options.openWay;
@@ -274,9 +275,7 @@ class Window extends WindowContainer {
 				console.error("unknow openWay:",openway);
 			}
 		}
-		console.log("openPos and rects:",openPos, parentRect, selfRect)
 		openPos = this.clampPos(openPos);
-		console.log("nd clamp:",openPos)
 		this.style.left = openPos.left + "px";
 		this.style.top = openPos.top + "px";
 	}
