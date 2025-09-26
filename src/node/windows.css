@@ -68,6 +68,10 @@
 	position: relative;
 }
 
+.tos-window.scrollable > section {
+	overflow: scroll;
+}
+
 .tos-window > section > iframe {
 	width: 100%;
 	height: 100%;

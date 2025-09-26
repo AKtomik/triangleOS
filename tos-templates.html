@@ -5,7 +5,77 @@ data-openway="openway": way to open window
 -->
 
 <template id="template-welcome">
-	<tos-window class="size-small skin-orange" data-title="Welcome!" data-openway="center">
+	<style>
+	/* style paragraph */
+	#welcome-window p {
+		font-size: 1.5rem;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	#welcome-window p:last-of-type {
+		font-size: 1rem;
+		text-align: right;
+	}
+	
+	/* style title */
+	#welcome-window .welcome-header {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		text-align: center;
+		gap: 15px;
+	}
+
+	#welcome-window .welcome-header .welcome-title {
+		font-size: 2.5rem;
+		font-weight: bold;
+		text-align: center;
+		background-color: rgba(255,255,0,0.2);
+		box-shadow: 0 0 10px rgba(255,255,0,0.3);
+	}
+
+	#welcome-window img {
+		position: block;
+		margin: 2%;
+		width: 20%;
+		transition: transform 3s ease;
+	}
+
+	#welcome-window img:hover {
+		transform: rotate(90deg) scale(1.3);
+	}
+
+	/* Style links */
+	#welcome-window a {
+		color: #ffff00;
+		text-decoration: none;
+		font-weight: 500;
+		transition: color 0.3s ease, transform 0.3s ease;
+	}
+
+	#welcome-window a:hover {
+		color: #ff0000;
+		transform: scale(1.05);
+	}
+	</style>
+	<tos-window class="size-middle skin-orange scrollable" id="welcome-window" data-title="Welcome in TriangleOS!" data-openway="center" data-unicOpen>
+		<div class="welcome-header">
+			<div class="welcome-title">Welcome in TriangleOS!</div>
+			<img src="assets/icons/gold_triangle.png" alt="TriangleOS Logo">
+		</div>
+		<p>
+			<a href="https://github.com/AKtomik/triangleOS" target="_blank">TriangleOS</a> is a lightweight pseudo operating system UI for web.
+		</p>
+		<p>
+			Documentation and tutorials can be found in the <a href="https://github.com/AKtomik/triangleOS" target="_blank">README.md</a>. You can also experiment and edit this example page.
+		</p>
+		<p>
+			If you have any problem, question or idea, feel free to open <a href="https://github.com/AKtomik/triangleOS" target="_blank">a pull request</a>!
+		</p>
+		<p>
+			TriangleOS v1 by AKtomik
+		</p>
 	</tos-window>
 </template>
 
@@ -44,38 +114,38 @@ data-openway="openway": way to open window
 		</p>
 		<p>
 			You can make it 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red')" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red')">
 			red
 			</a>
 			, 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple')" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple')">
 			purple
 			</a>
 			 or 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent')" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent')">
 			transparent
 			</a>
 			or even 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', false)" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', false)">
 			scary
 			</a>
 			.
 		</p>
 		<p>
 			You can make it 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-small')" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-small')">
 			small
 			</a>
 			, 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-middle')" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-middle')">
 			middle
 			</a>
 			 or 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-big')" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-big')">
 			big 
 			</a>
 			or even 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-full')" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-full')">
 			full
 			</a>
 			.
@@ -96,7 +166,7 @@ data-openway="openway": way to open window
 	<tos-window class="size-middle skin-glass" data-title="winception">
 		<p>
 			how deep is it?</br>
-			<a onclick="TriangleOS.Template.spawn('template-fun-winception', TriangleOS.Window.parent(this))" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Template.spawn('template-fun-winception', TriangleOS.Window.parent(this))">
 				click here to know
 			</a>
 		</p>
@@ -116,7 +186,7 @@ data-openway="openway": way to open window
 		</h3>
 		<p>
 			or 
-			<a onclick="TriangleOS.Window.parent(this).remove()" style="cursor: pointer; color: blue;">
+			<a onclick="TriangleOS.Window.parent(this).remove()">
 					is it
 			</a>
 			?

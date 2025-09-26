@@ -94,6 +94,7 @@
 	aspect-ratio: 1;
 	display: inline-block;
 	margin-right: 3%;
+	cursor: pointer;
 }
 
 .tos-deskbar > .tos-deskbar-icon {

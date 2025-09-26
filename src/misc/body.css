@@ -9,9 +9,13 @@ body {
 	font-family: 'Courier New', Courier, monospace;
 	font-size: 3vmin;
   scrollbar-width: thin;
-  scrollbar-color: #00000055 rgba(0,0,0,0);
+  /*scrollbar-color: #00000055 rgba(0,0,0,0);*/
 	mix-blend-mode: difference;
 }
+
+/*::-webkit-scrollbar {
+  all:unset;
+}*/
 
 body > pre {
   position: fixed;

@@ -13,6 +13,12 @@
 		<link rel="stylesheet" type="text/css" href="/src/main.css"><!-- import TriangleOS' style -->
 	</head>
 
+	<style>
+		a {
+			cursor: pointer; color: blue;
+		}
+	</style>
+
 	<body>
 		<tos-root class="size-full">
 			<tos-desk class="size-full skin-transparent" id="deskwindow" data-title="triangle os" data-openway="top" data-hideheader data-isfullscreen>
@@ -82,7 +88,7 @@
 				</tos-desktop>
 				
 				<tos-deskbar>
-					<tos-deskbar-launch></tos-deskbar-launch>
+					<tos-deskbar-launch onclick="TriangleOS.Window.open('template-welcome', 'desktop')"></tos-deskbar-launch>
 					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-4D', 'desktop')">
 						<img src="assets/icons/app/4D.png">
 					</tos-deskbar-icon>
