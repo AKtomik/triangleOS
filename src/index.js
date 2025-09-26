@@ -10,6 +10,9 @@ import { Template } from "./misc/template.js";
 import { Settings } from  "./default/settings.js";
 import * as Enum from  "./misc/enum.js";
 
+import { loadPackageCss, loadUserCss } from "./misc/css.js";
+loadUserCss("tos-skin.css");
+
 const TriangleOS = {
   Window,
   Desk,
