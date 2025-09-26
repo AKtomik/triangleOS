@@ -3,7 +3,7 @@ import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
 
 let defaultSettings = {
   template: {
-    path: "/tos-templates.html"
+    path: "tos-templates.html"
   },
 
   windows: {

@@ -36,7 +36,7 @@ function loadPackageCss(path) {
  * Load CSS from the user project root (optional).
  * @param {string} path - Path relative to project root (e.g. "/tos-skin.css").
  */
-function loadUserCss(path = "/tos-skin.css") {
+function loadUserCss(path = "tos-skin.css") {
 	loadCss(path, true);
 }
 

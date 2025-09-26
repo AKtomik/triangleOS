@@ -279,8 +279,8 @@ This is the first way for inserting user settings.
 3) Import `tos-settings.js` in your head **BEFORE importing TriangleOS**.
 
     ```html
-    <script type="module" src="/tos-settings.js"></script>
-    <script type="module" src="/src/index.js"></script>
+    <script type="module" src="tos-settings.js"></script>
+    <script type="module" src="src/index.js"></script>
     ```
 
 4) Refresh. Your custom settings should be loaded!
