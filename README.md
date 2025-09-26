@@ -41,8 +41,8 @@ npm install triangleos
 Then import in your HTML head:
 
 ```sh
-<script type="module" src="node_modules/triangleos/main.js"></script>
-<link rel="stylesheet" href="node_modules/triangleos/main.css">
+<script type="module" src="node_modules/triangleos/index.js"></script>
+<link rel="stylesheet" href="node_modules/triangleos/index.css">
 ```
 
 ### Option 3: From URL
@@ -50,8 +50,8 @@ Then import in your HTML head:
 Dirrectly import in your HTML head:
 
 ```sh
-<script type="module" src="https://unpkg.com/triangleos/main.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/triangleos/main.css">
+<script type="module" src="https://unpkg.com/triangleos/index.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/triangleos/index.css">
 ```
 
 This is the simpler way, but is sligthly slower on loading and require internet connexion.
@@ -280,7 +280,7 @@ This is the first way for inserting user settings.
 
     ```html
     <script type="module" src="/tos-settings.js"></script>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/index.js"></script>
     ```
 
 4) Refresh. Your custom settings should be loaded!

@@ -1,13 +1,13 @@
 {
   "name": "triangleos",
-  "version": "0.0.3",
+  "version": "0.3.0",
   "description": "Create a OS-like interface in html!",
   
   "type": "module",
-  "main": "./main.js",
-  "style": "./main.css",
+  "main": "./index.js",
+  "style": "./index.css",
   "exports": {
-    ".": "./main.js"
+    ".": "./index.js"
   },
   
   "scripts": {
