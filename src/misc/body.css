@@ -25,6 +25,7 @@ body > pre {
   font-family: monospace;
   font-size: 1rem;
   overflow: auto;
-  z-index: 9999;
+  z-index: 999999;
   box-sizing: border-box;
+  pointer-events: none;
 }

@@ -4,6 +4,9 @@ async function loadTemplates() {
 	let templatesFile = Settings.template.path;
 	console.log(`loading templates at [${templatesFile}]...`);
 	const res = await fetch(templatesFile);
+  if (!res.ok) {
+    return console.error(`no template file found at [${templatesFile}]! [${res.status}]`);
+  }
 	const text = await res.text();
 	const frag = document.createRange().createContextualFragment(text);
 	document.body.appendChild(frag); // injects templates into DOM (but hidden)
