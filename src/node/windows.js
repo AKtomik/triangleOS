@@ -38,12 +38,19 @@ class Window extends WindowContainer {
 
 	constructor() {
 		super();
+		console.debug("construct window: ", this);
 		this.classList.add("tos-window");
 	}
 
 	connectedCallback() {
 		console.debug("connect window: ", this);
 
+		// Unic/reinit
+		if (this._inited)
+		{
+				console.error("window is reinited (reconnected):", this);
+				return;
+		}
 		// Unic/id
 		this.tosWindowId = `shallow:${shallowSignature(this)}`;
 		// Unic/check
@@ -84,7 +91,7 @@ class Window extends WindowContainer {
 		}
 		console.debug("windowSettings:",windowSettings);
 
-		// Settings/options
+		// Settings/optionsa
 		this.options = {
 			unicOpen: windowSettings.unicOpen,
 			openWay: windowSettings.openWay,
@@ -92,13 +99,13 @@ class Window extends WindowContainer {
 			reopenWillRepose: windowSettings.reopenWillRepose
 		}
 
-		// Create/empty
-		const contentHTML = this.innerHTML;
-		this.innerHTML = "";
 		// Create/content
 		const content = document.createElement("section");
 		content.className = "window-content";
-		content.innerHTML = contentHTML;
+	  content.appendChild(document.createElement("slot"));
+		//while (this.firstChild) {
+		//  content.appendChild(this.firstChild);
+		//}
 		// Create/header
 		const header = document.createElement("header");
 		header.className = "window-header";

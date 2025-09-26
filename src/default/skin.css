@@ -1,6 +1,6 @@
 /* -- os appearance -- */
 
-.tos-desk > section {
+.tos-desk {
 	background-image: url(../assets/placeholder-background.png);
 	background-size: 100% 100%;
 	background-color: none;
@@ -22,6 +22,7 @@
 /* default */
 .tos-window {
 	outline:2px black solid;
+	background-color: #aaaaaa;
 	> header {
 		background-color: gray;
 		color: black;
@@ -39,8 +40,7 @@
 		color: black;
 	}
 	> section {
-		background-color: #aaaaaa;
-		outline: 2px black solid;
+		outline: 1px black solid;
 	}
 }
 
@@ -48,143 +48,94 @@
 
 /* colors */
 .tos-window.skin-white {
-	> section {
-		background-color: #F9FFFE;
-	}
+	background-color: #F9FFFE;
 }
 .tos-window.skin-lightgray {
-	> section {
-		background-color: #9D9D97;
-	}
+	background-color: #9D9D97;
 }
 .tos-window.skin-gray {
-	> section {
-		background-color: #474F52;
-	}
+	background-color: #474F52;
 }
 .tos-window.skin-black {
-	> section {
-		background-color: #1D1D21;
-	}
+	background-color: #1D1D21;
 }
 .tos-window.skin-brown {
-	> section {
-		background-color: #835432;
-	}
+	background-color: #835432;
 }
 .tos-window.skin-red {
-	> section {
-		background-color: #B02E26;
-	}
+	background-color: #B02E26;
 }
 .tos-window.skin-orange {
-	> section {
-		background-color: #F9801D;
-	}
+	background-color: #F9801D;
 }
 .tos-window.skin-yellow {
-	> section {
-		background-color: #FED83D;
-	}
+	background-color: #FED83D;
 }
 .tos-window.skin-lime {
-	> section {
-		background-color: #80C71F;
-	}
+	background-color: #80C71F;
 }
 .tos-window.skin-green {
-	> section {
-		background-color: #5E7C16;
-	}
+	background-color: #5E7C16;
 }
 .tos-window.skin-cyan {
-	> section {
-		background-color: #169C9C;
-	}
+	background-color: #169C9C;
 }
 .tos-window.skin-lightblue {
-	> section {
-		background-color: #3AB3DA;
-	}
+	background-color: #3AB3DA;
 }
 .tos-window.skin-blue {
-	> section {
-		background-color: #3C44AA;
-	}
+	background-color: #3C44AA;
 }
 .tos-window.skin-purple {
-	> section {
-		background-color: #8932B8;
-	}
+	background-color: #8932B8;
 }
 .tos-window.skin-magenta {
-	> section {
-		background-color: #C74EBD;
-	}
+	background-color: #C74EBD;
 }
 .tos-window.skin-pink {
-	> section {
-		background-color: #F38BAA;
-	}
+	background-color: #F38BAA;
 }
 
 /* transparent */
 
 .tos-window.skin-transparent {
-	> section {
-		background-color: transparent;
-	}
+	background-color: transparent;
 }
 .tos-window.skin-transparentfull {
+	background-color: transparent;
 	> header {
-		background-color: transparent;
-	}
-	> section {
 		background-color: transparent;
 	}
 }
 .tos-window.skin-glass {
-	> section {
-		background-color: transparent;
-		backdrop-filter: blur(10px);
-	}
+	background-color: transparent;
+	backdrop-filter: blur(10px);
 }
 .tos-window.skin-glassfull {
+	background-color: transparent;
+	backdrop-filter: blur(10px);
 	> header {
 		background-color: transparent;
 		backdrop-filter: blur(20px);
-	}
-	> section {
-		background-color: transparent;
-		backdrop-filter: blur(10px);
 	}
 }
 
 /* filters */
 
 .tos-window.skin-filter-negative {
-	> section {
-		background-color: transparent;
-		backdrop-filter: invert(1);
-	}
+	background-color: transparent;
+	backdrop-filter: invert(1);
 }
 .tos-window.skin-filter-grayscale {
-	> section {
-		background-color: transparent;
-		backdrop-filter: grayscale(1);
-	}
+	background-color: transparent;
+	backdrop-filter: grayscale(1);
 }
 .tos-window.skin-filter-saturate {
-	> section {
-		background-color: transparent;
-		backdrop-filter: saturate(5);
-	}
+	background-color: transparent;
+	backdrop-filter: saturate(5);
 }
-
 /* shadow */
 
 .tos-window.skin-deep {
-	> section {
-		box-shadow: inset 0 0 2em #000;
-	}
+	box-shadow: inset 0 0 2em #000;
 }
