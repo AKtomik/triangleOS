@@ -52,7 +52,7 @@ class Window extends WindowContainer {
 			let sameWindow = this.parentGetSame();
 			if (sameWindow.options.unicOpen)
 			{
-				console.debug("reopen identical window");
+				console.debug("but reopen identical window");
 				sameWindow.reopen();
 				this.remove();
 				return;
@@ -60,6 +60,10 @@ class Window extends WindowContainer {
 		}
 		// Unic/add
 		this.addToParent();
+		if (this._inited) {
+			console.debug("but is just reparenting");
+			return
+		};// ! need of that in case of reparenting (like when neast windows inited)
 		this._inited = true;
 
 		// Settings/load
@@ -92,13 +96,15 @@ class Window extends WindowContainer {
 			reopenWillRepose: windowSettings.reopenWillRepose
 		}
 
-		// Create/empty
-		const contentHTML = this.innerHTML;
-		this.innerHTML = "";
 		// Create/content
 		const content = document.createElement("section");
 		content.className = "window-content";
-		content.innerHTML = contentHTML;
+		// Create/tranfert
+		const fragment = document.createDocumentFragment();
+		while (this.firstChild) {
+			fragment.appendChild(this.firstChild);
+		}
+		content.appendChild(fragment);
 		// Create/header
 		const header = document.createElement("header");
 		header.className = "window-header";
