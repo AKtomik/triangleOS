@@ -1,6 +1,6 @@
 # TriangleOS
 
-**TriangleOS** is a lightweight pseudo operating system UI for web.
+**TriangleOS** is a lightweight javascript library you can use to make pseudo operating system UI for web.
 It provides draggable, resizable windows and a desktop-like environment for building games, portfolios, or fun experiments.
 
 Quickstart:
