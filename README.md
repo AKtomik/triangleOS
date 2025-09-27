@@ -1,13 +1,9 @@
 # TriangleOS
 
-**TriangleOS** is a lightweight pseudo operating system UI for web.
+**TriangleOS** is a lightweight JavaScript library for creating desktop-style, pseudo operating system interfaces on the web.
 It provides draggable, resizable windows and a desktop-like environment for building games, portfolios, or fun experiments.
 
-Quickstart:
-
-- clone this repository
-- custom your windows
-- run it in a local server
+You can try it rigth now just here <https://triangle.js.org/>
 
 ## Install
 
@@ -314,7 +310,7 @@ To change default value used for windows, change in global settings. Setting: `w
 A list of all window value and their default value.
 
 ```list
-- title: "Sans titre"
+- title: "Untitled"
 - isFullscreen: false
 - hideHeader: false
 - openWay: "random" (see enum WindowOpenWay for possibilities)
