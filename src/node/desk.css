@@ -58,7 +58,6 @@
   width: 100%;
   height: 100%;
 	object-fit: contain;
-	image-rendering: auto;
 }
 .tos-desktop-icon > footer {
 	display: flex;
