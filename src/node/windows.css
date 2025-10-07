@@ -58,6 +58,13 @@
 	aspect-ratio: 1;
 }
 
+.tos-window > header > button > img {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 /* content */
 
 .tos-window > section {

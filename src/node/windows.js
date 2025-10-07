@@ -110,10 +110,15 @@ class Window extends WindowContainer {
 		// Create/header
 		const header = document.createElement("header");
 		header.className = "window-header";
+		let createElementImage = (imgSrc) => {
+			let image = document.createElement("img");
+			image.src = imgSrc;
+			return image;
+		}
 		// Create/header/close
 		const closeBtn = document.createElement("button");
 		closeBtn.className = "action-close";
-		closeBtn.textContent = "X";
+		closeBtn.appendChild(createElementImage("src/assets/buttons/close.svg"));
 		closeBtn.onpointerdown = (e) => e.stopPropagation();
 		closeBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
@@ -122,7 +127,7 @@ class Window extends WindowContainer {
 		// Create/header/full
 		const fullBtn = document.createElement("button");
 		fullBtn.className = "action-full";
-		fullBtn.textContent = "□";
+		fullBtn.appendChild(createElementImage("src/assets/buttons/full.svg"));
 		fullBtn.onpointerdown = (e) => e.stopPropagation();
 		fullBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
@@ -131,7 +136,7 @@ class Window extends WindowContainer {
 		// Create/header/min
 		const miniBtn = document.createElement("button");
 		miniBtn.className = "action-full";
-		miniBtn.textContent = "__";
+		miniBtn.appendChild(createElementImage("src/assets/buttons/mini.svg"));
 		miniBtn.onpointerdown = (e) => e.stopPropagation();
 		miniBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
