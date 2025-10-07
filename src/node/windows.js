@@ -110,9 +110,10 @@ class Window extends WindowContainer {
 		// Create/header
 		const header = document.createElement("header");
 		header.className = "window-header";
-		let createElementImage = (imgSrc) => {
+		let createElementImage = (imgSrc, customClass) => {
 			let image = document.createElement("img");
 			image.src = imgSrc;
+			if (customClass) image.className=customClass;
 			return image;
 		}
 		// Create/header/close
@@ -127,8 +128,8 @@ class Window extends WindowContainer {
 		// Create/header/full
 		const fullBtn = document.createElement("button");
 		fullBtn.className = "action-full";
-		fullBtn.appendChild(createElementImage("src/assets/buttons/full.svg"));
-		fullBtn.appendChild(createElementImage("src/assets/buttons/unfull.svg"));
+		fullBtn.appendChild(createElementImage("src/assets/buttons/full.svg", "on"));
+		fullBtn.appendChild(createElementImage("src/assets/buttons/unfull.svg", "off"));
 		fullBtn.onpointerdown = (e) => e.stopPropagation();
 		fullBtn.addEventListener("click", (e) => {
 			e.stopPropagation();

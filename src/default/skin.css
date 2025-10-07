@@ -30,10 +30,19 @@
 		background: red;
 	}
 	> header > .action-full {
-	  background: transparent;
+		background: transparent;
+		position: relative;
+		img {
+			position: absolute;
+			width: 50%;
+			width: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 	}
 	> header > .action-mini {
-	  background: transparent;
+		background: transparent;
 	}
 	> header > .action-close:disabled {
 		background: dimgray;
@@ -42,6 +51,24 @@
 	> section {
 		background-color: #aaaaaa;
 		outline: 2px black solid;
+	}
+}
+
+.tos-window > header {
+	> .action-full .on {
+		opacity: 1;
+	}
+	> .action-full .off {
+		opacity: 0;
+	}
+}
+
+.tos-window.tos-is-fullscreen > header {
+	> .action-full .on {
+		opacity: 0;
+	}
+	> .action-full .off {
+		opacity: 1;
 	}
 }
 
