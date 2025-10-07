@@ -128,6 +128,7 @@ class Window extends WindowContainer {
 		const fullBtn = document.createElement("button");
 		fullBtn.className = "action-full";
 		fullBtn.appendChild(createElementImage("src/assets/buttons/full.svg"));
+		fullBtn.appendChild(createElementImage("src/assets/buttons/unfull.svg"));
 		fullBtn.onpointerdown = (e) => e.stopPropagation();
 		fullBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
@@ -135,7 +136,7 @@ class Window extends WindowContainer {
 		});
 		// Create/header/min
 		const miniBtn = document.createElement("button");
-		miniBtn.className = "action-full";
+		miniBtn.className = "action-mini";
 		miniBtn.appendChild(createElementImage("src/assets/buttons/mini.svg"));
 		miniBtn.onpointerdown = (e) => e.stopPropagation();
 		miniBtn.addEventListener("click", (e) => {

@@ -26,13 +26,14 @@
 		background-color: gray;
 		color: black;
 	}
-	> header > .action-full {
-	  background: transparent;
-	  color: black;
-	}
 	> header > .action-close {
 		background: red;
-		color: white;
+	}
+	> header > .action-full {
+	  background: transparent;
+	}
+	> header > .action-mini {
+	  background: transparent;
 	}
 	> header > .action-close:disabled {
 		background: dimgray;
