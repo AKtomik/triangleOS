@@ -80,35 +80,49 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-anything">
-	<tos-window class="size-middle" data-title="A window can contain ANYTHING">
+	<tos-window class="size-small" data-title="A window can contain ANYTHING">
 		<h1 style="text-align: center;">
 			ANYTHING
+			<!-- I'm sure you laughed at the joke (yes you did) -->
 		</h1>
-		<!-- just left ANYTHING for the joke -haha (you) -->
-		<!--<p>
-			A window can contain almost anything HTML content. It is a container like another, isn't it?
-		</p>
-		<p>
-			Except it can be open, dragged, resized...
-		</p>-->
 	</tos-window>
 </template>
 
-<template id="template-tuto-skin">
-	<tos-window class="size-middle skin-raimbow" data-title="custom skins">
-		<h1>
-			Using skins
-		</h1>
+<template id="template-tuto-content">
+	<tos-window class="size-middle skin-black" data-title="Super cool content">
 		<p>
-			There is a lot of defaults skins already aviable.
-			But you can create your owns in tos-skin.css or even in another CSS file that you are importing yourself.
+			A window can contain any HTML content. It is a container like another, isn't it?
+		</p>
+		<p>
+			Except it can be dragged, resized, minimized...
+		</p>
+		<p>
+			So use the power of HTML, CSS and JS for your window content!
 		</p>
 	</tos-window>
+</template>
+
+<template id="template-tuto-neast">
+	<tos-window class="size-big skin-glass" data-title="Window is window container">
+		<tos-window class="size-middle skin-red" data-title="Did you know"></tos-window>
+		<tos-window class="size-middle skin-green" data-title="you can create windows"></tos-window>
+		<tos-window class="size-middle skin-blue" data-title="inside of others windows?"></tos-window>
+	</tos-window>
+</template>
+
+<template id="template-tuto-desk">
+	<tos-desk class="size-big skin-transparent" id="deskwindow-inside" data-title="the desktop is a window!" data-unicOpen>
+		<tos-desktop style="--desktop-columns: 4; --desktop-rows:3;" id="desktop-inside">
+			<tos-desktop-icon data-name="any.window" ondblclick="TriangleOS.Window.open('template-tuto-anything', 'desktop-inside')">
+				<img src="assets/icons/win/tuto.png">
+			</tos-desktop-icon>
+		</tos-desktop>
+	</tos-desk>
 </template>
 
 
 <template id="template-tuto-style">
-	<tos-window class="size-middle" data-title="custom style and size">
+	<tos-window class="size-middle" data-title="change style and size">
 		<p>
 			You can change a element size and skin by adding class.
 		</p>
@@ -153,11 +167,34 @@ data-openway="openway": way to open window
 	</tos-window>
 </template>
 
-<template id="template-tuto-neast">
-	<tos-window class="size-big skin-glass" data-title="Window is window container">
-		<tos-window class="size-middle skin-red" data-title="Did you know"></tos-window>
-		<tos-window class="size-middle skin-green" data-title="you can create windows"></tos-window>
-		<tos-window class="size-middle skin-blue" data-title="inside of others windows?"></tos-window>
+<template id="template-tuto-skin">
+	<tos-window class="size-middle skin-raimbow" data-title="custom skins">
+		<h1>
+			Using skins
+		</h1>
+		<p>
+			There is a lot of defaults skins already aviable.
+		</p>
+		<p>
+			But you can create your owns in tos-skin.css (auto imported) or in another CSS file.
+		</p>
+		<p>
+			Like this one, for example!
+		</p>
+	</tos-window>
+</template>
+
+<template id="template-tuto-super">
+	<tos-window class="size-middle skin-raimbow" data-title="powerfull skins">
+		<h1>
+			Skins are powerfull
+		</h1>
+		<p>
+			Skins can also change the look of the window itself, by changing topbar and icons.
+		</p>
+		<p>
+			You can override any default rule by adding skins!
+		</p>
 	</tos-window>
 </template>
 
