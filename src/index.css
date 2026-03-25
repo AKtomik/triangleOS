@@ -1,10 +1,10 @@
 @import url(./misc/body.css);
-@import url(./misc/atr.css);
 
 @import url(./node/windows.css);
 @import url(./node/desk.css);
 @import url(./node/structure.css);
 
+@import url(./default/atr.css);
 @import url(./default/skin.css);
 
 /* user css loaded with javascript */
