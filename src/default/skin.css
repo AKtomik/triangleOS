@@ -112,16 +112,19 @@
 .tos-window.skin-gray {
 	> section {
 		background-color: #474F52;
+		color: #ffffff;
 	}
 }
 .tos-window.skin-black {
 	> section {
 		background-color: #1D1D21;
+		color: #ffffff;
 	}
 }
 .tos-window.skin-brown {
 	> section {
 		background-color: #835432;
+		color: #ffffff;
 	}
 }
 .tos-window.skin-red {
