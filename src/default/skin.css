@@ -1,9 +1,7 @@
 /* -- desk appearance -- */
 
-.tos-desk > section {
-	background-image: url(../assets/placeholder-background.png);
-	background-size: 100% 100%;
-	background-color: none;
+.tos-desk {
+	--desk-background: url(../assets/placeholder-background.png);
 }
 
 .tos-desktop {
