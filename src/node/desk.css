@@ -92,17 +92,19 @@
 	height: 100%;
 	aspect-ratio: 1;
 	display: inline-block;
-	margin-right: 3%;
+	margin-right: 2%;
 	cursor: pointer;
 }
 
-.tos-deskbar > .tos-deskbar-icon {
+.tos-deskbar > .tos-deskbar-icon,.tos-deskbar-separator {
 	height: 100%;
 	aspect-ratio: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 0;
+}
+.tos-deskbar > .tos-deskbar-icon {
 	cursor: pointer;
 }
 .tos-deskbar > .tos-deskbar-icon img {
