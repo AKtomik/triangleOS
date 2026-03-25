@@ -23,6 +23,9 @@
 
 .tos-window.tos-is-dragging {
   cursor: grabbing !important;
+	> * {
+  	cursor: grabbing !important;
+	}
 }
 
 /* header */
@@ -53,7 +56,6 @@
 .tos-window > header > button {
 	flex: 0 0 auto;
   border: none;
-  cursor: pointer;
   padding: 0 8px;
 	aspect-ratio: 1;
 }

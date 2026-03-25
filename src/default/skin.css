@@ -1,17 +1,40 @@
-/* -- os appearance -- */
+/* -- desk appearance -- */
 
 .tos-desk > section {
 	background-image: url(../assets/placeholder-background.png);
 	background-size: 100% 100%;
 	background-color: none;
 }
+
+.tos-desktop {
+	--desktop-columns: 12;
+	--desktop-rows: 5;
+}
+
+.tos-desktop-icon {
+  cursor: pointer;
+	> footer > p {
+		font-size: 20px;
+	}
+}
+
+.tos-desktop-icon.tos-is-selected {
+  background: rgba(0, 150, 255, 0.3);
+  outline: 1px solid blue;
+}
+
 .tos-deskbar {
-	border-top: 1px white solid;
+	outline: 1px white solid;
 	backdrop-filter: blur(10px) brightness(.5);
+	justify-content: left;
 	/*background-color: darkblue;*/
 }
 
+.tos-deskbar-icon {
+	cursor: pointer;
+}
 .tos-deskbar-launch {
+	cursor: pointer;
 	background-image: url(../assets/placeholder-launch.png);
 	background-size: 100% 100%;
 }
@@ -25,6 +48,7 @@
 	> header {
 		background-color: gray;
 		color: black;
+		cursor: default;
 	}
 	> header nav {
 		width: 100%;
@@ -32,6 +56,9 @@
 		mask-size: 60%;
 		mask-repeat: no-repeat;
 		mask-position: center;
+	}
+	> header > button {
+  	cursor: pointer;
 	}
 	> header > .action-close {
 		background: red;
@@ -78,6 +105,7 @@
 	}
 }
 
+/* full action */
 .tos-window > header {
 	> .action-full .on {
 		opacity: 1;
@@ -96,7 +124,7 @@
 	}
 }
 
-/* skins */
+/* -- skins -- */
 
 /* colors */
 .tos-window.skin-white {
