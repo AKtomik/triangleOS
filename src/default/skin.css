@@ -65,7 +65,7 @@
 		padding: 0;
 		> nav {
 			background-color: white;
-			mask-image: url(../assets/buttons/close.svg);
+			--button-image: url(../assets/buttons/close.svg);
 		}
 	}
 	> header > .action-full {
@@ -77,14 +77,14 @@
 			top: 0;
 			bottom: 0;
 			background-color: black;
-			mask-image: url(../assets/buttons/full.svg);
+			--button-image: url(../assets/buttons/full.svg);
 		}
 		> nav.off {
 			position: absolute;
 			top: 0;
 			bottom: 0;
 			background-color: black;
-			mask-image: url(../assets/buttons/unfull.svg);
+			--button-image: url(../assets/buttons/unfull.svg);
 		}
 	}
 	> header > .action-mini {
@@ -92,7 +92,7 @@
 		padding: 0;
 		> nav {
 			background-color: black;
-			mask-image: url(../assets/buttons/mini.svg);
+			--button-image: url(../assets/buttons/mini.svg);
 		}
 	}
 	> header > .action-close:disabled {
