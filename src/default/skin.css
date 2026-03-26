@@ -131,85 +131,85 @@
 /* -- top skins -- */
 
 /* colors */
-.tos-window.topskin-white {
+.tos-window.skin-top-white {
 	> header {
 		background-color: #F9FFFE;
 	}
 }
-.tos-window.topskin-lightgray {
+.tos-window.skin-top-lightgray {
 	> header {
 		background-color: #9D9D97;
 	}
 }
-.tos-window.topskin-gray {
+.tos-window.skin-top-gray {
 	> header {
 		background-color: #474F52;
 		color: #ffffff;
 	}
 }
-.tos-window.topskin-black {
+.tos-window.skin-top-black {
 	> header {
 		background-color: #1D1D21;
 		color: #ffffff;
 	}
 }
-.tos-window.topskin-brown {
+.tos-window.skin-top-brown {
 	> header {
 		background-color: #835432;
 		color: #ffffff;
 	}
 }
-.tos-window.topskin-red {
+.tos-window.skin-top-red {
 	> header {
 		background-color: #B02E26;
 	}
 }
-.tos-window.topskin-orange {
+.tos-window.skin-top-orange {
 	> header {
 		background-color: #F9801D;
 	}
 }
-.tos-window.topskin-yellow {
+.tos-window.skin-top-yellow {
 	> header {
 		background-color: #FED83D;
 	}
 }
-.tos-window.topskin-lime {
+.tos-window.skin-top-lime {
 	> header {
 		background-color: #80C71F;
 	}
 }
-.tos-window.topskin-green {
+.tos-window.skin-top-green {
 	> header {
 		background-color: #5E7C16;
 	}
 }
-.tos-window.topskin-cyan {
+.tos-window.skin-top-cyan {
 	> header {
 		background-color: #169C9C;
 	}
 }
-.tos-window.topskin-lightblue {
+.tos-window.skin-top-lightblue {
 	> header {
 		background-color: #3AB3DA;
 	}
 }
-.tos-window.topskin-blue {
+.tos-window.skin-top-blue {
 	> header {
 		background-color: #3C44AA;
 	}
 }
-.tos-window.topskin-purple {
+.tos-window.skin-top-purple {
 	> header {
 		background-color: #8932B8;
 	}
 }
-.tos-window.topskin-magenta {
+.tos-window.skin-top-magenta {
 	> header {
 		background-color: #C74EBD;
 	}
 }
-.tos-window.topskin-pink {
+.tos-window.skin-top-pink {
 	> header {
 		background-color: #F38BAA;
 	}
@@ -217,12 +217,12 @@
 
 /* transparent */
 
-.tos-window.topskin-transparent {
+.tos-window.skin-top-transparent {
 	> header {
 		background-color: transparent;
 	}
 }
-.tos-window.topskin-glass {
+.tos-window.skin-top-glass {
 	> header {
 		background-color: transparent;
 		backdrop-filter: blur(20px);
@@ -231,19 +231,19 @@
 
 /* filters */
 
-.tos-window.topskin-filter-negative {
+.tos-window.skin-top-filter-negative {
 	> header {
 		background-color: transparent;
 		backdrop-filter: invert(1);
 	}
 }
-.tos-window.topskin-filter-grayscale {
+.tos-window.skin-top-filter-grayscale {
 	> header {
 		background-color: transparent;
 		backdrop-filter: grayscale(1);
 	}
 }
-.tos-window.topskin-filter-saturate {
+.tos-window.skin-top-filter-saturate {
 	> header {
 		background-color: transparent;
 		backdrop-filter: saturate(5);
@@ -252,7 +252,7 @@
 
 /* shadow */
 
-.tos-window.topskin-deep {
+.tos-window.skin-top-deep {
 	> header {
 		box-shadow: inset 0 0 2em #000;
 	}

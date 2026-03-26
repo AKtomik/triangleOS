@@ -194,7 +194,7 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-super">
-	<tos-window class="size-middle scrollable skin-glassfull" data-title="powerfull skins">
+	<tos-window class="size-middle scrollable skin-top-glass skin-magenta" data-title="powerfull skins">
 		<h1>
 			Skins are powerfull
 		</h1>
@@ -203,6 +203,16 @@ data-openway="openway": way to open window
 		</p>
 		<p>
 			You can override any default rule by adding skins!
+		</p>
+		<p>
+			Wanna 
+			<a onclick="(() => {
+					TriangleOS.Window.parent(this).applySkin('skin-red');
+					TriangleOS.Window.parent(this).applySkin('skin-top-blue', false);
+				})()">
+			see
+			</a>
+			?
 		</p>
 	</tos-window>
 </template>
