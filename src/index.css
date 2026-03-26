@@ -6,7 +6,7 @@
 @import url(./node/structure.css);
 
 @import url(./default/appearance.css);
-@import url(./default/skin.css);
-@import url(./default/size.css);
+@import url(./vanilla/skin.css);
+@import url(./vanilla/size.css);
 
 /* user css loaded with javascript */
