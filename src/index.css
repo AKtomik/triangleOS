@@ -1,4 +1,5 @@
 @import url(./misc/body.css);
+@import url(./misc/var.css);
 
 @import url(./node/windows.css);
 @import url(./node/desk.css);

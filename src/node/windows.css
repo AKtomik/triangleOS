@@ -60,12 +60,6 @@
 	aspect-ratio: 1;
 }
 
-@property --button-image {
-	syntax: "<image url>";
-	inherits: false;
-	initial-value: none;
-}
-
 .tos-window > header > button {
 	> nav {
 		--button-image: url(../assets/buttons/full.svg);

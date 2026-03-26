@@ -1,0 +1,21 @@
+@property --button-image {
+	syntax: "<image>";
+	inherits: true;
+	initial-value: none;
+}
+@property --desk-image {
+	syntax: "<image>";
+	inherits: true;
+	initial-value: "none.png";
+}
+
+@property --desktop-rows {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 5;
+}
+@property --desktop-columns {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 9;
+}
