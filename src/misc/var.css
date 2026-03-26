@@ -3,7 +3,7 @@
 	inherits: true;
 	initial-value: none;
 }
-@property --desk-image {
+@property --desk-background {
 	syntax: "<image>";
 	inherits: true;
 	initial-value: "none.png";
