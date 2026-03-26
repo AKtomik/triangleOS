@@ -590,7 +590,7 @@ class Window extends WindowContainer {
 	{
 		if (!classSizeName.startsWith("size-"))
 		{
-			console.error("the skin given to applySkin does not starts with 'skin-':",classSizeName);
+			console.error("the size given to applySize does not starts with 'size-':",classSizeName);
 			return;
 		}
 		if (removeOthers)
