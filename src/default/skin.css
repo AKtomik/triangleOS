@@ -92,25 +92,7 @@
 		background-color: transparent;
 	}
 }
-.tos-window.skin-transparentfull {
-	> header {
-		background-color: transparent;
-	}
-	> section {
-		background-color: transparent;
-	}
-}
 .tos-window.skin-glass {
-	> section {
-		background-color: transparent;
-		backdrop-filter: blur(10px);
-	}
-}
-.tos-window.skin-glassfull {
-	> header {
-		background-color: transparent;
-		backdrop-filter: blur(20px);
-	}
 	> section {
 		background-color: transparent;
 		backdrop-filter: blur(10px);
@@ -142,6 +124,136 @@
 
 .tos-window.skin-deep {
 	> section {
+		box-shadow: inset 0 0 2em #000;
+	}
+}
+
+/* -- top skins -- */
+
+/* colors */
+.tos-window.topskin-white {
+	> header {
+		background-color: #F9FFFE;
+	}
+}
+.tos-window.topskin-lightgray {
+	> header {
+		background-color: #9D9D97;
+	}
+}
+.tos-window.topskin-gray {
+	> header {
+		background-color: #474F52;
+		color: #ffffff;
+	}
+}
+.tos-window.topskin-black {
+	> header {
+		background-color: #1D1D21;
+		color: #ffffff;
+	}
+}
+.tos-window.topskin-brown {
+	> header {
+		background-color: #835432;
+		color: #ffffff;
+	}
+}
+.tos-window.topskin-red {
+	> header {
+		background-color: #B02E26;
+	}
+}
+.tos-window.topskin-orange {
+	> header {
+		background-color: #F9801D;
+	}
+}
+.tos-window.topskin-yellow {
+	> header {
+		background-color: #FED83D;
+	}
+}
+.tos-window.topskin-lime {
+	> header {
+		background-color: #80C71F;
+	}
+}
+.tos-window.topskin-green {
+	> header {
+		background-color: #5E7C16;
+	}
+}
+.tos-window.topskin-cyan {
+	> header {
+		background-color: #169C9C;
+	}
+}
+.tos-window.topskin-lightblue {
+	> header {
+		background-color: #3AB3DA;
+	}
+}
+.tos-window.topskin-blue {
+	> header {
+		background-color: #3C44AA;
+	}
+}
+.tos-window.topskin-purple {
+	> header {
+		background-color: #8932B8;
+	}
+}
+.tos-window.topskin-magenta {
+	> header {
+		background-color: #C74EBD;
+	}
+}
+.tos-window.topskin-pink {
+	> header {
+		background-color: #F38BAA;
+	}
+}
+
+/* transparent */
+
+.tos-window.topskin-transparent {
+	> header {
+		background-color: transparent;
+	}
+}
+.tos-window.topskin-glass {
+	> header {
+		background-color: transparent;
+		backdrop-filter: blur(20px);
+	}
+}
+
+/* filters */
+
+.tos-window.topskin-filter-negative {
+	> header {
+		background-color: transparent;
+		backdrop-filter: invert(1);
+	}
+}
+.tos-window.topskin-filter-grayscale {
+	> header {
+		background-color: transparent;
+		backdrop-filter: grayscale(1);
+	}
+}
+.tos-window.topskin-filter-saturate {
+	> header {
+		background-color: transparent;
+		backdrop-filter: saturate(5);
+	}
+}
+
+/* shadow */
+
+.tos-window.topskin-deep {
+	> header {
 		box-shadow: inset 0 0 2em #000;
 	}
 }
