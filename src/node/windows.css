@@ -28,6 +28,26 @@
 	}
 }
 
+/* full action */
+
+.tos-window > header {
+	> .action-full .on {
+		opacity: 1;
+	}
+	> .action-full .off {
+		opacity: 0;
+	}
+}
+
+.tos-window.tos-is-fullscreen > header {
+	> .action-full .on {
+		opacity: 0;
+	}
+	> .action-full .off {
+		opacity: 1;
+	}
+}
+
 /* header */
 
 .tos-window > header {

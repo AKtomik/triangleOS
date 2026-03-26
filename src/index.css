@@ -5,7 +5,8 @@
 @import url(./node/desk.css);
 @import url(./node/structure.css);
 
-@import url(./default/atr.css);
+@import url(./default/appearance.css);
 @import url(./default/skin.css);
+@import url(./default/atr.css);
 
 /* user css loaded with javascript */
