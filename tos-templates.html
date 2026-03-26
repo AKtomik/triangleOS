@@ -111,9 +111,18 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-desk">
-	<tos-desk style="--desk-background: url('../../assets/background/cat.png')" class="size-big skin-transparent" id="deskwindow-inside" data-title="the desktop is a window!" data-unicOpen>
+	<tos-desk style="--desk-background: url('../../assets/background/cat.png')" class="size-big skin-transparent" id="deskwindow-inside" data-title="desktop is window!" data-unicOpen>
 		<tos-desktop style="--desktop-columns: 4; --desktop-rows:3;" id="desktop-inside">
-			<tos-desktop-icon data-name="any.window" ondblclick="TriangleOS.Window.open('template-tuto-anything', 'desktop-inside')">
+			<tos-desktop-icon style="grid-row: 1; font-weight: bolder; color: red;" data-name="desktop">
+				<img src="assets/icons/svg/info.svg">
+			</tos-desktop-icon>
+			<tos-desktop-icon style="grid-row: 1; font-weight: bolder; color: green;" data-name="is just">
+				<img src="assets/icons/svg/info.svg">
+			</tos-desktop-icon>
+			<tos-desktop-icon style="grid-row: 1; font-weight: bolder; color: blue;" data-name="a window">
+				<img src="assets/icons/svg/info.svg">
+			</tos-desktop-icon>
+			<tos-desktop-icon style="grid-row: 2; grid-column: 1;" data-name="any.window" ondblclick="TriangleOS.Window.open('template-tuto-anything', 'desktop-inside')">
 				<img src="assets/icons/win/tuto.png">
 			</tos-desktop-icon>
 		</tos-desktop>
