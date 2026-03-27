@@ -194,7 +194,7 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-super">
-	<tos-window class="size-middle scrollable skin-top-glass skin-magenta" data-title="powerfull skins">
+	<tos-window class="size-middle scrollable skin-top-glass skin-lightgray" data-title="powerfull skins">
 		<h1>
 			Skins are powerfull
 		</h1>
@@ -207,8 +207,12 @@ data-openway="openway": way to open window
 		<p>
 			Wanna 
 			<a onclick="(() => {
-					TriangleOS.Window.parent(this).applySkin('skin-red');
-					TriangleOS.Window.parent(this).applySkin('skin-top-blue', false);
+					let contentSkinList = TriangleOS.Vanilla.skinListType.content;
+					let contentSkinRandom = contentSkinList[Math.floor(contentSkinList.length * Math.random())];
+					TriangleOS.Window.parent(this).applySkin(contentSkinRandom);
+					let topSkinList = TriangleOS.Vanilla.skinListType.top;
+					let topSkinRandom = topSkinList[Math.floor(topSkinList.length * Math.random())];
+					TriangleOS.Window.parent(this).applySkin(topSkinRandom, false);
 				})()">
 			see
 			</a>
