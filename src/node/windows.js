@@ -290,14 +290,14 @@ class Window extends WindowContainer {
 	{
 		let parent = this.parentElement;
 		let key = this.tosWindowId;
-		return (parent.tos_windowContainerValut?.[key]?.length > 0)
+		return (parent.tos_windowContainerVault?.[key]?.length > 0)
 	}
 
 	parentGetSame()
 	{
 		let parent = this.parentElement;
 		let key = this.tosWindowId;
-		let list = parent.tos_windowContainerValut[key];
+		let list = parent.tos_windowContainerVault[key];
 		return list[list.length - 1];
 	}
 
@@ -306,11 +306,11 @@ class Window extends WindowContainer {
 		this.attachedParent = this.parentElement;
 		let parent = this.attachedParent;
 		let key = this.tosWindowId;
-		if (parent.tos_windowContainerValut === undefined)
-			parent.tos_windowContainerValut = {};
-		if (parent.tos_windowContainerValut[key] === undefined)
-			parent.tos_windowContainerValut[key] = [];
-		parent.tos_windowContainerValut[key].push(this);
+		if (parent.tos_windowContainerVault === undefined)
+			parent.tos_windowContainerVault = {};
+		if (parent.tos_windowContainerVault[key] === undefined)
+			parent.tos_windowContainerVault[key] = [];
+		parent.tos_windowContainerVault[key].push(this);
 	}
 
 	removeToParent()
@@ -318,13 +318,13 @@ class Window extends WindowContainer {
 		if (!this._inited) return;
 		let parent = this.attachedParent;
 		let key = this.tosWindowId;
-		const removeIndex = parent.tos_windowContainerValut[key].indexOf(this);
+		const removeIndex = parent.tos_windowContainerVault[key].indexOf(this);
 		if (removeIndex === -1) {
-			throw new Error("trying remove to parent but is not in Window.minimizedList");
+			throw new Error("trying remove to parent but is not in containerVault");
 		}
-		parent.tos_windowContainerValut[key].splice(removeIndex, 1);
-		if (parent.tos_windowContainerValut[key].length === 0)
-			parent.tos_windowContainerValut[key] = undefined;
+		parent.tos_windowContainerVault[key].splice(removeIndex, 1);
+		if (parent.tos_windowContainerVault[key].length === 0)
+			parent.tos_windowContainerVault[key] = undefined;
 	}
 
 	// PROPETIES
@@ -571,7 +571,7 @@ class Window extends WindowContainer {
 	{
 		if (!classSkinName.startsWith("skin-"))
 		{
-			console.error("the skin given to applySkin does not starts with 'skin-':",classSkinName);
+			console.error("skin class name must start with 'skin-' but is:",classSkinName);
 			return;
 		}
 		if (removeOthers)
@@ -590,7 +590,7 @@ class Window extends WindowContainer {
 	{
 		if (!classSizeName.startsWith("size-"))
 		{
-			console.error("the size given to applySize does not starts with 'size-':",classSizeName);
+			console.error("size class name must start with 'size-' but is:",classSizeName);
 			return;
 		}
 		if (removeOthers)
