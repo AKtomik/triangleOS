@@ -1,6 +1,6 @@
 
 
-class Vanilla {
+class Collection {
 	static sizeList = ['size-full', 'size-small', 'size-middle'];
 
 	static skinListType = {
@@ -12,4 +12,4 @@ class Vanilla {
 	static skinList = [...this.skinListType.content, ...this.skinListType.top, ...this.skinListType.all];
 }
 
-export { Vanilla };
+export { Collection };

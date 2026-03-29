@@ -6,7 +6,7 @@ import "./node/structure.js";
 import "./node/spawn.js";
 
 import { Template } from "./misc/template.js";
-import { Vanilla } from "./vanilla/vanilla.js";
+import { Collection } from "./vanilla/collection.js";
 
 import { Settings } from  "./default/settings.js";
 import * as Enum from  "./misc/enum.js";
@@ -18,7 +18,7 @@ const TriangleOS = {
   Window,
   Desk,
   Template,
-  Vanilla,
+  Collection,
   Settings,
   Enum
 };
