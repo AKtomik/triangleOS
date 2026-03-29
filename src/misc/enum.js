@@ -13,8 +13,8 @@ export const WindowCloseAction = Object.freeze({
   DUMMY: "dummy"
 });
 
-export const SkinApplyReplaceMode = Object.freeze({
-  NONE: "none",
-  ALL: "all",
-  SAME_TYPE: "same_type",
+export const SkinReplaceMode = Object.freeze({
+  NONE: 0,
+  ALL: 1,
+  SAME_TYPE: 2,
 });

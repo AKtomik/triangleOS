@@ -1,4 +1,4 @@
-import { WindowOpenWay, WindowCloseAction, SkinApplyReplaceMode } from "../misc/enum.js";
+import { WindowOpenWay, WindowCloseAction, SkinReplaceMode } from "../misc/enum.js";
 import { AbsPos, shallowSignature } from "../misc/basic.js";
 import { Settings } from "../default/settings.js";
 import { Template } from "../misc/template.js";
@@ -567,7 +567,7 @@ class Window extends WindowContainer {
 		this.style.zIndex = Window.zCounter++;
 	}
 
-	applySkin(classSkinName, replaceMode = SkinApplyReplaceMode.SAME_TYPE)
+	applySkin(classSkinName, replaceMode = SkinReplaceMode.SAME_TYPE)
 	{
 		if (!classSkinName.startsWith("skin-"))
 		{
@@ -577,7 +577,7 @@ class Window extends WindowContainer {
 
 		switch (replaceMode)
 		{
-			case SkinApplyReplaceMode.ALL: {
+			case SkinReplaceMode.ALL: {
 				this.classList.forEach(cls => {
 					if (cls.startsWith("skin-")) {
 							this.classList.remove(cls);
@@ -586,7 +586,7 @@ class Window extends WindowContainer {
 				)
 			} break;
 
-			case SkinApplyReplaceMode.SAME_TYPE: {
+			case SkinReplaceMode.SAME_TYPE: {
 				const [, skinType, afterSkinType] = classSkinName.split('-', 3); 
 				if (!skinType || !afterSkinType)
 				{
@@ -601,7 +601,7 @@ class Window extends WindowContainer {
 				)
 			} break;
 			
-			case SkinApplyReplaceMode.NONE: break;
+			case SkinReplaceMode.NONE: break;
 			
 			default: {
 				console.warn("unknow replaceMode:", replaceMode);
