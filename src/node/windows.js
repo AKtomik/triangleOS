@@ -567,6 +567,27 @@ class Window extends WindowContainer {
 		this.style.zIndex = Window.zCounter++;
 	}
 
+
+	#removeClassesStartingWith(startString)
+	{
+		this.classList.forEach(cls => {
+			if (cls.startsWith(startString)) {
+					this.classList.remove(cls);
+				}
+			}
+		)
+	}
+
+	clearSkins(collection)
+	{
+		this.#removeClassesStartingWith((collection) ? `skin-${collection}-` : "skin-");
+	}
+
+	clearSizes(collection)
+	{
+		this.#removeClassesStartingWith("size-");
+	}
+
 	applySkin(classSkinName, replaceMode = SkinReplaceMode.ALL)
 	{
 		if (!classSkinName.startsWith("skin-"))
@@ -578,14 +599,7 @@ class Window extends WindowContainer {
 		switch (replaceMode)
 		{
 			case true:
-			case SkinReplaceMode.ALL: {
-				this.classList.forEach(cls => {
-					if (cls.startsWith("skin-")) {
-							this.classList.remove(cls);
-						}
-					}
-				)
-			} break;
+			case SkinReplaceMode.ALL: this.clearSkins(); break;
 
 			case SkinReplaceMode.COLLECTION: {
 				const [, skinCollection, afterSkinCollection] = classSkinName.split('-', 3); 
@@ -594,13 +608,7 @@ class Window extends WindowContainer {
 					console.error("trying to replace collections but skin class don't have a collection:", classSkinName);
 					return;
 				}
-				const startStringFilter = "skin-"+skinCollection+"-";
-				this.classList.forEach(cls => {
-					if (cls.startsWith(startStringFilter)) {
-							this.classList.remove(cls);
-						}
-					}
-				)
+				this.clearSkins(skinCollection);
 			} break;
 			
 			case false:
@@ -622,14 +630,7 @@ class Window extends WindowContainer {
 			return;
 		}
 		if (removeOthers)
-		{
-			this.classList.forEach(cls => {
-				if (cls.startsWith("size-")) {
-						this.classList.remove(cls);
-					}
-				}
-			)
-		}
+			this.clearSizes();
 		this.classList.add(classSizeName);
 	}
 }
