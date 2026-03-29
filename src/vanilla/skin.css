@@ -1,85 +1,85 @@
-/* -- content skins -- */
+/* -- in skins -- */
 
 /* colors */
-.tos-window.skin-white {
+.tos-window.skin-in-white {
 	> section {
 		background-color: #F9FFFE;
 	}
 }
-.tos-window.skin-lightgray {
+.tos-window.skin-in-lightgray {
 	> section {
 		background-color: #9D9D97;
 	}
 }
-.tos-window.skin-gray {
+.tos-window.skin-in-gray {
 	> section {
 		background-color: #474F52;
 		color: #ffffff;
 	}
 }
-.tos-window.skin-black {
+.tos-window.skin-in-black {
 	> section {
 		background-color: #1D1D21;
 		color: #ffffff;
 	}
 }
-.tos-window.skin-brown {
+.tos-window.skin-in-brown {
 	> section {
 		background-color: #835432;
 		color: #ffffff;
 	}
 }
-.tos-window.skin-red {
+.tos-window.skin-in-red {
 	> section {
 		background-color: #B02E26;
 	}
 }
-.tos-window.skin-orange {
+.tos-window.skin-in-orange {
 	> section {
 		background-color: #F9801D;
 	}
 }
-.tos-window.skin-yellow {
+.tos-window.skin-in-yellow {
 	> section {
 		background-color: #FED83D;
 	}
 }
-.tos-window.skin-lime {
+.tos-window.skin-in-lime {
 	> section {
 		background-color: #80C71F;
 	}
 }
-.tos-window.skin-green {
+.tos-window.skin-in-green {
 	> section {
 		background-color: #5E7C16;
 	}
 }
-.tos-window.skin-cyan {
+.tos-window.skin-in-cyan {
 	> section {
 		background-color: #169C9C;
 	}
 }
-.tos-window.skin-lightblue {
+.tos-window.skin-in-lightblue {
 	> section {
 		background-color: #3AB3DA;
 	}
 }
-.tos-window.skin-blue {
+.tos-window.skin-in-blue {
 	> section {
 		background-color: #3C44AA;
 	}
 }
-.tos-window.skin-purple {
+.tos-window.skin-in-purple {
 	> section {
 		background-color: #8932B8;
 	}
 }
-.tos-window.skin-magenta {
+.tos-window.skin-in-magenta {
 	> section {
 		background-color: #C74EBD;
 	}
 }
-.tos-window.skin-pink {
+.tos-window.skin-in-pink {
 	> section {
 		background-color: #F38BAA;
 	}
@@ -87,12 +87,12 @@
 
 /* transparent */
 
-.tos-window.skin-transparent {
+.tos-window.skin-in-transparent {
 	> section {
 		background-color: transparent;
 	}
 }
-.tos-window.skin-glass {
+.tos-window.skin-in-glass {
 	> section {
 		background-color: transparent;
 		backdrop-filter: blur(10px);
@@ -101,19 +101,19 @@
 
 /* filters */
 
-.tos-window.skin-filter-negative {
+.tos-window.skin-in-filter-negative {
 	> section {
 		background-color: transparent;
 		backdrop-filter: invert(1);
 	}
 }
-.tos-window.skin-filter-grayscale {
+.tos-window.skin-in-filter-grayscale {
 	> section {
 		background-color: transparent;
 		backdrop-filter: grayscale(1);
 	}
 }
-.tos-window.skin-filter-saturate {
+.tos-window.skin-in-filter-saturate {
 	> section {
 		background-color: transparent;
 		backdrop-filter: saturate(5);
@@ -122,7 +122,7 @@
 
 /* shadow */
 
-.tos-window.skin-deep {
+.tos-window.skin-in-deep {
 	> section {
 		box-shadow: inset 0 0 2em #000;
 	}

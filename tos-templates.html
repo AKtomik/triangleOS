@@ -59,7 +59,7 @@ data-openway="openway": way to open window
 		transform: scale(1.05);
 	}
 	</style>
-	<tos-window class="size-middle scrollable skin-orange" id="welcome-window" data-title="Welcome in TriangleOS!" data-openway="center" data-unicOpen>
+	<tos-window class="size-middle scrollable skin-in-orange" id="welcome-window" data-title="Welcome in TriangleOS!" data-openway="center" data-unicOpen>
 		<div class="welcome-header">
 			<div class="welcome-title">Welcome in TriangleOS!</div>
 			<img src="assets/icons/gold_triangle.png" alt="TriangleOS Logo">
@@ -89,7 +89,7 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-content">
-	<tos-window class="size-middle scrollable skin-black" data-title="Super cool content">
+	<tos-window class="size-middle scrollable skin-in-black" data-title="Super cool content">
 		<p>
 			A window can contain any HTML content. It is a container like another, isn't it?
 		</p>
@@ -103,15 +103,15 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-neast">
-	<tos-window class="size-big skin-glass" data-title="Window is window container">
-		<tos-window class="size-middle skin-red" data-title="Did you know"></tos-window>
-		<tos-window class="size-middle skin-green" data-title="you can create windows"></tos-window>
-		<tos-window class="size-middle skin-blue" data-title="inside of others windows?"></tos-window>
+	<tos-window class="size-big skin-in-glass" data-title="Window is window container">
+		<tos-window class="size-middle skin-in-red" data-title="Did you know"></tos-window>
+		<tos-window class="size-middle skin-in-green" data-title="you can create windows"></tos-window>
+		<tos-window class="size-middle skin-in-blue" data-title="inside of others windows?"></tos-window>
 	</tos-window>
 </template>
 
 <template id="template-tuto-desk">
-	<tos-desk style="--desk-background: url('../../assets/background/cat.png')" class="size-big skin-transparent" id="deskwindow-inside" data-title="desktop is window!" data-unicOpen>
+	<tos-desk style="--desk-background: url('../../assets/background/cat.png')" class="size-big skin-in-transparent" id="deskwindow-inside" data-title="desktop is window!" data-unicOpen>
 		<tos-desktop style="--desktop-columns: 4; --desktop-rows:3;" id="desktop-inside">
 			<tos-desktop-icon style="grid-row: 1; font-weight: bolder; color: red;" data-name="desktop">
 				<img src="assets/icons/svg/info.svg">
@@ -137,19 +137,19 @@ data-openway="openway": way to open window
 		</p>
 		<p>
 			You can make it 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red', TriangleOS.Enum.SkinReplaceMode.ALL)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-in-red', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			red
 			</a>
 			, 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple', TriangleOS.Enum.SkinReplaceMode.ALL)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-in-purple', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			purple
 			</a>
 			 or 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent', TriangleOS.Enum.SkinReplaceMode.ALL)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-in-transparent', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			transparent
 			</a>
 			or even 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', TriangleOS.Enum.SkinReplaceMode.NONE)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-in-deep', TriangleOS.Enum.SkinReplaceMode.NONE)">
 			scary
 			</a>
 			.
@@ -177,7 +177,7 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-skin">
-	<tos-window class="size-middle scrollable skin-rainbow" data-title="custom skins">
+	<tos-window class="size-middle scrollable skin-in-rainbow" data-title="custom skins">
 		<h1>
 			Using skins
 		</h1>
@@ -194,7 +194,7 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-super">
-	<tos-window class="size-middle scrollable skin-top-glass skin-lightgray" data-title="powerfull skins">
+	<tos-window class="size-middle scrollable skin-top-glass skin-in-lightgray" data-title="powerfull skins">
 		<h1>
 			Skins are powerfull
 		</h1>
@@ -213,7 +213,7 @@ data-openway="openway": way to open window
 					let contentSkinList = TriangleOS.Catalog.skinOrphan;
 					let contentSkinRandom = contentSkinList[Math.floor(contentSkinList.length * Math.random())];
 					TriangleOS.Window.parent(this).applySkin(contentSkinRandom, TriangleOS.Enum.SkinReplaceMode.NONE);
-					
+
 					let topSkinList = TriangleOS.Catalog.skinCollection.top;
 					let topSkinRandom = topSkinList[Math.floor(topSkinList.length * Math.random())];
 					TriangleOS.Window.parent(this).applySkin(topSkinRandom, TriangleOS.Enum.SkinReplaceMode.NONE);
@@ -227,7 +227,7 @@ data-openway="openway": way to open window
 
 
 <template id="template-fun-winception">
-	<tos-window class="size-middle skin-glass" data-title="winception">
+	<tos-window class="size-middle skin-in-glass" data-title="winception">
 		<p>
 			how deep is it?</br>
 			<a onclick="TriangleOS.Template.spawn('template-fun-winception', TriangleOS.Window.parent(this))">
@@ -238,13 +238,13 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-fun-3cats">
-	<tos-window class="size-small skin-blue" data-title="blue cat"></tos-window>
-	<tos-window class="size-small skin-red" data-title="red cat"></tos-window>
-	<tos-window class="size-small skin-orange" data-title="orange cat"></tos-window>
+	<tos-window class="size-small skin-in-blue" data-title="blue cat"></tos-window>
+	<tos-window class="size-small skin-in-red" data-title="red cat"></tos-window>
+	<tos-window class="size-small skin-in-orange" data-title="orange cat"></tos-window>
 </template>
 
 <template id="template-fun-invicible">
-	<tos-window class="size-little skin-glass" data-title="TRY TO CLOSE ME" data-closeaction="repos" data-hideminibutton>
+	<tos-window class="size-little skin-in-glass" data-title="TRY TO CLOSE ME" data-closeaction="repos" data-hideminibutton>
 		<h3>
 			This window</br> is invicible
 		</h3>
@@ -259,7 +259,7 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-fun-big">
-	<tos-window class="size-big skin-glass" data-title="a lot of text">
+	<tos-window class="size-big skin-in-glass" data-title="a lot of text">
 		<p>
 			This window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
 			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
@@ -280,39 +280,39 @@ data-openway="openway": way to open window
 
 
 <template id="template-filter-grayscale">
-	<tos-window class="size-middle skin-filter-grayscale" data-title="grayscale filter">
+	<tos-window class="size-middle skin-in-filter-grayscale" data-title="grayscale filter">
 	</tos-window>
 </template>
 
 
 <template id="template-filter-negative">
-	<tos-window class="size-middle skin-filter-negative" data-title="negative filter">
+	<tos-window class="size-middle skin-in-filter-negative" data-title="negative filter">
 	</tos-window>
 </template>
 
 <template id="template-filter-saturate">
-	<tos-window class="size-middle skin-filter-saturate" data-title="saturate filter">
+	<tos-window class="size-middle skin-in-filter-saturate" data-title="saturate filter">
 	</tos-window>
 </template>
 
 
 <template id="template-iframe-4D">
-	<tos-window class="size-big skin-black" data-title="tic tac toe in 4D">
+	<tos-window class="size-big skin-in-black" data-title="tic tac toe in 4D">
 		<iframe src="https://itch.io/embed-upload/14122527?color=000000"></iframe>
 	</tos-window>
 </template>
 <template id="template-iframe-dogo">
-	<tos-window class="size-big skin-black" data-title="a time loop">
+	<tos-window class="size-big skin-in-black" data-title="a time loop">
 		<iframe src="https://itch.io/embed-upload/12959650?color=000000"></iframe>
 	</tos-window>
 </template>
 <template id="template-iframe-web">
-	<tos-window class="size-middle skin-black" data-title="navigateur web">
+	<tos-window class="size-middle skin-in-black" data-title="navigateur web">
 		<iframe src="https://www.dogpile.com/"></iframe>
 	</tos-window>
 </template>
 <template id="template-iframe-rick">
-	<tos-window class="size-middle skin-black" data-title="youtube :)">
+	<tos-window class="size-middle skin-in-black" data-title="youtube :)">
 		<iframe src="https://www.youtube.com/embed/xvFZjo5PgG0?autoplay=1"></iframe>
 	</tos-window>
 </template>
