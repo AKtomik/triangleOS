@@ -137,19 +137,19 @@ data-openway="openway": way to open window
 		</p>
 		<p>
 			You can make it 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red')">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red', SkinApplyReplaceMode.ALL)">
 			red
 			</a>
 			, 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple')">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple', SkinApplyReplaceMode.ALL)">
 			purple
 			</a>
 			 or 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent')">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent', SkinApplyReplaceMode.ALL)">
 			transparent
 			</a>
 			or even 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', false)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', SkinApplyReplaceMode.NONE)">
 			scary
 			</a>
 			.
@@ -207,12 +207,12 @@ data-openway="openway": way to open window
 		<p>
 			Wanna 
 			<a onclick="(() => {
-					let contentSkinList = TriangleOS.Vanilla.skinListType.content;
+					let contentSkinList = TriangleOS.Collection.skinListType.content;
 					let contentSkinRandom = contentSkinList[Math.floor(contentSkinList.length * Math.random())];
-					TriangleOS.Window.parent(this).applySkin(contentSkinRandom);
-					let topSkinList = TriangleOS.Vanilla.skinListType.top;
+					TriangleOS.Window.parent(this).applySkin(contentSkinRandom, SkinApplyReplaceMode.ALL);
+					let topSkinList = TriangleOS.Collection.skinListType.top;
 					let topSkinRandom = topSkinList[Math.floor(topSkinList.length * Math.random())];
-					TriangleOS.Window.parent(this).applySkin(topSkinRandom, false);
+					TriangleOS.Window.parent(this).applySkin(topSkinRandom, SkinApplyReplaceMode.SAME_TYPE);
 				})()">
 			see
 			</a>

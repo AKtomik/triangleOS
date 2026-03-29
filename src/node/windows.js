@@ -1,4 +1,4 @@
-import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
+import { WindowOpenWay, WindowCloseAction, SkinApplyReplaceMode } from "../misc/enum.js";
 import { AbsPos, shallowSignature } from "../misc/basic.js";
 import { Settings } from "../default/settings.js";
 import { Template } from "../misc/template.js";
@@ -567,22 +567,47 @@ class Window extends WindowContainer {
 		this.style.zIndex = Window.zCounter++;
 	}
 
-	applySkin(classSkinName, removeOthers = true)
+	applySkin(classSkinName, replaceMode = SkinApplyReplaceMode.SAME_TYPE)
 	{
 		if (!classSkinName.startsWith("skin-"))
 		{
 			console.error("skin class name must start with 'skin-' but is:",classSkinName);
 			return;
 		}
-		if (removeOthers)
+
+		switch (replaceMode)
 		{
-			this.classList.forEach(cls => {
-				if (cls.startsWith("skin-")) {
-						this.classList.remove(cls);
+			case SkinApplyReplaceMode.ALL: {
+				this.classList.forEach(cls => {
+					if (cls.startsWith("skin-")) {
+							this.classList.remove(cls);
+						}
 					}
+				)
+			} break;
+
+			case SkinApplyReplaceMode.SAME_TYPE: {
+				const [, skinType, afterSkinType] = classSkinName.split('-', 3); 
+				if (!skinType || !afterSkinType)
+				{
+					console.error("trying to rempalce same type but skin class does not have a type:", classSkinName);
 				}
-			)
+				const startStringFilter = "skin-"+skinType+"-";
+				this.classList.forEach(cls => {
+					if (cls.startsWith(startStringFilter)) {
+							this.classList.remove(cls);
+						}
+					}
+				)
+			} break;
+			
+			case SkinApplyReplaceMode.NONE: break;
+			
+			default: {
+				console.warn("unknow replaceMode:", replaceMode);
+			}
 		}
+
 		this.classList.add(classSkinName);
 	}
 
