@@ -28,7 +28,7 @@ class Catalog {
 		{
 			skinClassListOrString.forEach(skinClassName => this.#addOrphanSkin(skinClassName));
 		} else {
-			this.#addSize(skinClassListOrString)
+			this.#addOrphanSkin(skinClassListOrString)
 		}
 	}
 
