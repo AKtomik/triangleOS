@@ -1,6 +1,6 @@
 
 
-class Collection {
+class Catalog {
 	static sizeList = ['size-full', 'size-small', 'size-middle'];
 
 	static skinListType = {
@@ -12,4 +12,4 @@ class Collection {
 	static skinList = [...this.skinListType.content, ...this.skinListType.top, ...this.skinListType.all];
 }
 
-export { Collection };
+export { Catalog };

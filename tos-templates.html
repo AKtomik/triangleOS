@@ -207,10 +207,10 @@ data-openway="openway": way to open window
 		<p>
 			Wanna 
 			<a onclick="(() => {
-					let contentSkinList = TriangleOS.Collection.skinListType.content;
+					let contentSkinList = TriangleOS.Catalog.skinListType.content;
 					let contentSkinRandom = contentSkinList[Math.floor(contentSkinList.length * Math.random())];
 					TriangleOS.Window.parent(this).applySkin(contentSkinRandom, SkinApplyReplaceMode.ALL);
-					let topSkinList = TriangleOS.Collection.skinListType.top;
+					let topSkinList = TriangleOS.Catalog.skinListType.top;
 					let topSkinRandom = topSkinList[Math.floor(topSkinList.length * Math.random())];
 					TriangleOS.Window.parent(this).applySkin(topSkinRandom, SkinApplyReplaceMode.SAME_TYPE);
 				})()">
