@@ -137,38 +137,38 @@ data-openway="openway": way to open window
 		</p>
 		<p>
 			You can make it 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red', SkinApplyReplaceMode.ALL)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			red
 			</a>
 			, 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple', SkinApplyReplaceMode.ALL)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			purple
 			</a>
 			 or 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent', SkinApplyReplaceMode.ALL)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			transparent
 			</a>
 			or even 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', SkinApplyReplaceMode.NONE)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', TriangleOS.Enum.SkinReplaceMode.NONE)">
 			scary
 			</a>
 			.
 		</p>
 		<p>
 			You can make it 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-small')">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-small', true)">
 			small
 			</a>
 			, 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-middle')">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-middle', true)">
 			middle
 			</a>
 			 or 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-big')">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-big', true)">
 			big 
 			</a>
 			or even 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-full')">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-full', true)">
 			full
 			</a>
 			.
@@ -207,12 +207,12 @@ data-openway="openway": way to open window
 		<p>
 			Wanna 
 			<a onclick="(() => {
-					let contentSkinList = TriangleOS.Catalog.skinListType.content;
+					let contentSkinList = TriangleOS.Catalog.skinCollection.content;
 					let contentSkinRandom = contentSkinList[Math.floor(contentSkinList.length * Math.random())];
-					TriangleOS.Window.parent(this).applySkin(contentSkinRandom, SkinApplyReplaceMode.ALL);
-					let topSkinList = TriangleOS.Catalog.skinListType.top;
+					TriangleOS.Window.parent(this).applySkin(contentSkinRandom, TriangleOS.Enum.SkinReplaceMode.ALL);
+					let topSkinList = TriangleOS.Catalog.skinCollection.top;
 					let topSkinRandom = topSkinList[Math.floor(topSkinList.length * Math.random())];
-					TriangleOS.Window.parent(this).applySkin(topSkinRandom, SkinApplyReplaceMode.SAME_TYPE);
+					TriangleOS.Window.parent(this).applySkin(topSkinRandom, TriangleOS.Enum.SkinReplaceMode.SAME_TYPE);
 				})()">
 			see
 			</a>
