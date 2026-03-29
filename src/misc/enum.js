@@ -12,3 +12,9 @@ export const WindowCloseAction = Object.freeze({
   REPOS: "repos",
   DUMMY: "dummy"
 });
+
+export const SkinApplyReplaceMode = Object.freeze({
+  NONE: "none",
+  ALL: "all",
+  SAME_TYPE: "same_type",
+});
