@@ -3,11 +3,19 @@
 class Catalog {
 	static sizeList = [];
 
-	static registerSize(...sizeClassNameList)
+	static registerSize(sizeClassListOrString)
 	{
-		sizeClassNameList.forEach(sizeClassName => {
-			this.sizeList.push(sizeClassName);
-		});
+		if (Array.isArray(sizeClassListOrString))
+		{
+			sizeClassListOrString.forEach(sizeClassName => this.#addSizeString(sizeClassName));
+		} else {
+			this.#addSizeString(sizeClassListOrString)
+		}
+	}
+
+	static #addSizeString(sizeClassName)
+	{
+		this.sizeList.push(sizeClassName);
 	}
 
 	static skinCollection = {
@@ -15,10 +23,28 @@ class Catalog {
 		top: ['skin-top-white', 'skin-top-lightgray', 'skin-top-gray', 'skin-top-black', 'skin-top-brown', 'skin-top-red', 'skin-top-orange', 'skin-top-yellow', 'skin-top-lime', 'skin-top-green', 'skin-top-cyan', 'skin-top-lightblue', 'skin-top-blue', 'skin-top-purple', 'skin-top-magenta', 'skin-top-pink', 'skin-top-transparent', 'skin-top-glass', 'skin-top-filter-negative', 'skin-top-filter-grayscale', 'skin-top-filter-saturate', 'skin-top-deep'],
 		all: [],
 	}
+	
+	// skins that does not have a collection
+	static skinOther = [];
+
+	static registerSkin(skinClassListOrString)
+	{
+		if (Array.isArray(skinClassListOrString))
+		{
+			skinClassListOrString.forEach(skinClassName => this.#addSkinString(skinClassName));
+		} else {
+			this.#addSizeString(skinClassListOrString)
+		}
+	}
+
+	static #addSkinString(skinClassName)
+	{
+		this.skinOther.push(skinClassName);
+	}
 
 	static skinList = [...this.skinCollection.content, ...this.skinCollection.top, ...this.skinCollection.all];
 }
 
-Catalog.registerSize('size-full', 'size-small', 'size-middle');
+Catalog.registerSize(['size-full', 'size-small', 'size-middle']);
 
 export { Catalog };
