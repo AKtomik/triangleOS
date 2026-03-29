@@ -16,5 +16,5 @@ export const WindowCloseAction = Object.freeze({
 export const SkinReplaceMode = Object.freeze({
   NONE: 0,
   ALL: 1,
-  SAME_TYPE: 2,
+  COLLECTION: 2,
 });

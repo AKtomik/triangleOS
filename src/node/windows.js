@@ -567,7 +567,7 @@ class Window extends WindowContainer {
 		this.style.zIndex = Window.zCounter++;
 	}
 
-	applySkin(classSkinName, replaceMode = SkinReplaceMode.SAME_TYPE)
+	applySkin(classSkinName, replaceMode = SkinReplaceMode.ALL)
 	{
 		if (!classSkinName.startsWith("skin-"))
 		{
@@ -577,6 +577,7 @@ class Window extends WindowContainer {
 
 		switch (replaceMode)
 		{
+			case true:
 			case SkinReplaceMode.ALL: {
 				this.classList.forEach(cls => {
 					if (cls.startsWith("skin-")) {
@@ -586,13 +587,14 @@ class Window extends WindowContainer {
 				)
 			} break;
 
-			case SkinReplaceMode.SAME_TYPE: {
-				const [, skinType, afterSkinType] = classSkinName.split('-', 3); 
-				if (!skinType || !afterSkinType)
+			case SkinReplaceMode.COLLECTION: {
+				const [, skinCollection, afterSkinCollection] = classSkinName.split('-', 3); 
+				if (!skinCollection || !afterSkinCollection)
 				{
-					console.error("trying to rempalce same type but skin class does not have a type:", classSkinName);
+					console.error("trying to replace collections but skin class don't have a collection:", classSkinName);
+					return;
 				}
-				const startStringFilter = "skin-"+skinType+"-";
+				const startStringFilter = "skin-"+skinCollection+"-";
 				this.classList.forEach(cls => {
 					if (cls.startsWith(startStringFilter)) {
 							this.classList.remove(cls);
@@ -601,6 +603,7 @@ class Window extends WindowContainer {
 				)
 			} break;
 			
+			case false:
 			case SkinReplaceMode.NONE: break;
 			
 			default: {
