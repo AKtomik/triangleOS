@@ -3,6 +3,16 @@
 class Catalog {
 	static sizeList = [];
 
+	static #addSize(sizeClassName)
+	{
+		if (!sizeClassName.startsWith("size-"))
+		{
+			console.error("size class name must start with 'size-' but is:",sizeClassName);
+			return;
+		}
+		this.sizeList.push(sizeClassName);
+	}
+
 	static registerSize(sizeClassListOrString)
 	{
 		if (Array.isArray(sizeClassListOrString))
@@ -13,23 +23,28 @@ class Catalog {
 		}
 	}
 
-	static #addSize(sizeClassName)
-	{
-		this.sizeList.push(sizeClassName);
-	}
-
 	static skinCollection = {};// skins by collection key
 	static skinOrphan = [];// skins that does not have a collection
 	static skinList = [];// all of them
 
 	static #addOrphanSkin(skinClassName)
 	{
+		if (!skinClassName.startsWith("skin-"))
+		{
+			console.error("skin class name must start with 'skin-' but is:",skinClassName);
+			return;
+		}
 		this.skinOrphan.push(skinClassName);
 		this.skinList.push(skinClassName);
 	}
 
 	static #addCollectionSkin(collectionName, skinClassName)
 	{
+		if (!skinClassName.startsWith(`skin-${collectionName}-`))
+		{
+			console.error("skin class name of a collection must start with 'skin-<collection>' but is:",skinClassName);
+			return;
+		}
 		this.skinCollection[collectionName].push(skinClassName);
 		this.skinList.push(skinClassName);
 	}

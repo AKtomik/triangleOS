@@ -588,11 +588,11 @@ class Window extends WindowContainer {
 		this.#removeClassesStartingWith("size-");
 	}
 
-	applySkin(classSkinName, replaceMode = SkinReplaceMode.ALL)
+	applySkin(skinClassName, replaceMode = SkinReplaceMode.ALL)
 	{
-		if (!classSkinName.startsWith("skin-"))
+		if (!skinClassName.startsWith("skin-"))
 		{
-			console.error("skin class name must start with 'skin-' but is:",classSkinName);
+			console.error("skin class name must start with 'skin-' but is:",skinClassName);
 			return;
 		}
 
@@ -602,10 +602,10 @@ class Window extends WindowContainer {
 			case SkinReplaceMode.ALL: this.clearSkins(); break;
 
 			case SkinReplaceMode.COLLECTION: {
-				const [, skinCollection, afterSkinCollection] = classSkinName.split('-', 3); 
+				const [, skinCollection, afterSkinCollection] = skinClassName.split('-', 3); 
 				if (!skinCollection || !afterSkinCollection)
 				{
-					console.error("trying to replace collections but skin class don't have a collection:", classSkinName);
+					console.error("trying to replace collections but skin class don't have a collection:", skinClassName);
 					return;
 				}
 				this.clearSkins(skinCollection);
@@ -619,19 +619,19 @@ class Window extends WindowContainer {
 			}
 		}
 
-		this.classList.add(classSkinName);
+		this.classList.add(skinClassName);
 	}
 
-	applySize(classSizeName, removeOthers = true)
+	applySize(sizeClassName, removeOthers = true)
 	{
-		if (!classSizeName.startsWith("size-"))
+		if (!sizeClassName.startsWith("size-"))
 		{
-			console.error("size class name must start with 'size-' but is:",classSizeName);
+			console.error("size class name must start with 'size-' but is:",sizeClassName);
 			return;
 		}
 		if (removeOthers)
 			this.clearSizes();
-		this.classList.add(classSizeName);
+		this.classList.add(sizeClassName);
 	}
 }
 
