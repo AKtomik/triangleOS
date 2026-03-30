@@ -177,7 +177,7 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-skin">
-	<tos-window class="size-middle scrollable skin-in-rainbow" data-title="custom skins">
+	<tos-window class="size-middle scrollable skin-rainbow" data-title="custom skins">
 		<h1>
 			Using skins
 		</h1>
@@ -241,6 +241,25 @@ data-openway="openway": way to open window
 	<tos-window class="size-small skin-in-blue" data-title="blue cat"></tos-window>
 	<tos-window class="size-small skin-in-red" data-title="red cat"></tos-window>
 	<tos-window class="size-small skin-in-orange" data-title="orange cat"></tos-window>
+</template>
+
+<template id="template-fun-background">
+	<style>
+		.window-background-select img {
+			margin: 5% 5% 0 5%;
+			width: 20%;
+			height: 20%;
+			outline: 2px solid black;
+			cursor: pointer;
+		}
+	</style>
+	<tos-window class="size-middle skin-in-lightblue scrollable window-background-select" data-title="background selection" data-unicOpen data-closeaction="minimize">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url()')">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/outside.png)')" src="assets/background/outside.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/edistuo.png)')" src="assets/background/edistuo.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/edistuo.png)')" src="assets/background/edistuo.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/cat.png)')" src="assets/background/cat.png">
+	</tos-window>
 </template>
 
 <template id="template-fun-invicible">
