@@ -570,12 +570,16 @@ class Window extends WindowContainer {
 
 	#removeClassesStartingWith(startString)
 	{
+		let classesToRemove = [];
 		this.classList.forEach(cls => {
 			if (cls.startsWith(startString)) {
-					this.classList.remove(cls);
+					classesToRemove.push(cls);
 				}
 			}
 		)
+		classesToRemove.forEach(cls => {
+			this.classList.remove(cls);
+		})
 	}
 
 	clearSkins(collection)
@@ -583,7 +587,7 @@ class Window extends WindowContainer {
 		this.#removeClassesStartingWith((collection) ? `skin-${collection}-` : "skin-");
 	}
 
-	clearSizes(collection)
+	clearSizes()
 	{
 		this.#removeClassesStartingWith("size-");
 	}

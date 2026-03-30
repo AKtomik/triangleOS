@@ -210,7 +210,7 @@ data-openway="openway": way to open window
 					let window = TriangleOS.Window.parent(this);
 					window.clearSkins();
 
-					let contentSkinList = TriangleOS.Catalog.skinOrphan;
+					let contentSkinList = TriangleOS.Catalog.skinCollection.in;
 					let contentSkinRandom = contentSkinList[Math.floor(contentSkinList.length * Math.random())];
 					TriangleOS.Window.parent(this).applySkin(contentSkinRandom, TriangleOS.Enum.SkinReplaceMode.NONE);
 
