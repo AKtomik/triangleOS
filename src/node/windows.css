@@ -23,6 +23,29 @@
 
 .tos-window.tos-is-dragging {
   cursor: grabbing !important;
+	> * {
+  	cursor: grabbing !important;
+	}
+}
+
+/* full action */
+
+.tos-window > header {
+	> .action-full .on {
+		opacity: 1;
+	}
+	> .action-full .off {
+		opacity: 0;
+	}
+}
+
+.tos-window.tos-is-fullscreen > header {
+	> .action-full .on {
+		opacity: 0;
+	}
+	> .action-full .off {
+		opacity: 1;
+	}
 }
 
 /* header */
@@ -53,9 +76,22 @@
 .tos-window > header > button {
 	flex: 0 0 auto;
   border: none;
-  cursor: pointer;
   padding: 0 8px;
 	aspect-ratio: 1;
+}
+
+.tos-window > header > button {
+	> nav {
+		--button-image: url(../assets/buttons/full-white.svg);
+		mask-image: var(--button-image);
+	}
+}
+
+.tos-window > header > button > img {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 /* content */

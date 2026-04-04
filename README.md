@@ -19,7 +19,6 @@ You will also recive last developpements changes.
 ```sh
 git clone https://github.com/AKtomik/triangleOS.git
 cd triangleOS
-npm install
 ```
 
 To update you can pull.
@@ -28,7 +27,7 @@ Feel free to use this repestory as template!
 
 ### Option 2: Use NPM
 
-In any npm project:
+In your project:
 
 ```sh
 npm install triangleos
@@ -43,7 +42,7 @@ Then import in your HTML head:
 
 ### Option 3: From URL
 
-Dirrectly import in your HTML head:
+Directly import in your HTML head:
 
 ```sh
 <script type="module" src="https://unpkg.com/triangleos/index.js"></script>

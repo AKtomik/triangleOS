@@ -1,4 +1,4 @@
-import { WindowOpenWay, WindowCloseAction } from "../misc/enum.js";
+import { WindowOpenWay, WindowCloseAction, SkinReplaceMode } from "../misc/enum.js";
 import { AbsPos, shallowSignature } from "../misc/basic.js";
 import { Settings } from "../default/settings.js";
 import { Template } from "../misc/template.js";
@@ -110,10 +110,15 @@ class Window extends WindowContainer {
 		// Create/header
 		const header = document.createElement("header");
 		header.className = "window-header";
+		let createImageReceptacle = (customClass) => {
+			let image = document.createElement("nav");
+			if (customClass) image.className=customClass;
+			return image;
+		}
 		// Create/header/close
 		const closeBtn = document.createElement("button");
 		closeBtn.className = "action-close";
-		closeBtn.textContent = "X";
+		closeBtn.appendChild(createImageReceptacle());
 		closeBtn.onpointerdown = (e) => e.stopPropagation();
 		closeBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
@@ -122,7 +127,8 @@ class Window extends WindowContainer {
 		// Create/header/full
 		const fullBtn = document.createElement("button");
 		fullBtn.className = "action-full";
-		fullBtn.textContent = "□";
+		fullBtn.appendChild(createImageReceptacle("on"));
+		fullBtn.appendChild(createImageReceptacle("off"));
 		fullBtn.onpointerdown = (e) => e.stopPropagation();
 		fullBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
@@ -130,8 +136,8 @@ class Window extends WindowContainer {
 		});
 		// Create/header/min
 		const miniBtn = document.createElement("button");
-		miniBtn.className = "action-full";
-		miniBtn.textContent = "__";
+		miniBtn.className = "action-mini";
+		miniBtn.appendChild(createImageReceptacle());
 		miniBtn.onpointerdown = (e) => e.stopPropagation();
 		miniBtn.addEventListener("click", (e) => {
 			e.stopPropagation();
@@ -284,14 +290,14 @@ class Window extends WindowContainer {
 	{
 		let parent = this.parentElement;
 		let key = this.tosWindowId;
-		return (parent.tos_windowContainerValut?.[key]?.length > 0)
+		return (parent.tos_windowContainerVault?.[key]?.length > 0)
 	}
 
 	parentGetSame()
 	{
 		let parent = this.parentElement;
 		let key = this.tosWindowId;
-		let list = parent.tos_windowContainerValut[key];
+		let list = parent.tos_windowContainerVault[key];
 		return list[list.length - 1];
 	}
 
@@ -300,11 +306,11 @@ class Window extends WindowContainer {
 		this.attachedParent = this.parentElement;
 		let parent = this.attachedParent;
 		let key = this.tosWindowId;
-		if (parent.tos_windowContainerValut === undefined)
-			parent.tos_windowContainerValut = {};
-		if (parent.tos_windowContainerValut[key] === undefined)
-			parent.tos_windowContainerValut[key] = [];
-		parent.tos_windowContainerValut[key].push(this);
+		if (parent.tos_windowContainerVault === undefined)
+			parent.tos_windowContainerVault = {};
+		if (parent.tos_windowContainerVault[key] === undefined)
+			parent.tos_windowContainerVault[key] = [];
+		parent.tos_windowContainerVault[key].push(this);
 	}
 
 	removeToParent()
@@ -312,13 +318,13 @@ class Window extends WindowContainer {
 		if (!this._inited) return;
 		let parent = this.attachedParent;
 		let key = this.tosWindowId;
-		const removeIndex = parent.tos_windowContainerValut[key].indexOf(this);
+		const removeIndex = parent.tos_windowContainerVault[key].indexOf(this);
 		if (removeIndex === -1) {
-			throw new Error("trying remove to parent but is not in Window.minimizedList");
+			throw new Error("trying remove to parent but is not in containerVault");
 		}
-		parent.tos_windowContainerValut[key].splice(removeIndex, 1);
-		if (parent.tos_windowContainerValut[key].length === 0)
-			parent.tos_windowContainerValut[key] = undefined;
+		parent.tos_windowContainerVault[key].splice(removeIndex, 1);
+		if (parent.tos_windowContainerVault[key].length === 0)
+			parent.tos_windowContainerVault[key] = undefined;
 	}
 
 	// PROPETIES
@@ -561,42 +567,75 @@ class Window extends WindowContainer {
 		this.style.zIndex = Window.zCounter++;
 	}
 
-	applySkin(classSkinName, removeOthers = true)
+
+	#removeClassesStartingWith(startString)
 	{
-		if (!classSkinName.startsWith("skin-"))
-		{
-			console.error("the skin given to applySkin does not starts with 'skin-':",classSkinName);
-			return;
-		}
-		if (removeOthers)
-		{
-			this.classList.forEach(cls => {
-				if (cls.startsWith("skin-")) {
-						this.classList.remove(cls);
-					}
+		let classesToRemove = [];
+		this.classList.forEach(cls => {
+			if (cls.startsWith(startString)) {
+					classesToRemove.push(cls);
 				}
-			)
-		}
-		this.classList.add(classSkinName);
+			}
+		)
+		classesToRemove.forEach(cls => {
+			this.classList.remove(cls);
+		})
 	}
 
-	applySize(classSizeName, removeOthers = true)
+	clearSkins(collection)
 	{
-		if (!classSizeName.startsWith("size-"))
+		this.#removeClassesStartingWith((collection) ? `skin-${collection}-` : "skin-");
+	}
+
+	clearSizes()
+	{
+		this.#removeClassesStartingWith("size-");
+	}
+
+	applySkin(skinClassName, replaceMode = SkinReplaceMode.ALL)
+	{
+		if (!skinClassName.startsWith("skin-"))
 		{
-			console.error("the skin given to applySkin does not starts with 'skin-':",classSizeName);
+			console.error("skin class name must start with 'skin-' but is:",skinClassName);
+			return;
+		}
+
+		switch (replaceMode)
+		{
+			case true:
+			case SkinReplaceMode.ALL: this.clearSkins(); break;
+
+			case SkinReplaceMode.COLLECTION: {
+				const [, skinCollection, afterSkinCollection] = skinClassName.split('-', 3); 
+				if (!skinCollection || !afterSkinCollection)
+				{
+					console.error("trying to replace collections but skin class don't have a collection:", skinClassName);
+					return;
+				}
+				this.clearSkins(skinCollection);
+			} break;
+			
+			case false:
+			case SkinReplaceMode.NONE: break;
+			
+			default: {
+				console.warn("unknow replaceMode:", replaceMode);
+			}
+		}
+
+		this.classList.add(skinClassName);
+	}
+
+	applySize(sizeClassName, removeOthers = true)
+	{
+		if (!sizeClassName.startsWith("size-"))
+		{
+			console.error("size class name must start with 'size-' but is:",sizeClassName);
 			return;
 		}
 		if (removeOthers)
-		{
-			this.classList.forEach(cls => {
-				if (cls.startsWith("size-")) {
-						this.classList.remove(cls);
-					}
-				}
-			)
-		}
-		this.classList.add(classSizeName);
+			this.clearSizes();
+		this.classList.add(sizeClassName);
 	}
 }
 

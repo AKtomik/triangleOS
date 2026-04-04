@@ -105,6 +105,13 @@ class DeskbarIcon extends HTMLElement {
 	}
 }
 
+class DeskbarSeparator extends HTMLElement {
+	constructor() {
+		super();
+		this.classList.add("tos-deskbar-separator");
+	}
+}
+
 
 
 // EXPORT
@@ -117,5 +124,6 @@ customElements.define("tos-desktop-icon", DesktopIcon);
 
 customElements.define("tos-deskbar-icon", DeskbarIcon);
 customElements.define("tos-deskbar-launch", DeskbarLaunch);
+customElements.define("tos-deskbar-separator", DeskbarSeparator);
 
 export { Desk };

@@ -17,6 +17,9 @@
 		a {
 			cursor: pointer; color: blue;
 		}
+		.tos-desktop-icon p {
+			color: white;
+		}
 	</style>
 
 	<body>
@@ -25,62 +28,85 @@
 
 				<tos-desktop style="--desktop-columns: 9; --desktop-rows:5;" id="desktop">
 					
+					<tos-desktop-icon data-name="wikipedia" ondblclick="TriangleOS.Window.open('template-iframe-wiki', 'desktop')">
+						<img src="assets/icons/app/wikipedia.png">
+					</tos-desktop-icon>
+					<tos-desktop-icon data-name="calc" ondblclick="TriangleOS.Window.open('template-iframe-calc', 'desktop')">
+						<img src="assets/icons/app/calc.svg">
+					</tos-desktop-icon>
+					<tos-desktop-icon data-name="map" ondblclick="TriangleOS.Window.open('template-iframe-map', 'desktop')">
+						<img src="assets/icons/app/map.svg">
+					</tos-desktop-icon>
+					<tos-desktop-icon data-name="tutube" ondblclick="TriangleOS.Window.open('template-iframe-rick', 'desktop')">
+						<img src="assets/icons/app/youtube.png">
+					</tos-desktop-icon>
+					<tos-desktop-icon style="grid-column: 2;" data-name="4D.ewe" ondblclick="TriangleOS.Window.open('template-iframe-4D', 'desktop')">
+						<img src="assets/icons/app/4D.png">
+					</tos-desktop-icon>
+					<tos-desktop-icon style="grid-column: 2;" data-name="DOGO.ewe" ondblclick="TriangleOS.Window.open('template-iframe-dogo', 'desktop')">
+						<img src="assets/icons/app/dog.png">
+					</tos-desktop-icon>
 
 					<tos-desktop-icon style="grid-column: 4;" data-name="any.window" ondblclick="TriangleOS.Window.open('template-tuto-anything', 'desktop')">
 						<img src="assets/icons/win/tuto.png">
 					</tos-desktop-icon>
-					<tos-desktop-icon style="grid-column: 4;" data-name="style.window" ondblclick="TriangleOS.Window.open('template-tuto-style', 'desktop')">
-						<img src="assets/icons/win/tuto.png">
-					</tos-desktop-icon>
-					<tos-desktop-icon style="grid-column: 4;" data-name="raimbow.window" ondblclick="TriangleOS.Window.open('template-tuto-skin', 'desktop')">
+					<tos-desktop-icon style="grid-column: 4;" data-name="what.window" ondblclick="TriangleOS.Window.open('template-tuto-content', 'desktop')">
 						<img src="assets/icons/win/tuto.png">
 					</tos-desktop-icon>
 					<tos-desktop-icon style="grid-column: 4;" data-name="inside.window" ondblclick="TriangleOS.Window.open('template-tuto-neast', 'desktop')">
 						<img src="assets/icons/win/tuto.png">
 					</tos-desktop-icon>
+					<tos-desktop-icon style="grid-column: 4;" data-name="desk.window" ondblclick="TriangleOS.Window.open('template-tuto-desk', 'desktop')">
+						<img src="assets/icons/win/tuto.png">
+					</tos-desktop-icon>
 
-					<tos-desktop-icon style="grid-column: 6; grid-row: 1;" data-name="3cats.window" ondblclick="TriangleOS.Window.open('template-fun-3cats', 'desktop')">
+					<tos-desktop-icon style="grid-column: 5;" data-name="style.window" ondblclick="TriangleOS.Window.open('template-tuto-style', 'desktop')">
+						<img src="assets/icons/win/tuto.png">
+					</tos-desktop-icon>
+					<tos-desktop-icon style="grid-column: 5;" data-name="rainbow.window" ondblclick="TriangleOS.Window.open('template-tuto-skin', 'desktop')">
+						<img src="assets/icons/win/tuto.png">
+					</tos-desktop-icon>
+					<tos-desktop-icon style="grid-column: 5;" data-name="custom.window" ondblclick="TriangleOS.Window.open('template-tuto-super', 'desktop')">
+						<img src="assets/icons/win/tuto.png">
+					</tos-desktop-icon>
+					
+					<tos-desktop-icon style="grid-column: 6;" data-name="when this is too long to display there will be three dots at the end. But you can hover it and see all the text so that fine.">
+						<img src="assets/icons/svg/info.svg">
+					</tos-desktop-icon>
+
+					<tos-desktop-icon style="grid-column: 7; grid-row: 1;" data-name="3cats.window" ondblclick="TriangleOS.Window.open('template-fun-3cats', 'desktop')">
 						<img src="assets/icons/win/more3.png">
 					</tos-desktop-icon>
-					<tos-desktop-icon style="grid-column: 7; grid-row: 1;" data-name="winception.window" ondblclick="TriangleOS.Window.open('template-fun-winception', 'desktop')">
+					<tos-desktop-icon style="grid-column: 8; grid-row: 1;" data-name="winception.window" ondblclick="TriangleOS.Window.open('template-fun-winception', 'desktop')">
 						<img src="assets/icons/win/ception.png">
 					</tos-desktop-icon>
-					<tos-desktop-icon style="grid-column: 6/8; grid-row: 2/4;" data-name="TALL.window" ondblclick="TriangleOS.Window.open('template-fun-big', 'desktop')">
+					<tos-desktop-icon style="grid-column: 7/9; grid-row: 2/4;" data-name="TALL.window" ondblclick="TriangleOS.Window.open('template-fun-big', 'desktop')">
 						<img src="assets/icons/win/single.png">
 					</tos-desktop-icon>
 
-					<tos-desktop-icon style="grid-column: 7; grid-row: 5;" data-name="virus.window" ondblclick="TriangleOS.Window.open('template-fun-invicible', 'desktop')">
+					<tos-desktop-icon style="grid-column: 7; grid-row: 5;" data-name="back.window" ondblclick="TriangleOS.Window.open('template-fun-background', 'desktop')">
+						<img src="assets/icons/win/collection.png">
+					</tos-desktop-icon>
+					<tos-desktop-icon style="grid-column: 8; grid-row: 5;" data-name="virus.window" ondblclick="TriangleOS.Window.open('template-fun-invicible', 'desktop')">
 						<img src="assets/icons/win/malicious.png">
 					</tos-desktop-icon>
 
-					<tos-desktop-icon style="grid-column: 8;" data-name="old.window" ondblclick="TriangleOS.Window.open('template-filter-grayscale', 'desktop')">
+					<tos-desktop-icon style="grid-column: 9;" data-name="old.window" ondblclick="TriangleOS.Window.open('template-filter-grayscale', 'desktop')">
 						<img src="assets/icons/win/grayscale.png">
 					</tos-desktop-icon>
-					<tos-desktop-icon style="grid-column: 8;" data-name="neg.window" ondblclick="TriangleOS.Window.open('template-filter-negative', 'desktop')">
+					<tos-desktop-icon style="grid-column: 9;" data-name="neg.window" ondblclick="TriangleOS.Window.open('template-filter-negative', 'desktop')">
 						<img src="assets/icons/win/negative.png">
 					</tos-desktop-icon>
-					<tos-desktop-icon style="grid-column: 8;" data-name="sat.window" ondblclick="TriangleOS.Window.open('template-filter-saturate', 'desktop')">
+					<tos-desktop-icon style="grid-column: 9;" data-name="sat.window" ondblclick="TriangleOS.Window.open('template-filter-saturate', 'desktop')">
 						<img src="assets/icons/win/saturate.png">
 					</tos-desktop-icon>
 
-					<tos-desktop-icon style="grid-column: 3;" data-name="when this is too long to display there will be three dots at the end. But you can hover it and see all the text so that fine.">
-						<img src="assets/icons/svg/info.svg">
-					</tos-desktop-icon>
-					
-					<tos-desktop-icon data-name="4D.ewe" ondblclick="TriangleOS.Window.open('template-iframe-4D', 'desktop')">
-						<img src="assets/icons/app/4D.png">
-					</tos-desktop-icon>
-					<tos-desktop-icon data-name="DOGO.ewe" ondblclick="TriangleOS.Window.open('template-iframe-dogo', 'desktop')">
-						<img src="assets/icons/app/DOG.png">
-					</tos-desktop-icon>
-					<tos-desktop-icon data-name="web" ondblclick="TriangleOS.Window.open('template-iframe-web', 'desktop')">
-						<img src="assets/icons/app/dogpile.png">
-					</tos-desktop-icon>
-					<tos-desktop-icon data-name="tutube" ondblclick="TriangleOS.Window.open('template-iframe-rick', 'desktop')">
-						<img src="assets/icons/app/youtube.png">
-					</tos-desktop-icon>
 					<tos-desktop-icon style="grid-column: -2; grid-row: -2;" data-name="meta" 
-						ondblclick="document.getElementById('deskwindow').hideHeader = !document.getElementById('deskwindow').hideHeader;">
+						ondblclick="
+							let full = !document.getElementById('deskwindow').hideHeader;
+							document.getElementById('deskwindow').hideHeader = full;
+							document.getElementById('deskwindow').isFullscreen = full;
+						">
 						<img src="assets/icons/gold_triangle.png">
 					</tos-desktop-icon>
 
@@ -95,20 +121,25 @@
 					<tos-deskbar-icon onclick="window.open('https://triangle.js.org')">
 						<img src="assets/icons/link/js.svg">
 					</tos-deskbar-icon>
-					<tos-deskbar-icon style="cursor: default;">
-						<!-- this is a separator -->
+					<tos-deskbar-separator></tos-deskbar-separator>
+					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-wiki', 'desktop')">
+						<img src="assets/icons/app/wikipedia.png">
 					</tos-deskbar-icon>
+					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-map', 'desktop')">
+						<img src="assets/icons/app/map.svg">
+					</tos-deskbar-icon>
+					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-calc', 'desktop')">
+						<img src="assets/icons/app/calc.svg">
+					</tos-deskbar-icon>
+					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-rick', 'desktop')">
+						<img src="assets/icons/app/youtube.png">
+					</tos-deskbar-icon>
+					<tos-deskbar-separator></tos-deskbar-separator>
 					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-4D', 'desktop')">
 						<img src="assets/icons/app/4D.png">
 					</tos-deskbar-icon>
 					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-dogo', 'desktop')">
-						<img src="assets/icons/app/DOG.png">
-					</tos-deskbar-icon>
-					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-web', 'desktop')">
-						<img src="assets/icons/app/dogpile.png">
-					</tos-deskbar-icon>
-					<tos-deskbar-icon onclick="TriangleOS.Window.open('template-iframe-rick', 'desktop')">
-						<img src="assets/icons/app/youtube.png">
+						<img src="assets/icons/app/dog.png">
 					</tos-deskbar-icon>
 				</tos-deskbar>
 			</tos-desk>

@@ -35,14 +35,14 @@ data-openway="openway": way to open window
 		box-shadow: 0 0 10px rgba(255,255,0,0.3);
 	}
 
-	#welcome-window img {
+	#welcome-window > section img {
 		position: block;
 		margin: 2%;
 		width: 20%;
 		transition: transform 3s ease;
 	}
 
-	#welcome-window img:hover {
+	#welcome-window > section img:hover {
 		transform: rotate(90deg) scale(1.3);
 	}
 
@@ -59,7 +59,7 @@ data-openway="openway": way to open window
 		transform: scale(1.05);
 	}
 	</style>
-	<tos-window class="size-middle skin-orange scrollable" id="welcome-window" data-title="Welcome in TriangleOS!" data-openway="center" data-unicOpen>
+	<tos-window class="size-middle scrollable skin-in-orange" id="welcome-window" data-title="Welcome in TriangleOS!" data-openway="center" data-unicOpen>
 		<div class="welcome-header">
 			<div class="welcome-title">Welcome in TriangleOS!</div>
 			<img src="assets/icons/gold_triangle.png" alt="TriangleOS Logo">
@@ -79,73 +79,219 @@ data-openway="openway": way to open window
 	</tos-window>
 </template>
 
-<template id="template-tuto-anything">
-	<tos-window class="size-middle" data-title="A window can contain ANYTHING">
-		<h1 style="text-align: center;">
-			ANYTHING
-		</h1>
-		<!-- just left ANYTHING for the joke -haha (you) -->
-		<!--<p>
-			A window can contain almost anything HTML content. It is a container like another, isn't it?
-		</p>
-		<p>
-			Except it can be open, dragged, resized...
-		</p>-->
+
+<template id="template-iframe-wiki">
+	<tos-window class="size-big skin-in-black" data-title="Wikipedia">
+		<iframe src="https://en.wikipedia.org/wiki/Main_Page"></iframe>
+	</tos-window>
+</template>
+<template id="template-iframe-calc">
+	<tos-window class="size-middle skin-in-black" data-title="FixCalc">
+		<iframe src="https://fixcalc.onrender.com"></iframe>
+	</tos-window>
+</template>
+<template id="template-iframe-map">
+	<tos-window class="size-big skin-in-black" data-title="Map">
+		<iframe src="https://www.openstreetmap.org/export/embed.html"></iframe>
+	</tos-window>
+</template>
+<template id="template-iframe-rick">
+	<tos-window class="size-middle skin-in-black" data-title="youtube :)">
+		<iframe src="https://www.youtube.com/embed/xvFZjo5PgG0?autoplay=1"></iframe>
+	</tos-window>
+</template>
+<template id="template-iframe-4D">
+	<tos-window class="size-big skin-in-black" data-title="tic tac toe in 4D">
+		<iframe src="https://aktomik.github.io/embed-4DTTT/"></iframe>
+	</tos-window>
+</template>
+<template id="template-iframe-dogo">
+	<tos-window class="size-big skin-in-black" data-title="a time loop">
+		<iframe src="https://aktomik.github.io/embed-leashedwalk/"></iframe>
 	</tos-window>
 </template>
 
-<template id="template-tuto-skin">
-	<tos-window class="size-middle skin-raimbow" data-title="custom skins">
-		<h1>
-			Using skins
+
+<template id="template-tuto-anything">
+	<tos-window class="size-small" data-title="A window can contain ANYTHING">
+		<h1 style="text-align: center;">
+			ANYTHING
+			<!-- I'm sure you laughed at the joke (yes you did) -->
 		</h1>
+	</tos-window>
+</template>
+
+<template id="template-tuto-content">
+	<style>
+			.gogle-container {
+				margin: 0 10% 0 10%;
+			}
+		 .gogle-search {
+			 	background-color: #4D5156;
+				border-radius: 2em;
+				padding: 0 10px 0 10px;
+				font-size: .75em;
+		 }
+		 .gogle-result {
+			max-width: 13em;
+			margin-top: 1em;
+		 }
+		 .gogle-result-header {
+		 	color: #99C3FF;
+			font-size: .85em;
+			margin: 0;
+		 }
+		 .gogle-result-lore {
+		 	color: #ffffff;
+			font-size: .5em;
+			margin-top: .5em;
+		 }
+
+		@keyframes rainbow {
+			0% { color: orange; }
+			10% { color: purple;}  
+			20% { color: red; }
+			30% { color: CadetBlue; }
+			40% { color: yellow; }
+			50% { color: coral; }
+			60% { color: green; }
+			70% { color: cyan; }
+			80% { color: DeepPink; }
+			90% { color: DodgerBlue; }
+			100% { color: orange; }
+		}
+	</style>
+	<tos-window class="size-middle scrollable skin-in-black" data-title="Super cool content">
+		<div class="gogle-container">
+			<p class="gogle-search">
+				🔍︎ what can I do in a window?
+			</p>
+			<div class="gogle-result">
+				<h1 class="gogle-result-header">
+					Pure HTML
+				</h1>
+				<p class="gogle-result-lore">
+					TriangleOS support pure HTML, to build cool and simple window. There is a nice default style.
+				</p>
+			</div>
+			<div class="gogle-result">
+				<h1 class="gogle-result-header">
+					Tweek with CSS
+				</h1>
+				<p class="gogle-result-lore">
+					Use CSS to stylize your page. Of course by affecting your window content, but also by applying skins to windows.
+				</p>
+			</div>
+			<div class="gogle-result">
+				<h1 class="gogle-result-header">
+					Energize with JS
+				</h1>
+				<p class="gogle-result-lore">
+					You can interact with TriangleOS using JavaScript, to spawn window, edit them in real time, and more!
+				</p>
+			</div>
+			<div class="gogle-result">
+				<h1 class="gogle-result-header">
+					Use iframe
+				</h1>
+				<p class="gogle-result-lore">
+					You can use &#60;iframe&#62; inside of a window to display others website. But be aware, it works only if the website allow it.
+				</p>
+			</div>
+		</div>
+		</br>
 		<p>
-			There is a lot of defaults skins already aviable.
-			But you can create your owns in tos-skin.css or even in another CSS file that you are importing yourself.
+			A 
+			<span style="color: #ffaa00;">window</span>
+			can contain <i>any</i> <span style="color: #ff00ff;">HTML</span> content.
+		</p>
+		<p>
+			It is a
+			<span style="color: #fff; outline: #fff solid 1px;">container</span>
+			like another, 
+			<span style="color: #0f0;">is</span><span style="color: #f00;">n't </span>
+			<span style="color: #ff0;">it</span>
+			?
+		</p>
+		<p>
+		 	Except it can also be 
+			<span style="transform: scale(1, 2.5); display: inline-block; font-weight: bold;">resized</span>,	
+			<span style="transform: translate(-5px, 30px); display: inline-block;">dragged</span>,	
+			<span style="transform: scale(1, .5); display: inline-block;">minimized</span>...
+		</p>
+		<p style="text-align: center; font-weight: bold; margin: 10% 20% 10% 0; animation: rainbow 5s infinite;">
+			Use window as you see fit!
 		</p>
 	</tos-window>
+</template>
+
+<template id="template-tuto-neast">
+	<tos-window class="size-big skin-in-glass" data-title="Window is window container">
+		<tos-window class="size-middle skin-in-red" data-title="Did you know"></tos-window>
+		<tos-window class="size-middle skin-in-green" data-title="you can create windows"></tos-window>
+		<tos-window class="size-middle skin-in-blue" data-title="inside of others windows?"></tos-window>
+	</tos-window>
+</template>
+
+<template id="template-tuto-desk">
+	<tos-desk style="--desk-background: url('../../assets/background/edistuo.png')" class="size-big skin-in-transparent" id="deskwindow-inside" data-title="desktop is window!" data-unicOpen>
+		<tos-desktop style="--desktop-columns: 4; --desktop-rows:3;" id="desktop-inside">
+			<tos-desktop-icon style="grid-row: 1; font-weight: bolder; color: red;" data-name="desktop">
+				<img src="assets/icons/svg/info.svg">
+			</tos-desktop-icon>
+			<tos-desktop-icon style="grid-row: 1; font-weight: bolder; color: green;" data-name="is just">
+				<img src="assets/icons/svg/info.svg">
+			</tos-desktop-icon>
+			<tos-desktop-icon style="grid-row: 1; font-weight: bolder; color: blue;" data-name="a window">
+				<img src="assets/icons/svg/info.svg">
+			</tos-desktop-icon>
+			<tos-desktop-icon style="grid-row: 2; grid-column: 1;" data-name="any.window" ondblclick="TriangleOS.Window.open('template-tuto-anything', 'desktop-inside')">
+				<img src="assets/icons/win/tuto.png">
+			</tos-desktop-icon>
+		</tos-desktop>
+	</tos-desk>
 </template>
 
 
 <template id="template-tuto-style">
-	<tos-window class="size-middle" data-title="custom style and size">
+	<tos-window class="size-middle scrollable" data-title="change style and size">
 		<p>
 			You can change a element size and skin by adding class.
 		</p>
 		<p>
 			You can make it 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-red')">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-in-red', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			red
 			</a>
 			, 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-purple')">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-in-purple', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			purple
 			</a>
 			 or 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-transparent')">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-in-transparent', TriangleOS.Enum.SkinReplaceMode.ALL)">
 			transparent
 			</a>
 			or even 
-			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-deep', false)">
+			<a onclick="TriangleOS.Window.parent(this).applySkin('skin-in-deep', TriangleOS.Enum.SkinReplaceMode.NONE)">
 			scary
 			</a>
 			.
 		</p>
 		<p>
 			You can make it 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-small')">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-small', true)">
 			small
 			</a>
 			, 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-middle')">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-middle', true)">
 			middle
 			</a>
 			 or 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-big')">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-big', true)">
 			big 
 			</a>
 			or even 
-			<a onclick="TriangleOS.Window.parent(this).applySize('size-full')">
+			<a onclick="TriangleOS.Window.parent(this).applySize('size-full', true)">
 			full
 			</a>
 			.
@@ -153,17 +299,58 @@ data-openway="openway": way to open window
 	</tos-window>
 </template>
 
-<template id="template-tuto-neast">
-	<tos-window class="size-big skin-glass" data-title="Window is window container">
-		<tos-window class="size-middle skin-red" data-title="Did you know"></tos-window>
-		<tos-window class="size-middle skin-green" data-title="you can create windows"></tos-window>
-		<tos-window class="size-middle skin-blue" data-title="inside of others windows?"></tos-window>
+<template id="template-tuto-skin">
+	<tos-window class="size-middle scrollable skin-rainbow" data-title="custom skins">
+		<h1>
+			Using skins
+		</h1>
+		<p>
+			There is a lot of defaults skins already aviable.
+		</p>
+		<p>
+			But you can create your owns in tos-skin.css (auto imported) or in another CSS file.
+		</p>
+		<p>
+			This window has a custom theme for example!
+		</p>
+	</tos-window>
+</template>
+
+<template id="template-tuto-super">
+	<tos-window class="size-middle scrollable skin-top-glass skin-in-lightgray" data-title="powerfull skins">
+		<h1>
+			Skins are powerfull
+		</h1>
+		<p>
+			Skins can also change the look of the window itself, by changing topbar and icons.
+		</p>
+		<p>
+			You can override any default rule by adding skins!
+		</p>
+		<p>
+			Wanna 
+			<a onclick="(() => {
+					let window = TriangleOS.Window.parent(this);
+					window.clearSkins();
+
+					let contentSkinList = TriangleOS.Catalog.skinCollection.in;
+					let contentSkinRandom = contentSkinList[Math.floor(contentSkinList.length * Math.random())];
+					TriangleOS.Window.parent(this).applySkin(contentSkinRandom, TriangleOS.Enum.SkinReplaceMode.NONE);
+
+					let topSkinList = TriangleOS.Catalog.skinCollection.top;
+					let topSkinRandom = topSkinList[Math.floor(topSkinList.length * Math.random())];
+					TriangleOS.Window.parent(this).applySkin(topSkinRandom, TriangleOS.Enum.SkinReplaceMode.NONE);
+				})()">
+			see
+			</a>
+			?
+		</p>
 	</tos-window>
 </template>
 
 
 <template id="template-fun-winception">
-	<tos-window class="size-middle skin-glass" data-title="winception">
+	<tos-window class="size-middle skin-in-glass" data-title="winception">
 		<p>
 			how deep is it?</br>
 			<a onclick="TriangleOS.Template.spawn('template-fun-winception', TriangleOS.Window.parent(this))">
@@ -174,13 +361,39 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-fun-3cats">
-	<tos-window class="size-small skin-blue" data-title="blue cat"></tos-window>
-	<tos-window class="size-small skin-red" data-title="red cat"></tos-window>
-	<tos-window class="size-small skin-orange" data-title="orange cat"></tos-window>
+	<tos-window class="size-small skin-in-blue" data-title="blue cat"></tos-window>
+	<tos-window class="size-small skin-in-red" data-title="red cat"></tos-window>
+	<tos-window class="size-small skin-in-orange" data-title="orange cat"></tos-window>
+</template>
+
+<template id="template-fun-background">
+	<style>
+		.window-background-select img {
+			margin: 5% 5% 0 5%;
+			width: 20%;
+			height: 20%;
+			outline: 2px solid black;
+			cursor: pointer;
+		}
+	</style>
+	<tos-window class="size-middle skin-in-lightblue scrollable window-background-select" data-title="background selection" data-unicOpen data-closeaction="minimize">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/outside.png)')" src="assets/background/outside.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/tree.webp)')" src="assets/background/tree.webp">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/wall.jpg)')" src="assets/background/wall.jpg">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/teck.jpg)')" src="assets/background/teck.jpg">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/star.jpeg)')" src="assets/background/star.jpeg">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/mountain.png)')" src="assets/background/mountain.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/danger.jpg)')" src="assets/background/danger.jpg">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/mc-water.png)')" src="assets/background/mc-water.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/mc-town.png)')" src="assets/background/mc-town.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/mc-blue.png)')" src="assets/background/mc-blue.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/mc-swamp.png)')" src="assets/background/mc-swamp.png">
+		<img onclick="document.getElementById('deskwindow').style.setProperty('--desk-background', 'url(../../assets/background/cat.png)')" src="assets/background/cat.png">
+	</tos-window>
 </template>
 
 <template id="template-fun-invicible">
-	<tos-window class="size-little skin-glass" data-title="TRY TO CLOSE ME" data-closeaction="repos" data-hideminibutton>
+	<tos-window class="size-little skin-in-glass" data-title="TRY TO CLOSE ME" data-closeaction="repos" data-hideminibutton>
 		<h3>
 			This window</br> is invicible
 		</h3>
@@ -195,7 +408,7 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-fun-big">
-	<tos-window class="size-big skin-glass" data-title="a lot of text">
+	<tos-window class="size-big skin-in-glass" data-title="a lot of text">
 		<p>
 			This window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
 			this window is big and can contain a lot of text almost bigger than this window is big and can contain a lot of text almost bigger than 
@@ -216,39 +429,17 @@ data-openway="openway": way to open window
 
 
 <template id="template-filter-grayscale">
-	<tos-window class="size-middle skin-filter-grayscale" data-title="grayscale filter">
+	<tos-window class="size-middle skin-in-filter-grayscale" data-title="grayscale filter">
 	</tos-window>
 </template>
 
 
 <template id="template-filter-negative">
-	<tos-window class="size-middle skin-filter-negative" data-title="negative filter">
+	<tos-window class="size-middle skin-in-filter-negative" data-title="negative filter">
 	</tos-window>
 </template>
 
 <template id="template-filter-saturate">
-	<tos-window class="size-middle skin-filter-saturate" data-title="saturate filter">
-	</tos-window>
-</template>
-
-
-<template id="template-iframe-4D">
-	<tos-window class="size-big skin-black" data-title="tic tac toe in 4D">
-		<iframe src="https://itch.io/embed-upload/14122527?color=000000"></iframe>
-	</tos-window>
-</template>
-<template id="template-iframe-dogo">
-	<tos-window class="size-big skin-black" data-title="a time loop">
-		<iframe src="https://itch.io/embed-upload/12959650?color=000000"></iframe>
-	</tos-window>
-</template>
-<template id="template-iframe-web">
-	<tos-window class="size-middle skin-black" data-title="navigateur web">
-		<iframe src="https://www.dogpile.com/"></iframe>
-	</tos-window>
-</template>
-<template id="template-iframe-rick">
-	<tos-window class="size-middle skin-black" data-title="youtube :)">
-		<iframe src="https://www.youtube.com/embed/xvFZjo5PgG0?autoplay=1"></iframe>
+	<tos-window class="size-middle skin-in-filter-saturate" data-title="saturate filter">
 	</tos-window>
 </template>
