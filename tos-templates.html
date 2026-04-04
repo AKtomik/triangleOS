@@ -113,6 +113,20 @@ data-openway="openway": way to open window
 			font-size: .5em;
 			margin-top: .5em;
 		 }
+
+		@keyframes rainbow {
+			0% { color: orange; }
+			10% { color: purple;}  
+			20% { color: red; }
+			30% { color: CadetBlue; }
+			40% { color: yellow; }
+			50% { color: coral; }
+			60% { color: green; }
+			70% { color: cyan; }
+			80% { color: DeepPink; }
+			90% { color: DodgerBlue; }
+			100% { color: orange; }
+		}
 	</style>
 	<tos-window class="size-middle scrollable skin-in-black" data-title="Super cool content">
 		<div class="gogle-container">
@@ -160,7 +174,7 @@ data-openway="openway": way to open window
 		</p>
 		<p>
 			It is a
-			<span style="color: #00f;">container</span>
+			<span style="color: #fff; outline: #fff solid 1px;">container</span>
 			like another, 
 			<span style="color: #0f0;">is</span><span style="color: #f00;">n't </span>
 			<span style="color: #ff0;">it</span>
@@ -168,11 +182,11 @@ data-openway="openway": way to open window
 		</p>
 		<p>
 		 	Except it can also be 
-			<span style="transform: scale(1, 2.5); display: inline-block; font-weight: bold;">resized</span>,  
-			<span style="transform: translate(-5px, 30px); display: inline-block;">dragged</span>,  
+			<span style="transform: scale(1, 2.5); display: inline-block; font-weight: bold;">resized</span>,	
+			<span style="transform: translate(-5px, 30px); display: inline-block;">dragged</span>,	
 			<span style="transform: scale(1, .5); display: inline-block;">minimized</span>...
 		</p>
-		<p style="text-align: center; font-weight: bold; margin: 10% 20% 10% 0">
+		<p style="text-align: center; font-weight: bold; margin: 10% 20% 10% 0; animation: rainbow 5s infinite;">
 			Use window as you see fit!
 		</p>
 	</tos-window>
