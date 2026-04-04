@@ -82,7 +82,7 @@
 
 .tos-window > header > button {
 	> nav {
-		--button-image: url(../assets/buttons/full.svg);
+		--button-image: url(../assets/buttons/full-white.svg);
 		mask-image: var(--button-image);
 	}
 }
