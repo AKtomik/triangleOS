@@ -89,6 +89,25 @@ data-openway="openway": way to open window
 </template>
 
 <template id="template-tuto-content">
+	<style>
+		 .gogle-search {
+		 	background-color: #4D5156;
+			border-radius: 2em;
+			margin: 0 10% 0 10%;
+			padding: 0 10px 0 10px;
+		 }
+		 .gogle-result {
+		 	transform: scale(.5, .5);
+		 }
+		 .gogle-result-header {
+		 	color: #99C3FF;
+			font-size: 2em;
+		 }
+		 .gogle-result-lore {
+		 	color: #ffffff;
+			font-size: 1em;
+		 }
+	</style>
 	<tos-window class="size-middle scrollable skin-in-black" data-title="Super cool content">
 		<p>
 			A 
@@ -104,9 +123,17 @@ data-openway="openway": way to open window
 			<span style="transform: translate(-5px, 30px); display: inline-block;">dragged</span>,  
 			<span style="transform: scale(1, .5); display: inline-block;">minimized</span>...
 		</p>
-		<p>
-			Use the power of HTML, CSS and JS for your window content. Be creative!
+		<p class="gogle-search">
+			🔍︎ what can I exactly put?
 		</p>
+		<div class="gogle-result">
+			<h1 class="gogle-result-header">
+				Build your windows
+			</h1>
+			<p class="gogle-result-lore">
+				Use the power of HTML, CSS and JS for your window content. Be creative!
+			</p>
+		</div>
 	</tos-window>
 </template>
 
