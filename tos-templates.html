@@ -90,22 +90,28 @@ data-openway="openway": way to open window
 
 <template id="template-tuto-content">
 	<style>
+			.gogle-container {
+				margin: 0 10% 0 10%;
+			}
 		 .gogle-search {
-		 	background-color: #4D5156;
-			border-radius: 2em;
-			margin: 0 10% 0 10%;
-			padding: 0 10px 0 10px;
+			 	background-color: #4D5156;
+				border-radius: 2em;
+				padding: 0 10px 0 10px;
+				font-size: .75em;
 		 }
 		 .gogle-result {
-		 	transform: scale(.5, .5);
+			margin-right: 30%;
+			margin-top: 1em;
 		 }
 		 .gogle-result-header {
 		 	color: #99C3FF;
-			font-size: 2em;
+			font-size: .85em;
+			margin: 0;
 		 }
 		 .gogle-result-lore {
 		 	color: #ffffff;
-			font-size: 1em;
+			font-size: .5em;
+			margin-top: .5em;
 		 }
 	</style>
 	<tos-window class="size-middle scrollable skin-in-black" data-title="Super cool content">
@@ -123,16 +129,27 @@ data-openway="openway": way to open window
 			<span style="transform: translate(-5px, 30px); display: inline-block;">dragged</span>,  
 			<span style="transform: scale(1, .5); display: inline-block;">minimized</span>...
 		</p>
-		<p class="gogle-search">
-			🔍︎ what can I exactly put?
-		</p>
-		<div class="gogle-result">
-			<h1 class="gogle-result-header">
-				Build your windows
-			</h1>
-			<p class="gogle-result-lore">
-				Use the power of HTML, CSS and JS for your window content. Be creative!
+		</br>
+		<div class="gogle-container">
+			<p class="gogle-search">
+				🔍︎ what can I do in a window?
 			</p>
+			<div class="gogle-result">
+				<h1 class="gogle-result-header">
+					Build your windows
+				</h1>
+				<p class="gogle-result-lore">
+					Use the power of HTML, CSS and JS for your window content. Be creative!
+				</p>
+			</div>
+			<div class="gogle-result">
+				<h1 class="gogle-result-header">
+					Build your windows
+				</h1>
+				<p class="gogle-result-lore">
+					Use the power of HTML, CSS and JS for your window content. Be creative!
+				</p>
+			</div>
 		</div>
 	</tos-window>
 </template>
