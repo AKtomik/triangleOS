@@ -1,6 +1,6 @@
 {
   "name": "triangleos",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Create a OS-like interface in html!",
   
   "type": "module",
@@ -30,5 +30,5 @@
   "bugs": {
     "url": "https://github.com/AKtomik/triangleOS/issues"
   },
-  "homepage": "https://github.com/AKtomik/triangleOS#readme"
+  "homepage": "https://triangle.js.org"
 }
