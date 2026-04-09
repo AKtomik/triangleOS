@@ -13,7 +13,9 @@ You can install TriangleOS in **3 different ways**, depending on your project se
 
 ### Option 1: Clone the example
 
-**This is recommended for getting started!** You will get the HTML example project.
+**This is recommended for getting started!**
+
+You will get the HTML example project.
 You will also recive last developpements changes.
 
 ```sh
@@ -26,6 +28,8 @@ To update you can pull.
 Feel free to use this repestory as template!
 
 ### Option 2: Use NPM
+
+**This is recommended for robust projects!** 
 
 In your project:
 
